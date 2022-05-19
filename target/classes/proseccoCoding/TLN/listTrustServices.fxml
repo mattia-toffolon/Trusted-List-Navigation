@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="136.0" layoutY="360.0" mnemonicParsing="false" text="Home" />
+      <TextField alignment="CENTER" editable="false" layoutX="35.0" layoutY="14.0" prefHeight="26.0" prefWidth="250.0" text="List of the Trust-Services types" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="35.0" layoutY="56.0" prefHeight="288.0" prefWidth="250.0">
+         <content>
+            <VBox fx:id="nationPane" prefHeight="284.0" prefWidth="250.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
