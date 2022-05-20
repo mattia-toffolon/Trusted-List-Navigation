@@ -6,15 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proseccoCoding.TLN.control.QueryResultsController">
    <children>
-      <Button layoutX="236.0" layoutY="360.0" mnemonicParsing="false" text="Home" />
+      <Button fx:id="homeButton" onAction="#switchToHome" layoutX="236.0" layoutY="360.0" mnemonicParsing="false" text="Home" />
       <TextField alignment="CENTER" editable="false" layoutX="35.0" layoutY="14.0" prefHeight="26.0" prefWidth="250.0" text="Your query results" />
       <ScrollPane hbarPolicy="NEVER" layoutX="35.0" layoutY="56.0" prefHeight="288.0" prefWidth="250.0">
          <content>
             <VBox fx:id="nationPane" prefHeight="284.0" prefWidth="250.0" />
          </content>
       </ScrollPane>
-      <Button layoutX="35.0" layoutY="360.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="49.0" text="Back" />
+      <Button fx:id="backSelectStatusButton" onAction="#switchToSelectStatus" layoutX="35.0" layoutY="360.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="49.0" text="Back" />
    </children>
 </AnchorPane>
