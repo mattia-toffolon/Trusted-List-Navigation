@@ -14,5 +14,4 @@ class ServiceTest {
 		assertThrows(IllegalArgumentException.class, () -> {new Service("test", null);});
 		assertThrows(IllegalArgumentException.class, () -> {new Service(null, new ServiceType("code", "type"));});
 	}
-
 }
