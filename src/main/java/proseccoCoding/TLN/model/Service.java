@@ -16,6 +16,8 @@ public class Service {
 	 * @param type object representing the type of the service
 	 */
 	public Service(String name, ServiceType type) {
+		if(name == null || type == null)
+			throw new IllegalArgumentException("Arguments must be not null");
 		this.name = name;
 		this.type = type;
 	}

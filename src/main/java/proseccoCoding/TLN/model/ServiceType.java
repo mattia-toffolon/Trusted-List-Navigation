@@ -21,7 +21,7 @@ public class ServiceType {
 	}
 	/**
 	 * Equals method that compare service types only by code
-	 * @param obj second object to compare this with
+	 * @param obj Second object to compare to this
 	 */
 	@Override
 	public boolean equals(Object obj) {
