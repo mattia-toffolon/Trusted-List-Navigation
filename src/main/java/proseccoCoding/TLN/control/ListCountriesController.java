@@ -25,10 +25,8 @@ public class ListCountriesController {
 	@FXML
 	private void initialize() {
     	// add countries to the ListView
-		for (String s : requestCountries()) {
-			System.out.println(s);
+		for (String s : requestCountries())
 			countriesList.getItems().add(s);
-		}
 	}
 	
     @FXML
