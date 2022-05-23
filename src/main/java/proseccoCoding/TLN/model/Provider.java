@@ -3,8 +3,8 @@ package proseccoCoding.TLN.model;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.SetMultimap;
 
 public class Provider {
 	/**
@@ -20,35 +20,40 @@ public class Provider {
 	 */
 	private static int counter = 0;
 	/**
-	 * The code of the country in which the provider is
+	 * The code of the country in which the provider is located, must be "CC"
 	 */
 	private String countryCode;
 	/**
 	 * Multimap that stores the services as value and the related type as key
 	 */
-	private Multimap<ServiceType, Service> services;
+	private SetMultimap<ServiceType, Service> services;
 	
 	/**
 	 * Contructor for class Provider
 	 * @param name Complete name of the provider
-	 * @param countryCode Code that identify the provider country
+	 * @param countryCode Code that identify the provider country, must be of length 2 
 	 */
 	public Provider(String name, String countryCode) throws IllegalArgumentException {
 		if(name == null || countryCode == null)
 			throw new IllegalArgumentException("Arguments must be not null");
+		if(countryCode.length() != 2)
+			throw new IllegalArgumentException("Country code must be of length 2");
 		this.name = name;
-		this.countryCode = countryCode;
+		this.countryCode = countryCode.toUpperCase();
 		this.code = countryCode + counter;
 		counter++;
-		this.services = ArrayListMultimap.create();
+		this.services = HashMultimap.create();
 	}
 	
 	/**
 	 * Adds the service to the provider 
 	 * @param service The service to add
-	 * @return True if the services has been added successfully, false otherwise 
+	 * @return True if the services has been added successfully, false otherwise
+	 * @throws IllegalArgumentException If the provider is null
 	 */
-	public boolean addService(Service service) {
+	public boolean addService(Service service) throws IllegalArgumentException{
+		if(service == null)
+			throw new IllegalArgumentException("Argument must be not null");
 		return services.put(service.getType(), service);
 	}
 	
@@ -71,14 +76,14 @@ public class Provider {
 		return new ArrayList<ServiceType>(services.keySet());
 	}
 
-	/**
-	 * Generate an hash code based only on the code of the provider
-	 */
-	@Override
-	public int hashCode() {
-		return Objects.hash(code);
-	}
-
+//	/**
+//	 * Generate an hash code based only on the code of the provider
+//	 */
+//	@Override
+//	public int hashCode() {
+//		return Objects.hash(code);
+//	}
+//
 	/**
 	 * Checks if the object passed as argument is equal to this object only by their codes
 	 */
@@ -102,5 +107,21 @@ public class Provider {
 	}
 	public String getCountryCode() {
 		return countryCode;
+	}
+	
+	/**
+	 * Static method that returns the country code associated to the given provider code.
+	 * The provider code must be as [A-Z]{2}-[0-9]{1,}
+	 * @param providerCode The code of the provider
+	 * @return The code of the country in which the provider is located
+	 * @throws IllegalArgumentException if the given code is not in a legal format
+	 */
+	static String getCountryCodeByProviderCode(String providerCode) throws IllegalArgumentException {
+		if(providerCode == null)
+			throw new IllegalArgumentException("providerCode must be not null");
+		if(!providerCode.matches("[A-Z]{2}-[0-9]{1,}"))
+			throw new IllegalArgumentException("providerCode must be in format [A-Z][A-Z]-**");
+			
+		return providerCode.substring(0, 2);
 	}
 }

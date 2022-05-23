@@ -12,12 +12,15 @@ class ServiceTypeTest {
 	static ServiceType st2;
 	// Service code equal to st1 but different name
 	static ServiceType st1_bis;
+	// Service name equal to st1 but different code
+	static ServiceType st2_bis;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		st1 = new ServiceType("type1", "Service Type 1");
 		st2 = new ServiceType("type2", "Service Type 2");
 		st1_bis = new ServiceType("type1", "Service Type 1 bis");
+		st2_bis = new ServiceType("type2", "Service Type 1");
 	}
 	
 	@Test
@@ -48,5 +51,6 @@ class ServiceTypeTest {
 	@DisplayName("Equals testing: different objects having different typeCode must be not equal")
 	void testNotEqualsObject() {
 		assertFalse(st1.equals(st2));
+		assertFalse(st1.equals(st2_bis));
 	}
 }

@@ -1,5 +1,7 @@
 package proseccoCoding.TLN.model;
 
+import java.util.Objects;
+
 public class Service {
 	/**
 	 * Complete name of the service
@@ -28,5 +30,28 @@ public class Service {
 	
 	public ServiceType getType() {
 		return type;
+	}
+
+	/**
+	 * Gets the hash code for this service calculated with both name and type
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, type);
+	}
+
+	/**
+	 * Compares two objects of service calculated with both name and type
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Service other = (Service) obj;
+		return Objects.equals(name, other.name) && Objects.equals(type, other.type);
 	}
 }
