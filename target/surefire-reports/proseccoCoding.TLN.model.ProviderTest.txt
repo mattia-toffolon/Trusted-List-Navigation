@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: proseccoCoding.TLN.model.ProviderTest
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 0.19 s <<< FAILURE! - in proseccoCoding.TLN.model.ProviderTest
+testGetServices  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Not yet implemented
+	at proseccoCoding.TLN.model.ProviderTest.testGetServices(ProviderTest.java:34)
+
+testAddService  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Not yet implemented
+	at proseccoCoding.TLN.model.ProviderTest.testAddService(ProviderTest.java:28)
+
+testGetCode  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Not yet implemented
+	at proseccoCoding.TLN.model.ProviderTest.testGetCode(ProviderTest.java:46)
+
+testProvider  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Not yet implemented
+	at proseccoCoding.TLN.model.ProviderTest.testProvider(ProviderTest.java:22)
+
+testGetCountryCode  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Not yet implemented
+	at proseccoCoding.TLN.model.ProviderTest.testGetCountryCode(ProviderTest.java:52)
+
+testGetServiceTypes  Time elapsed: 0.003 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Not yet implemented
+	at proseccoCoding.TLN.model.ProviderTest.testGetServiceTypes(ProviderTest.java:40)
+

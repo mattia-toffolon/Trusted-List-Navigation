@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proseccoCoding.TLN.control.CreditsController">
+   <children>
+      <Button fx:id="homeButton" onAction="#switchToHome" layoutX="135.0" layoutY="342.0" mnemonicParsing="false" text="Home" />
+      <TextField alignment="CENTER" editable="false" layoutX="35.0" layoutY="28.0" prefHeight="26.0" prefWidth="250.0" text="Project Members">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextField alignment="CENTER" layoutX="85.0" layoutY="113.0" text="Alberto Guerrini" />
+      <TextField alignment="CENTER" layoutX="85.0" layoutY="160.0" text="Mattia Toffolon" />
+      <TextField alignment="CENTER" layoutX="85.0" layoutY="210.0" text="Francesco Stella" />
+      <TextField alignment="CENTER" layoutX="85.0" layoutY="260.0" text="Filippo D'Emilio" />
+   </children>
+</AnchorPane>

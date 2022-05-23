@@ -1,7 +1,9 @@
 package proseccoCoding.TLN.model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
+
+import javafx.util.Pair;
 
 public class Country {
 	/**
@@ -13,14 +15,11 @@ public class Country {
 	 */
 	private String name;
 	/**
-	 * All the trusted providers that can be fount in that country
+	 * All the trusted providers that can be found in that country. Stored as (Provider.code, Provider)
 	 */
-	private HashSet<Provider> providers;
-	/**
-	 * Boolean that is true if the country providers have already been retrieved
-	 */
-	private boolean isRetrieved;
+	private HashMap<String, Provider> providers;
 		
+	
 	/**
 	 * Constructor for a country with specified name and code but without retrieved providers data
 	 * @param code 2 letter code that represents the country
@@ -31,8 +30,7 @@ public class Country {
 			throw new IllegalArgumentException("Arguments must be not null");
 		this.code = code;
 		this.name = name;
-		this.isRetrieved = false;
-		this.providers = new HashSet<Provider>();
+		this.providers = null;
 	}
 	
 	/**
@@ -41,38 +39,87 @@ public class Country {
 	 * @param name Complete name of the country 
 	 * @param providers Complete collection of all providers based in this country
 	 */
-	public Country(String code, String name, HashSet<Provider> providers) throws IllegalArgumentException {
+	public Country(String code, String name, HashMap<String, Provider> providers) throws IllegalArgumentException {
 		if(code == null || name == null || providers == null)
 			throw new IllegalArgumentException("Arguments must be not null");
+		if(code.length() != 2)
+			throw new IllegalArgumentException("Country code must be of length 2");
 		this.code = code.toUpperCase();
 		this.name = name;
-		this.isRetrieved = true;
 		this.providers = providers;
 	}
+	
+//	/**
+//	 * Adds the providers to the country if they haven't been already added 
+//	 * @param providers HashSet containing all the providers of this country
+//	 * @return True if the providers has been added, false otherwise
+//	 */
+//	public boolean addProviders(ArrayList<Provider> providers) {
+//		if(isRetrieved)
+//			return false;
+//		this.providers = new HashMap<String,Provider>(this.providers.size());
+//		return true;
+//	}
+
 	/**
-	 * Adds the providers to the country if they haven't been already added 
-	 * @param providers HashSet containing all the providers of this country
-	 * @return True if the providers has been added, false otherwise
+	 * Get the complete list of the providers based in this country
+	 * @return The list containing all the providers or null if they have not already been retrieved
 	 */
-	public boolean addProviders(HashSet<Provider> providers) {
-		if(isRetrieved)
-			return false;
-		this.providers = providers;
-		return true;
+	public ArrayList<Provider> getProviders() {
+		if(!isRetrieved())
+			return null;
+		return new ArrayList<Provider>(providers.values());
 	}
+	
+	/**
+	 * Returns the provider with the specified providerCode if there is one in this country
+	 * @param providerCode The code of the provider to get
+	 * @return The provider if it's been found, null otherwise
+	 */
+	public Provider getProvider(String providerCode) {
+		if(!isRetrieved())
+			return null;
+		if(!Provider.getCountryCodeByProviderCode(providerCode).equals(code))
+			return null;
+		return providers.get(providerCode);
+	}
+	
+	/**
+	 * Adds the given provider to this country only if it isn't already added.
+	 * @param provider The provider to add to this country
+	 * @return True if the provided has been added, false otherwise
+	 * @throws IllegalArgumentException In case in which the provider has a different countryCode 
+	 */
+	public boolean addProvider(Provider provider) throws IllegalArgumentException{
+		if(provider.getCountryCode().equals(code))
+			throw new IllegalArgumentException("Provider must be located in this country");
+		if(!isRetrieved())
+			providers = new HashMap<String, Provider>();
+		return providers.putIfAbsent(provider.getCode(), provider) == null;
+	}
+	
+	/**
+	 * States if the complete data of this country providers has already been retrieved.
+	 * The complete data consists in all the providers and their associated data.
+	 * @return True if the country provider data is been retrieved
+	 */
+	public boolean isRetrieved() {
+		return providers!=null;
+	}
+	
+	/**
+	 * Returns a Pair of two String created as: (key=CountryCode, value=CountryName)
+	 * @return The pair of code and name representing this country
+	 */
+	public Pair<String, String> print() {
+		return new Pair<String,String>(this.code, this.name);	
+	}
+	
 	public String getCode() {
 		return code;
 	}
 	public String getName() {
 		return name;
 	}
-	/**
-	 * Get the complete list of the providers based in this country
-	 * @return The HashSet containing all the providers or null if they are not retrieved
-	 */
-	public HashSet<Provider> getProviders() {
-		if(!isRetrieved)
-			return null;
-		return providers;
-	}
+	
 }
