@@ -17,12 +17,24 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import proseccoCoding.TLN.App;
 
+/**
+ * 
+ * Controller of the "listCountries" section
+ *
+ */
 public class ListCountriesController {
 
 	@FXML
+	/**
+	 * ListView object used to contain the list of the countries 
+	 */
 	private ListView countriesList;
 	
 	@FXML
+	/**
+	 * Method called when ListCountriesController is loaded. 
+	 * It adds the list of the countries to the private ListView object
+	 */
 	private void initialize() {
     	// add countries to the ListView
 		for (String s : requestCountries())
@@ -30,10 +42,19 @@ public class ListCountriesController {
 	}
 	
     @FXML
+    /**
+     * Switches scene to the "home" one
+     * @throws IOException
+     */
     private void switchToHome() throws IOException {
         App.setRoot("home");
     }
     
+    /**
+     * Private method that connects to an API that returns a .json file containing the list of the countries. 
+     * This method parses that file to create and then return an ArrayList of strings containing those names.
+     * @return ArrayList<String> containing all the countries names
+     */
     private static ArrayList<String> requestCountries() {
 		ArrayList<String> countries = new ArrayList<String>();
 		
