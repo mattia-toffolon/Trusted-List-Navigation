@@ -6,8 +6,15 @@ public class ServiceType {
 	private String code;
 	private String name;
 	
-	
+	/**
+	 * 
+	 * @param code the code of the service type
+	 * @param name The name of the service type
+	 * @throws IllegalArgumentException if one of the parameters is null
+	 */
 	public ServiceType(String code, String name) {
+		if(name == null || code == null)
+			throw new IllegalArgumentException("Arguments must be not null");
 		this.code = code;
 		this.name = name;
 	}
