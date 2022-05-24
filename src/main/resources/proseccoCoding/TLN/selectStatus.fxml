@@ -5,12 +5,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane prefHeight="400.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proseccoCoding.TLN.control.SelectStatusController">
    <children>
-      <Button fx:id="backSelectServicesButton" onAction="#switchToSelectServices" layoutX="35.0" layoutY="360.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Back" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="400.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
+      <Button fx:id="backSelectServicesButton" layoutX="35.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToSelectServices" prefHeight="26.0" prefWidth="50.0" text="Back" />
       <TextField alignment="CENTER" editable="false" layoutX="35.0" layoutY="14.0" prefHeight="26.0" prefWidth="250.0" text="Select your service status of interest" />
-      <Button fx:id="queryResultsButton" onAction="#switchToQueryResults" layoutX="236.0" layoutY="360.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="49.0" text="Start" />
+      <Button fx:id="queryResultsButton" layoutX="236.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToQueryResults" prefHeight="26.0" prefWidth="49.0" text="Start" />
       <ScrollPane hbarPolicy="NEVER" layoutX="35.0" layoutY="56.0" prefHeight="288.0" prefWidth="250.0">
          <content>
             <VBox fx:id="nationPane" prefHeight="284.0" prefWidth="250.0" />
