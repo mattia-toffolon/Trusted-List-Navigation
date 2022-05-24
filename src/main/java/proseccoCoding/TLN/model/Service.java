@@ -8,20 +8,26 @@ public class Service {
 	 */
 	private String name;
 	/**
-	 * Type of the service (can be omitted)
+	 * Type of the service
 	 */
 	private ServiceType type;
+	
+	/**
+	 * Status of the service
+	 */
+	private String status;
 	
 	/**
 	 * Constructor for a service object
 	 * @param name complete name of the service
 	 * @param type object representing the type of the service
 	 */
-	public Service(String name, ServiceType type) {
-		if(name == null || type == null)
+	public Service(String name, ServiceType type, String status) {
+		if(name == null || type == null || status == null)
 			throw new IllegalArgumentException("Arguments must be not null");
 		this.name = name;
 		this.type = type;
+		this.status = status;
 	}
 
 	public String getName() {
@@ -30,6 +36,10 @@ public class Service {
 	
 	public ServiceType getType() {
 		return type;
+	}
+	
+	public String getStatus() {
+		return status;
 	}
 
 	/**
