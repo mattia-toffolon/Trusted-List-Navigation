@@ -62,7 +62,8 @@ public class Country {
 //	}
 
 	/**
-	 * Get the complete list of the providers based in this country
+	 * Get the complete list of the providers based in this country or null if they have not already been retrieved
+	 * The list would be empty if the providers are been retrieved but this country has no providers
 	 * @return The list containing all the providers or null if they have not already been retrieved
 	 */
 	public ArrayList<Provider> getProviders() {
@@ -88,10 +89,12 @@ public class Country {
 	 * Adds the given provider to this country only if it isn't already added.
 	 * @param provider The provider to add to this country
 	 * @return True if the provided has been added, false otherwise
-	 * @throws IllegalArgumentException In case in which the provider has a different countryCode 
+	 * @throws IllegalArgumentException In case in which the provider is null or has a different countryCode 
 	 */
-	public boolean addProvider(Provider provider) throws IllegalArgumentException{
-		if(provider.getCountryCode().equals(code))
+	public boolean addProvider(Provider provider) throws IllegalArgumentException {
+		if(provider == null)
+			throw new IllegalArgumentException("Arguments must be not null");
+		if(!provider.getCountryCode().equals(code))
 			throw new IllegalArgumentException("Provider must be located in this country");
 		if(!isRetrieved())
 			providers = new HashMap<String, Provider>();

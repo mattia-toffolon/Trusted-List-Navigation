@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="proseccoCoding.TLN.model.ProviderTest" time="0.19" tests="13" errors="0" skipped="0" failures="6">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="proseccoCoding.TLN.model.ProviderTest" time="0.164" tests="18" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="14"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IT"/>
     <property name="sun.boot.library.path" value="C:\Users\aguer\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_14.0.2.v20200815-0932\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\aguer\AppData\Local\Temp\surefire7838309098087691565\surefirebooter1390958765361375443.jar C:\Users\aguer\AppData\Local\Temp\surefire7838309098087691565 2022-05-23T14-46-36_065-jvmRun1 surefire10645481212423872505tmp surefire_013077110264528823288tmp"/>
+    <property name="sun.java.command" value="C:\Users\aguer\AppData\Local\Temp\surefire13562497338455754082\surefirebooter17743757749204414248.jar C:\Users\aguer\AppData\Local\Temp\surefire13562497338455754082 2022-05-24T11-18-12_395-jvmRun1 surefire3768333796472533782tmp surefire_010056681959920696260tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\aguer\OneDrive\Documents\Scuola\UniPd\Ing Informatica 2\2° Semestre\Fondamenti di Ingegneria del Software\Progetto-def\Trusted-List-Navigation\target\test-classes;C:\Users\aguer\OneDrive\Documents\Scuola\UniPd\Ing Informatica 2\2° Semestre\Fondamenti di Ingegneria del Software\Progetto-def\Trusted-List-Navigation\target\classes;C:\Users\aguer\.m2\repository\org\openjfx\javafx-fxml\18\javafx-fxml-18.jar;C:\Users\aguer\.m2\repository\org\openjfx\javafx-fxml\18\javafx-fxml-18-win.jar;C:\Users\aguer\.m2\repository\org\openjfx\javafx-controls\18\javafx-controls-18.jar;C:\Users\aguer\.m2\repository\org\openjfx\javafx-controls\18\javafx-controls-18-win.jar;C:\Users\aguer\.m2\repository\org\openjfx\javafx-graphics\18\javafx-graphics-18.jar;C:\Users\aguer\.m2\repository\org\openjfx\javafx-graphics\18\javafx-graphics-18-win.jar;C:\Users\aguer\.m2\repository\org\openjfx\javafx-base\18\javafx-base-18.jar;C:\Users\aguer\.m2\repository\org\openjfx\javafx-base\18\javafx-base-18-win.jar;C:\Users\aguer\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.2\junit-jupiter-5.8.2.jar;C:\Users\aguer\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\aguer\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\aguer\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\aguer\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\aguer\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.2\junit-jupiter-params-5.8.2.jar;C:\Users\aguer\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\aguer\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\aguer\.m2\repository\org\json\json\20220320\json-20220320.jar;C:\Users\aguer\.m2\repository\com\google\guava\guava\31.1-jre\guava-31.1-jre.jar;C:\Users\aguer\.m2\repository\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;C:\Users\aguer\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\aguer\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\aguer\.m2\repository\org\checkerframework\checker-qual\3.12.0\checker-qual-3.12.0.jar;C:\Users\aguer\.m2\repository\com\google\errorprone\error_prone_annotations\2.11.0\error_prone_annotations-2.11.0.jar;C:\Users\aguer\.m2\repository\com\google\j2objc\j2objc-annotations\1.3\j2objc-annotations-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\aguer\AppData\Local\Temp\surefire7838309098087691565\surefirebooter1390958765361375443.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\aguer\AppData\Local\Temp\surefire13562497338455754082\surefirebooter17743757749204414248.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="14.0.2+12-46"/>
@@ -55,41 +55,22 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="58.0"/>
   </properties>
-  <testcase name="testGetServices" classname="proseccoCoding.TLN.model.ProviderTest" time="0.001">
-    <failure message="Not yet implemented" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Not yet implemented
-	at proseccoCoding.TLN.model.ProviderTest.testGetServices(ProviderTest.java:34)
-</failure>
-  </testcase>
-  <testcase name="testAddService" classname="proseccoCoding.TLN.model.ProviderTest" time="0">
-    <failure message="Not yet implemented" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Not yet implemented
-	at proseccoCoding.TLN.model.ProviderTest.testAddService(ProviderTest.java:28)
-</failure>
-  </testcase>
-  <testcase name="testGetCountryCodeByProviderCode{String}[1]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.076"/>
-  <testcase name="testGetCountryCodeByProviderCode{String}[2]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.004"/>
-  <testcase name="testGetCountryCodeByProviderCode{String}[3]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.002"/>
+  <testcase name="testGetServices" classname="proseccoCoding.TLN.model.ProviderTest" time="0.022"/>
+  <testcase name="testCode" classname="proseccoCoding.TLN.model.ProviderTest" time="0.002"/>
+  <testcase name="testAddService" classname="proseccoCoding.TLN.model.ProviderTest" time="0"/>
+  <testcase name="testGetCountryCodeByProviderCode{String}[1]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.04"/>
+  <testcase name="testGetCountryCodeByProviderCode{String}[2]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.003"/>
+  <testcase name="testGetCountryCodeByProviderCode{String}[3]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.001"/>
   <testcase name="testGetCountryCodeByProviderCode{String}[4]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.001"/>
-  <testcase name="testGetCountryCodeByProviderCode{String}[5]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.004"/>
-  <testcase name="testGetCountryCodeByProviderCode{String}[6]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.002"/>
-  <testcase name="testGetCountryCodeByProviderCode{String}[7]" classname="proseccoCoding.TLN.model.ProviderTest" time="0"/>
-  <testcase name="testGetCode" classname="proseccoCoding.TLN.model.ProviderTest" time="0.001">
-    <failure message="Not yet implemented" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Not yet implemented
-	at proseccoCoding.TLN.model.ProviderTest.testGetCode(ProviderTest.java:46)
-</failure>
-  </testcase>
-  <testcase name="testProvider" classname="proseccoCoding.TLN.model.ProviderTest" time="0.002">
-    <failure message="Not yet implemented" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Not yet implemented
-	at proseccoCoding.TLN.model.ProviderTest.testProvider(ProviderTest.java:22)
-</failure>
-  </testcase>
-  <testcase name="testGetCountryCode" classname="proseccoCoding.TLN.model.ProviderTest" time="0.002">
-    <failure message="Not yet implemented" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Not yet implemented
-	at proseccoCoding.TLN.model.ProviderTest.testGetCountryCode(ProviderTest.java:52)
-</failure>
-  </testcase>
-  <testcase name="testGetServiceTypes" classname="proseccoCoding.TLN.model.ProviderTest" time="0.003">
-    <failure message="Not yet implemented" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Not yet implemented
-	at proseccoCoding.TLN.model.ProviderTest.testGetServiceTypes(ProviderTest.java:40)
-</failure>
-  </testcase>
+  <testcase name="testProvider" classname="proseccoCoding.TLN.model.ProviderTest" time="0.001"/>
+  <testcase name="testProviderFail" classname="proseccoCoding.TLN.model.ProviderTest" time="0.002"/>
+  <testcase name="testAddServiceFail" classname="proseccoCoding.TLN.model.ProviderTest" time="0.001"/>
+  <testcase name="testGetServiceTypes" classname="proseccoCoding.TLN.model.ProviderTest" time="0.005"/>
+  <testcase name="testGetCountryCodeByProviderCodeFail{String}[1]" classname="proseccoCoding.TLN.model.ProviderTest" time="0"/>
+  <testcase name="testGetCountryCodeByProviderCodeFail{String}[2]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.001"/>
+  <testcase name="testGetCountryCodeByProviderCodeFail{String}[3]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.002"/>
+  <testcase name="testGetCountryCodeByProviderCodeFail{String}[4]" classname="proseccoCoding.TLN.model.ProviderTest" time="0"/>
+  <testcase name="testGetCountryCodeByProviderCodeFail{String}[5]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.002"/>
+  <testcase name="testGetCountryCodeByProviderCodeFail{String}[6]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.002"/>
+  <testcase name="testGetCountryCodeByProviderCodeFail{String}[7]" classname="proseccoCoding.TLN.model.ProviderTest" time="0.001"/>
 </testsuite>

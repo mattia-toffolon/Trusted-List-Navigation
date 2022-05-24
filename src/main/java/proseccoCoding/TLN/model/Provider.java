@@ -40,7 +40,7 @@ public class Provider {
 			throw new IllegalArgumentException("Country code must be of length 2");
 		this.name = name;
 		this.countryCode = countryCode.toUpperCase();
-		this.code = countryCode + counter;
+		this.code = countryCode + "-" + counter;
 		counter++;
 		this.services = HashMultimap.create();
 	}
@@ -117,11 +117,24 @@ public class Provider {
 	 * @throws IllegalArgumentException if the given code is not in a legal format
 	 */
 	static String getCountryCodeByProviderCode(String providerCode) throws IllegalArgumentException {
+		if(!isProviderCodeLegal(providerCode))
+			throw new IllegalArgumentException("providerCode must be in format [A-Z][A-Z]-**");
+		
+		return providerCode.substring(0, 2);
+	}
+	
+	/**
+	 * Static method that checks if the provider code is legal.
+	 * The provider code must be as [A-Z]{2}-[0-9]{1,}
+	 * @param providerCode The code of the provider
+	 * @return True if the code is correctly formatted
+	 * @throws IllegalArgumentException if the given code is null
+	 */
+	static boolean isProviderCodeLegal(String providerCode) throws IllegalArgumentException {
 		if(providerCode == null)
 			throw new IllegalArgumentException("providerCode must be not null");
-		if(!providerCode.matches("[A-Z]{2}-[0-9]{1,}"))
-			throw new IllegalArgumentException("providerCode must be in format [A-Z][A-Z]-**");
-			
-		return providerCode.substring(0, 2);
+		if(providerCode.matches("[A-Z]{2}-[0-9]{1,}"))
+			return true;
+		return false;
 	}
 }

@@ -53,6 +53,7 @@ class ProviderTest {
 	void testCode() {
 		assertNotEquals(pr2.getCode(), pr2_bis.getCode());
 		assertNotEquals(pr1.getCode(), pr2.getCode());
+		assertTrue(pr2.getCode().matches("[A-Z]{2}-[0-9]{1,}"));
 	}
 
 	@Test
@@ -116,12 +117,12 @@ class ProviderTest {
 	}
 	
 	@ParameterizedTest
-	@DisplayName("GetCountryCodeByProvider not fail testing: legal input must return correct country code")
+	@DisplayName("GetCountryCodeByProvider & isProviderCodeLegal not fail testing: legal input must return correct country code")
 	@ValueSource(strings = {"AT-11","EE-122332","RT-0","ZZ-120303939229"})
 	void testGetCountryCodeByProviderCode(String providerCode) {
 		assertEquals(Provider.getCountryCodeByProviderCode(providerCode), providerCode.substring(0, 2));
 	}
-	
+		
 	
 //	@ParameterizedTest
 //	@MethodSource("stringIntAndListProvider")
