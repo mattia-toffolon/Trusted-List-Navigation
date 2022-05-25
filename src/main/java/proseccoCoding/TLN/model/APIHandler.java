@@ -125,7 +125,7 @@ public class APIHandler {
 		ArrayList<ServiceType> ret = new ArrayList<ServiceType>();
 		Scanner s = null;
 	    try {
-			s = new Scanner(new File("sigle tipi.txt"));
+			s = new Scanner(new File("sigle_tipi.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
