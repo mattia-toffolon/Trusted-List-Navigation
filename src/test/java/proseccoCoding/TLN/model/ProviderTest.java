@@ -27,10 +27,10 @@ class ProviderTest {
 		pr2 = new Provider("provider2", "BB");
 		pr2_bis = new Provider("provider2", "BB");
 		
-		sr1 = new Service("s1", new ServiceType("t1", "service type 1"));
-		sr2 = new Service("s2", new ServiceType("t2", "service type 2"));
-		sr1_bis = new Service("s1", new ServiceType("t1", "service type 1"));
-		sr3 =  new Service("s3", new ServiceType("t1", "service type 1"));
+		sr1 = new Service("s1", new ServiceType("t1", "service type 1"), "granted");
+		sr2 = new Service("s2", new ServiceType("t2", "service type 2"), "granted");
+		sr1_bis = new Service("s1", new ServiceType("t1", "service type 1"), "granted");
+		sr3 =  new Service("s3", new ServiceType("t1", "service type 1"), "granted");
 	}
 
 	@Test
