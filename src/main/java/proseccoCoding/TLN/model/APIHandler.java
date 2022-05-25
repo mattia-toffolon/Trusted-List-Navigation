@@ -90,6 +90,7 @@ public class APIHandler {
 	 * Static method that parse the countryData and extract all types of services from all countries
 	 * @return An ArrayList of String with the types
 	 */
+	/*
 	public static ArrayList<String> retriveServiceTypes() {
 		ArrayList<String> serviceTypes = new ArrayList<String>();
 		Iterator<Object> it = countriesData.iterator();
@@ -113,6 +114,28 @@ public class APIHandler {
 		}
 		
 		return serviceTypes;
+	}
+	*/
+	/**
+	 * Static method that get the service types information from local file
+	 * @return An ArrayList of all the ServiceType
+	 * @throws FileNotFoundException if the file name is incorrect
+	 */
+	public static ArrayList<ServiceType> retriveServiceTypes() {
+		ArrayList<ServiceType> ret = new ArrayList<ServiceType>();
+		Scanner s = null;
+	    try {
+			s = new Scanner(new File("sigle tipi.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    while(s.hasNextLine()) {
+	    	String line = s.nextLine();
+	    	String[] elem = line.split(";");
+	    	ret.add(new ServiceType(elem[1],elem[0]));
+	    }
+	    return ret;
 	}
 	
 	/**
