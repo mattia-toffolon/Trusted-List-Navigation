@@ -11,7 +11,8 @@ class ServiceTest {
 	@Test
 	@DisplayName("Constructor testing: in case of a null parameter must throw an exception")
 	void testService() {
-		assertThrows(IllegalArgumentException.class, () -> {new Service("test", null);});
-		assertThrows(IllegalArgumentException.class, () -> {new Service(null, new ServiceType("code", "type"));});
+		assertThrows(IllegalArgumentException.class, () -> {new Service("test", null, "serv");});
+		assertThrows(IllegalArgumentException.class, () -> {new Service(null, new ServiceType("code", "type"), "serv");});
+		assertThrows(IllegalArgumentException.class, () -> {new Service("test", new ServiceType("code", "type"), null);});
 	}
 }
