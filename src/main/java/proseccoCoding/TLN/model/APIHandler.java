@@ -18,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import javafx.scene.image.Image;
 import javafx.util.Pair;
 
 public class APIHandler {
@@ -28,7 +29,7 @@ public class APIHandler {
 	/**
 	 * Constructor of the class
 	 */
-	public APIHandler() {
+	private static void init() {
 		
 		try {
 			URL url;
@@ -122,9 +123,7 @@ public class APIHandler {
 					Scanner s = null;
 					
 					//PROBLEMA SCANNER
-					s = new Scanner(new File("Users/francescostella/eclipse-workspace/TrustedList/Trusted-List-Navigation/src/"
-							+ "main/resources/proseccoCoding/TLN/tipi_servizi.txt"));
-					
+					s = new Scanner(APIHandler.class.getClassLoader().getResourceAsStream("tipi_servizi.txt"));
 					while(s.hasNextLine()) {
 				    	String line = s.nextLine();
 				    	String[] elem = line.split(";");
@@ -152,6 +151,8 @@ public class APIHandler {
 	 * @return the Country object just created 
 	 */
 	public static Country retriveCountryData(String countryCode) {
+		if(countriesData == null || countriesName == null)
+			init();
 		Country tempCountry = null;
 		
 		//Build the country object with only name and country as attribute
@@ -171,15 +172,15 @@ public class APIHandler {
 			JSONObject obj = (JSONObject)itProviders.next();
 			
 			if(((String)obj.get("countryCode")).equals(countryCode) && itProviders.hasNext()) {
-				Provider tempProvider = new Provider((String)obj.get("name"), countryCode);
+				Provider tempProvider = new Provider((String)obj.get("name"), tempCountry);
 				JSONArray services = obj.getJSONArray("services");
 				
 				//Build each service object with status, name service and country code. After that it is put provider's Multimap 
 				for(int i=0; i<services.length(); i++) {
 					JSONObject temp = services.getJSONObject(i);
 					String tempStatus = temp.getString("currentStatus");
-					Service tempService = new Service(temp.getString("serviceName"), ServiceType.get(temp.getString("countryCode")),
-								tempStatus.substring(50, tempStatus.length()));
+					Service tempService = new Service(temp.getString("serviceName"), ServiceType.getInstance(temp.getString("countryCode")),
+								tempStatus.substring(50, tempStatus.length()), tempProvider);
 					tempProvider.addService(tempService);
 				}
 				tempCountry.addProvider(tempProvider);
