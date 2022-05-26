@@ -2,12 +2,13 @@ package proseccoCoding.TLN.model;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.sql.Timestamp;
 
 public class Query{
 	/**
 	 * 
 	 */
-	//  private Timestamp startTime;
+	private Timestamp startTime;
 	
 	/**
 	 * ArrayList that stores the Country objects selected by the user
@@ -25,12 +26,18 @@ public class Query{
 	 * ArrayList that stores the possible service statuses among the selected services as Strings
 	 */
 	private ArrayList<String> selectedServiceStatus;
+	
+	public Query() {
+		startTime = new Timestamp(System.currentTimeMillis());
+	}
+	
 	/**
 	 * This method sets selectedCountries with the given parameter
 	 * @param ArrayList of countries objects that correspond to the ones selected by the user
 	 * @return true if countries was added, false otherwise
+	 * @throws IllegalArgumentException In case of null parameter
 	 */
-	public boolean addSelectedCountries(ArrayList<Country> countries) {
+	public boolean addSelectedCountries(ArrayList<Country> countries) throws IllegalArgumentException {
 		return false;
 	}
 	/**
@@ -44,8 +51,9 @@ public class Query{
 	 * This method adds to selectedProviders the providers object associated with the Strings contained in providerCodes
 	 * @param providerCodes , ArrayList of Strings that contains all the codes of the selected providers
 	 * @return true if the Provider objects were added, false otherwise
+	 * @throws IllegalArgumentException In case of null parameter
 	 */
-	public boolean setSelectedProviders(ArrayList<String> providerCodes) {
+	public boolean setSelectedProviders(ArrayList<String> providerCodes)throws IllegalArgumentException {
 		return false;
 	}
 	/**
@@ -60,8 +68,9 @@ public class Query{
 	 * which service type is among the selected ones by the user
 	 * @param typeCodes , ArrayList of Strings that indicates the selected service types
 	 * @return true if the Service objects were added, false otherwise
+	 * @throws IllegalArgumentException In case of null parameter
 	 */
-	public boolean setSelectedServiceTypes(ArrayList<String> typeCodes) {
+	public boolean setSelectedServiceTypes(ArrayList<String> typeCodes) throws IllegalArgumentException {
 		return false;
 	}
 	/**
@@ -75,8 +84,9 @@ public class Query{
 	 * This method adds to selectedServiceStatus all the service statuses selected by the user
 	 * @param status , ArrayList of Strings
 	 * @return true if selectedServiceStatus was correctly loaded, false otherwise
+	 * @throws IllegalArgumentException In case of null parameter
 	 */
-	public boolean setSelectedServiceStatus(ArrayList<String> status) {
+	public boolean setSelectedServiceStatus(ArrayList<String> status) throws IllegalArgumentException {
 		return false;
 	}
 	/**
