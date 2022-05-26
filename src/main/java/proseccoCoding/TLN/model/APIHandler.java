@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 import org.json.JSONArray;
@@ -136,16 +137,17 @@ public class APIHandler {
 		while(itProviders.hasNext()) {
 			JSONObject obj = (JSONObject)itProviders.next();
 			
-			while(((String)obj.get("countrycode")).equals(countryCode) && itProviders.hasNext()) {
+			if(((String)obj.get("countryCode")).equals(countryCode) && itProviders.hasNext()) {// && itProviders.hasNext()
 				Provider tempProvider = new Provider((String)obj.get("name"), countryCode);
 				JSONArray services = obj.getJSONArray("services");
 				
-				for(int i=0;i<services.length();i++) {
+				for(int i=0; i<services.length(); i++) {
+					System.out.println(i);
 					JSONObject temp = services.getJSONObject(i);
 					String tempStatus = temp.getString("currentStatus");
 					Service tempService = new Service(temp.getString("serviceName"),
 							new ServiceType((String)temp.get("type"), "TERMINARE"),
-								tempStatus.substring(50, tempStatus.length()-1));
+								tempStatus.substring(50, tempStatus.length()));
 					tempProvider.addService(tempService);
 				}
 				
@@ -156,4 +158,39 @@ public class APIHandler {
 		return tempCountry;
 	}
 	
+	public static void main(String[] args) {
+        APIHandler api = new APIHandler();
+        
+        //Test Metodo retrieveCountries
+        HashMap<String,Country> test1 = retrieveCountries();
+        for (HashMap.Entry<String, Country> entry : test1.entrySet()) 
+            System.out.println(entry.getKey() + " / " + entry.getValue().getName());
+        
+    	   
+        //Test metodo retrieveServiceTypes
+        ArrayList<String> test2 = retriveServiceTypes();
+        for ( String e : test2)
+        	System.out.println(e);
+        
+        //Test metodo retrieveCountryData
+        Country test3 = retriveCountryData("AT");
+        System.out.println(test3.getCode() + " " + test3.getName());
+        for(Provider e : test3.getProviders()) {
+        	System.out.println(e.getName());
+        	for(ServiceType t : e.getServiceTypes()) {
+        	System.out.println(t.getCode() + " " + t.getName());
+        	ArrayList<Service> voglioService = e.getServices(t);
+        	for(Service o : voglioService) {
+        		System.out.println(o.getName()+ " " + o.getStatus());
+        	}
+        	}
+        }
+    }
+	
 }
+
+
+
+
+
+
