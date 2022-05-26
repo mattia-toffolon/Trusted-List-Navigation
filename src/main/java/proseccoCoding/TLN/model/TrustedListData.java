@@ -8,11 +8,9 @@ import java.util.Iterator;
 import javafx.util.Pair;
 public class TrustedListData{
 	private HashMap<String,Country> countries;
-	private ArrayList<ServiceType> serviceTypes;
 	
 	public TrustedListData() {
 		countries = APIHandler.retrieveCountries();
-		serviceTypes = APIHandler.retriveServiceTypes();
 	}
 	/**
 	 * return the Country object representing the country which the code specified as parameter
@@ -23,7 +21,10 @@ public class TrustedListData{
 	public Country getCountry(String countryCode){
 		if (countryCode == null)
 			throw new IllegalArgumentException("Argument must not be null");
-		return countries.get(countryCode);
+		Country ret = countries.get(countryCode);
+		if(!ret.isRetrieved())
+			ret = APIHandler.retriveCountryData(countryCode);
+		return ret;
 	}
 	/**
 	 * return a set of country objects representing the countries which the code is in the parameter set
@@ -37,7 +38,11 @@ public class TrustedListData{
 		ArrayList<Country> ret = new ArrayList<Country>();
 		Iterator<String> i = countryCodes.iterator();
 		while(i.hasNext()) {
-			ret.add(countries.get(i.next()));
+			String tempCode = i.next();
+			Country tempCountry = countries.get(tempCode);
+			if(!tempCountry.isRetrieved())
+				tempCountry = APIHandler.retriveCountryData(tempCode);
+			ret.add(tempCountry);
 		}
 		return ret;
 	}
@@ -50,19 +55,7 @@ public class TrustedListData{
 		Iterator<Country> i = values.iterator();
 		while(i.hasNext()) {
 			Country temp = i.next();
-			ret.add(new Pair<String,String>(temp.getCode(),temp.getName()));
-		}
-		return ret;
-	}
-	/**
-	 * @return an ArrayList of pair, which pairs are "service type code" and "service type name" for each service
-	 */
-	public ArrayList<Pair<String,String>> printServiceTypes(){
-		ArrayList<Pair<String,String>> ret = new ArrayList<Pair<String,String>>();
-		Iterator<ServiceType> i = serviceTypes.iterator();
-		while(i.hasNext()) {
-			ServiceType temp = i.next();
-			ret.add(new Pair<String,String>(temp.getCode(),temp.getName()));
+			ret.add(temp.print());
 		}
 		return ret;
 	}
