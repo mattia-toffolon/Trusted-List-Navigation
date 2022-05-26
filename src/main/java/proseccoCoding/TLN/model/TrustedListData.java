@@ -8,11 +8,9 @@ import java.util.Iterator;
 import javafx.util.Pair;
 public class TrustedListData{
 	private HashMap<String,Country> countries;
-	private APIHandler apiHandler;
 	private ArrayList<ServiceType> serviceTypes;
 	
 	public TrustedListData() {
-		apiHandler = new APIHandler();
 		countries = APIHandler.retrieveCountries();
 		serviceTypes = APIHandler.retriveServiceTypes();
 	}
