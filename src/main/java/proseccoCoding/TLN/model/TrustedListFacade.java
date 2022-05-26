@@ -2,6 +2,8 @@ package proseccoCoding.TLN.model;
 
 import java.util.ArrayList;
 
+import javax.management.Query;
+
 public class TrustedListFacade {
 	/**
 	 * List containing all completely done queries
@@ -31,10 +33,26 @@ public class TrustedListFacade {
 			throw new IllegalArgumentException("Parameter must be not null");
 		if(countryCodes.size() <= 0)
 			return false;
-		if
-
+		
+		Query q = new Query();
+		q.addSelectedCountries(trustedListData.getCountries(countryCodes));
+		queries.add(q);
+		
+		return true;
+	}
+	
+	/**
+	 * Gets the current query or null if there isn't one in use
+	 * @return The Query in use or null if there isn't one
+	 */
+	public Query getQuery() {
+		if(queries.size() <= 0 || queries.get(queries.size()-1).isEnded())
+			return null;
+		return queries.get(queries.size()-1);
 	}
 	
 	
-	
+	public TrustedListData getData() {
+		return trustedListData;
+	}
 }

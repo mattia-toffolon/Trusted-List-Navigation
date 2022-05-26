@@ -44,6 +44,7 @@ public class TrustedListData{
 				tempCountry = APIHandler.retriveCountryData(tempCode);
 			ret.add(tempCountry);
 		}
+		// ret = countryCodes.stream().map((String s)->{return this.getCountry(s);}).collect(Collectors.toList());
 		return ret;
 	}
 	/**
