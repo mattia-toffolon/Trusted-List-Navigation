@@ -2,8 +2,6 @@ package proseccoCoding.TLN.model;
 
 import java.util.ArrayList;
 
-import javax.management.Query;
-
 public class TrustedListFacade {
 	/**
 	 * List containing all completely done queries
@@ -42,13 +40,24 @@ public class TrustedListFacade {
 	}
 	
 	/**
-	 * Gets the current query or null if there isn't one in use
+	 * Gets the current query or null if there isn't one
 	 * @return The Query in use or null if there isn't one
 	 */
 	public Query getQuery() {
-		if(queries.size() <= 0 || queries.get(queries.size()-1).isEnded())
+		if(queries.size() <= 0)
 			return null;
 		return queries.get(queries.size()-1);
+	}
+	
+	/**
+	 * Ends the current query and discards it if it isn't completed
+	 * @return The Query in use or null if there isn't one
+	 */
+	public boolean endQuery() {
+		if(queries.get(queries.size()-1).isEnded())
+			return true;
+		queries.remove(queries.size()-1);
+		return false;
 	}
 	
 	
