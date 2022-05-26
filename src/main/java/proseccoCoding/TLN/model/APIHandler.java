@@ -15,6 +15,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import javafx.util.Pair;
+
 public class APIHandler {
 	
 	private static JSONArray countriesName;
@@ -150,7 +152,8 @@ public class APIHandler {
 								tempStatus.substring(50, tempStatus.length()));
 					tempProvider.addService(tempService);
 				}
-				
+				//Al posto del costruttore di Service
+				//Al posto creare l'oggetto ServiceType chiamo il metodo get di ServiceType con il codice nazione
 				tempCountry.addProvider(tempProvider);
 			}
 		
