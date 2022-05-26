@@ -23,21 +23,21 @@ class ProviderTest {
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		pr1 = new Provider("provider1", "AA");
-		pr2 = new Provider("provider2", "BB");
-		pr2_bis = new Provider("provider2", "BB");
+		pr1 = new Provider("provider1", new Country("AA", "AA"));
+		pr2 = new Provider("provider2", new Country("BB", "BB"));
+		pr2_bis = new Provider("provider2", new Country("BB", "BB"));
 		
-		sr1 = new Service("s1", new ServiceType("t1", "service type 1"), "granted");
-		sr2 = new Service("s2", new ServiceType("t2", "service type 2"), "granted");
-		sr1_bis = new Service("s1", new ServiceType("t1", "service type 1"), "granted");
-		sr3 =  new Service("s3", new ServiceType("t1", "service type 1"), "granted");
+		sr1 = new Service("s1", ServiceType.getInstance("t1"), "granted", null);
+		sr2 = new Service("s2", ServiceType.getInstance("t2"), "granted", null);
+		sr1_bis = new Service("s1", ServiceType.getInstance("t1"), "granted", null);
+		sr3 =  new Service("s3", ServiceType.getInstance("t1"), "granted", null);
 	}
 
 	@Test
 	@DisplayName("Constructor fail testing: If inputs are illegal must throw an exception")
 	void testProviderFail() {
 		assertThrows(IllegalArgumentException.class, () -> {new Provider("test", null);});
-		assertThrows(IllegalArgumentException.class, () -> {new Provider(null, "test");});
+		assertThrows(IllegalArgumentException.class, () -> {new Provider(null, new Country("a","a"));});
 	}
 	
 	@Test
@@ -65,8 +65,8 @@ class ProviderTest {
 	@Test
 	@DisplayName("AddService testing: If service is legal must add it, if there is alreay an equal provider must return false")
 	void testAddService() {
-		pr1 = new Provider("provider1", "AA");
-		pr2 = new Provider("provider2", "BB");
+		pr1 = new Provider("provider1", new Country("AA", "AA"));
+		pr2 = new Provider("provider2", new Country("BB", "BB"));
 		
 		assertEquals(true, pr1.addService(sr1));
 		assertEquals(false, pr1.addService(sr1_bis));
@@ -77,7 +77,7 @@ class ProviderTest {
 	@Test
 	@DisplayName("GetServices testing: Must return all services of the type, or empty if there isn't")
 	void testGetServices() {
-		pr1 = new Provider("provider1", "AA");
+		pr1 = new Provider("provider1", new Country("AA", "AA"));
 		
 		pr1.addService(sr1);
 		// different type as sr1
@@ -87,14 +87,14 @@ class ProviderTest {
 		
 		assertEquals(2, pr1.getServices(sr1.getType()).size());
 		assertEquals(1, pr1.getServices(sr2.getType()).size());
-		assertEquals(0, pr1.getServices(new ServiceType("ww", "sss")).size());
+		assertEquals(0, pr1.getServices(ServiceType.getInstance("xx")).size());
 	}
 
 	@Test
 	@DisplayName("GetServiceTypes testing: must return all service types or an empty list")
 	void testGetServiceTypes() {
-		pr1 = new Provider("provider1", "AA");
-		pr2 = new Provider("provider2", "BB");
+		pr1 = new Provider("provider1", new Country("AA", "AA"));
+		pr2 = new Provider("provider2", new Country("BB", "BB"));
 		
 		pr1.addService(sr1);
 		// different type as sr1
@@ -113,17 +113,16 @@ class ProviderTest {
 	@NullSource
 	@ValueSource(strings = {"wsx-21112","%564","er-44","AE-1e","-"})
 	void testGetCountryCodeByProviderCodeFail(String providerCode) {
-		assertThrows(IllegalArgumentException.class, ()->{Provider.getCountryCodeByProviderCode(providerCode);});
+		assertThrows(IllegalArgumentException.class, ()->{Provider.getCountryCodeBy(providerCode);});
 	}
 	
 	@ParameterizedTest
 	@DisplayName("GetCountryCodeByProvider & isProviderCodeLegal not fail testing: legal input must return correct country code")
 	@ValueSource(strings = {"AT-11","EE-122332","RT-0","ZZ-120303939229"})
 	void testGetCountryCodeByProviderCode(String providerCode) {
-		assertEquals(Provider.getCountryCodeByProviderCode(providerCode), providerCode.substring(0, 2));
+		assertEquals(Provider.getCountryCodeBy(providerCode), providerCode.substring(0, 2));
 	}
-		
-	
+
 //	@ParameterizedTest
 //	@MethodSource("stringIntAndListProvider")
 //	void testWithMultiArgMethodSource(String str, int num, List<String> list) {

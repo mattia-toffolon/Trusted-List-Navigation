@@ -61,16 +61,6 @@ public class Country {
 //		return true;
 //	}
 
-	/**
-	 * Get the complete list of the providers based in this country or null if they have not already been retrieved
-	 * The list would be empty if the providers are been retrieved but this country has no providers
-	 * @return The list containing all the providers or null if they have not already been retrieved
-	 */
-	public ArrayList<Provider> getProviders() {
-		if(!isRetrieved())
-			return null;
-		return new ArrayList<Provider>(providers.values());
-	}
 	
 	/**
 	 * Returns the provider with the specified providerCode if there is one in this country
@@ -80,7 +70,7 @@ public class Country {
 	public Provider getProvider(String providerCode) {
 		if(!isRetrieved())
 			return null;
-		if(!Provider.getCountryCodeByProviderCode(providerCode).equals(code))
+		if(!Provider.getCountryCodeBy(providerCode).equals(code))
 			return null;
 		return providers.get(providerCode);
 	}
@@ -94,7 +84,7 @@ public class Country {
 	public boolean addProvider(Provider provider) throws IllegalArgumentException {
 		if(provider == null)
 			throw new IllegalArgumentException("Arguments must be not null");
-		if(!provider.getCountryCode().equals(code))
+		if(!provider.getCountry().getCode().equals(code))
 			throw new IllegalArgumentException("Provider must be located in this country");
 		if(!isRetrieved())
 			providers = new HashMap<String, Provider>();
@@ -116,6 +106,17 @@ public class Country {
 	 */
 	public Pair<String, String> print() {
 		return new Pair<String,String>(this.code, this.name);	
+	}
+	
+	/**
+	 * Get the complete list of the providers based in this country or null if they have not already been retrieved
+	 * The list would be empty if the providers are been retrieved but this country has no providers
+	 * @return The list containing all the providers or null if they have not already been retrieved
+	 */
+	public ArrayList<Provider> getProviders() {
+		if(!isRetrieved())
+			return null;
+		return new ArrayList<Provider>(providers.values());
 	}
 	
 	public String getCode() {
