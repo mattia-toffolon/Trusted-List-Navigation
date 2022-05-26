@@ -30,7 +30,7 @@ public class ServiceType {
 	 * @throws IllegalArgumentException if the code is null
 	 */
 	public static ServiceType getInstance(String typeCode) {
-		if(typeCode == null)
+		if(typeCode == null || typeCode.isBlank())
 			throw new IllegalArgumentException("Argument must be not null");
 		if(instances == null)
 			init();

@@ -26,11 +26,11 @@ class CountryTest {
 		c2 = new Country("BB", "bbbb");
 		c3 = new Country("CC", "cccc");
 		
-		p1 = new Provider("provider1", "AA");
-		p1_bis = new Provider("provider1", "AA");
-		p2 = new Provider("provider2", "BB");
+		p1 = new Provider("provider1", c1);
+		p1_bis = new Provider("provider1", c1);
+		p2 = new Provider("provider2", c2);
 		
-		p1_dif = new Provider("prvider2", "AA");
+		p1_dif = new Provider("prvider2", c1);
 		
 		c1.addProvider(p1);
 		c2.addProvider(p2);

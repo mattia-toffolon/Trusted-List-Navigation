@@ -20,9 +20,9 @@ public class Provider {
 	 */
 	private static int counter = 0;
 	/**
-	 * The code of the country in which the provider is located, must be "CC"
+	 * The country in wich this provider is located
 	 */
-	private String countryCode;
+	private Country country;
 	/**
 	 * Multimap that stores the services as value and the related type as key
 	 */
@@ -33,14 +33,12 @@ public class Provider {
 	 * @param name Complete name of the provider
 	 * @param countryCode Code that identify the provider country, must be of length 2 
 	 */
-	public Provider(String name, String countryCode) throws IllegalArgumentException {
-		if(name == null || countryCode == null)
+	public Provider(String name, Country country) throws IllegalArgumentException {
+		if(name == null || name.isBlank() || country == null)
 			throw new IllegalArgumentException("Arguments must be not null");
-		if(countryCode.length() != 2)
-			throw new IllegalArgumentException("Country code must be of length 2");
 		this.name = name;
-		this.countryCode = countryCode.toUpperCase();
-		this.code = countryCode + "-" + counter;
+		this.country = country;
+		this.code = country.getCode() + "-" + counter;
 		counter++;
 		this.services = HashMultimap.create();
 	}
@@ -105,8 +103,8 @@ public class Provider {
 	public String getCode() {
 		return code;
 	}
-	public String getCountryCode() {
-		return countryCode;
+	public Country getCountry() {
+		return country;
 	}
 	
 	/**
@@ -116,7 +114,7 @@ public class Provider {
 	 * @return The code of the country in which the provider is located
 	 * @throws IllegalArgumentException if the given code is not in a legal format
 	 */
-	static String getCountryCodeByProviderCode(String providerCode) throws IllegalArgumentException {
+	public static String getCountryCodeBy(String providerCode) throws IllegalArgumentException {
 		if(!isProviderCodeLegal(providerCode))
 			throw new IllegalArgumentException("providerCode must be in format [A-Z][A-Z]-**");
 		
@@ -130,7 +128,7 @@ public class Provider {
 	 * @return True if the code is correctly formatted
 	 * @throws IllegalArgumentException if the given code is null
 	 */
-	static boolean isProviderCodeLegal(String providerCode) throws IllegalArgumentException {
+	public static boolean isProviderCodeLegal(String providerCode) throws IllegalArgumentException {
 		if(providerCode == null)
 			throw new IllegalArgumentException("providerCode must be not null");
 		if(providerCode.matches("[A-Z]{2}-[0-9]{1,}"))

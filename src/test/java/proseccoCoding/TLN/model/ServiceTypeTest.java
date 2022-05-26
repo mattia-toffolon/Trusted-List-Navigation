@@ -5,52 +5,35 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class ServiceTypeTest {
 	
-	static ServiceType st1;
-	static ServiceType st2;
-	// Service code equal to st1 but different name
-	static ServiceType st1_bis;
-	// Service name equal to st1 but different code
-	static ServiceType st2_bis;
-	
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-		st1 = new ServiceType("type1", "Service Type 1");
-		st2 = new ServiceType("type2", "Service Type 2");
-		st1_bis = new ServiceType("type1", "Service Type 1 bis");
-		st2_bis = new ServiceType("type2", "Service Type 1");
+	@DisplayName("GetInstance fail testing: if a null or blanck code is passed must throw an excepiton")
+	@ParameterizedTest
+	@NullSource
+	@EmptySource
+	void testGetInstanceFail(String code) {
+		assertThrows(IllegalArgumentException.class, () -> {ServiceType.getInstance(code);});
 	}
 	
-	@Test
-	@DisplayName("Constructor testing: in case of a null parameter must throw an exception")
-	void testServiceType() {
-		assertThrows(IllegalArgumentException.class, () -> {new ServiceType("test", null);});
-		assertThrows(IllegalArgumentException.class, () -> {new ServiceType(null, "test");});
-	}
-
-	@Test
-	@DisplayName("Hash code testing: hash codes of two different but same typeCode objects needs to be equal")
-	void testHashCodeEquals() {
-		assertEquals(st1.hashCode(), st1_bis.hashCode());
-	}
-	@Test
-	@DisplayName("Hash code testing: hash codes from two different typeCode objects needs to be different")
-	void testHashCodeNotEquals() {
-		assertNotEquals(st1.hashCode(), st2.hashCode());
-	}
-
-	@Test
-	@DisplayName("Equals testing: different objects having same typeCode must be equal")
-	void testEqualsObject() {
-		assertTrue(st1.equals(st1_bis));
+	@DisplayName("GetInstance testing: must return an instance for the code")
+	@ParameterizedTest
+	@ValueSource(strings = {"type1", "type2", "type3"})
+	void testGetInstance(String code) {
+		assertEquals(code, ServiceType.getInstance(code).getCode());
 	}
 	
-	@Test
-	@DisplayName("Equals testing: different objects having different typeCode must be not equal")
-	void testNotEqualsObject() {
-		assertFalse(st1.equals(st2));
-		assertFalse(st1.equals(st2_bis));
+	@DisplayName("GetInstance testing: the instance for a given code must be a singleton: for the same code must return the same istance")
+	@ParameterizedTest
+	@ValueSource(strings = {"type1", "type2", "type3"})
+	void testGetInstance2(String code) {
+		ServiceType a = ServiceType.getInstance(code);
+		ServiceType b = ServiceType.getInstance(code);
+		// check the references to objects, not equals() method
+		assertTrue(a == b);
 	}
 }
