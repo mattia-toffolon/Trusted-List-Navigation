@@ -43,4 +43,8 @@ public class Query {
 		selectedCountries = countries;
 		return true;
 	}
+	
+	public boolean isEnded() {
+		return false;
+	}
 }
