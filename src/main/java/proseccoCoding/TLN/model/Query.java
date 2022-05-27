@@ -1,7 +1,6 @@
 package proseccoCoding.TLN.model;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.sql.Timestamp;
 
 public class Query{
@@ -43,6 +42,7 @@ public class Query{
 		selectedCountries = countries;
 		return true;
 	}
+	
 	/**
 	 * This method retrives from selectedCountries all the relative Provider objects and returns them as an ArrayList
 	 * @return ArraList of Provider objects that contains all the possible providers from the selected countries
