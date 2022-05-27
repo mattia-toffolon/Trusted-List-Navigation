@@ -82,4 +82,6 @@ public class ServiceType {
 		ServiceType other = (ServiceType) obj;
 		return Objects.equals(code, other.code);
 	}
+	
+	// MANCANO I METODI PRINT
 }
