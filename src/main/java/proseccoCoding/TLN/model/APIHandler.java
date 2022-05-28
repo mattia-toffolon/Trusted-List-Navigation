@@ -120,9 +120,9 @@ public class APIHandler {
 			e.printStackTrace();
 		}
 		while (s.hasNextLine()) {
-    	  String line = s.nextLine();
-    	  String[] array = line.split(";");
-    	  ret.put(array[1], array[0]);
+    	 		String line = s.nextLine();
+    	  		String[] array = line.split(";");
+    	  		ret.put(array[1], array[0]);
 		}
 		s.close();
 		return ret;
