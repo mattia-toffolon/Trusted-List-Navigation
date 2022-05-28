@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class Query{
 	/**
-	 * 
+	 * The timestamp representing the query starting time
 	 */
 	private Timestamp startTime;
 	/**
@@ -28,7 +28,7 @@ public class Query{
 	public Query() {
 		startTime = new Timestamp(System.currentTimeMillis());
 	}
-	
+
 	/**
 	 * This method sets selectedCountries with the given parameter
 	 * @param ArrayList of countries objects that correspond to the ones selected by the user
