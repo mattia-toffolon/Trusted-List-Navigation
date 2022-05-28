@@ -38,7 +38,8 @@ public class Query{
 	public boolean addSelectedCountries(ArrayList<Country> countries) throws IllegalArgumentException {
 		if(countries == null)
 			throw new IllegalArgumentException("Argument must be not null");
-
+		if(countries.isEmpty())
+			return false;
 		selectedCountries = countries;
 		return true;
 	}
@@ -49,7 +50,8 @@ public class Query{
 	 */
 	public ArrayList<Provider> getAvailableProviders(){
 		ArrayList<Provider> availableProviders = new ArrayList<Provider>();
-		
+		if(selectedCountries == null)
+			return null;
 		for(Country c : selectedCountries) {
 			ArrayList<Provider> thisCountryProviders = c.getProviders();
 			for(Provider p : thisCountryProviders)
@@ -67,7 +69,8 @@ public class Query{
 	public boolean setSelectedProviders(ArrayList<String> providerCodes) throws IllegalArgumentException {
 		if(providerCodes == null)
 			throw new IllegalArgumentException("Argument must be not null");
-
+		if(providerCodes.isEmpty() || selectedCountries == null)
+			return false;
 		selectedProviders = new ArrayList<Provider>();
 		ArrayList<Provider> availableProviders = getAvailableProviders();
 		for(Provider p : availableProviders)
@@ -82,7 +85,8 @@ public class Query{
 	 */
 	public ArrayList<ServiceType> getAvailableServiceTypes(){
 		ArrayList<ServiceType> availableServiceTypes = new ArrayList<ServiceType>();
-		
+		if(selectedProviders == null)
+			return null;
 		for(Provider p : selectedProviders) {
 			for(ServiceType st : p.getServiceTypes()) {
 				if(availableServiceTypes.contains(st))
@@ -104,7 +108,8 @@ public class Query{
 	public boolean setSelectedServiceTypes(ArrayList<String> typeCodes) throws IllegalArgumentException {
 		if(typeCodes == null)
 			throw new IllegalArgumentException("Argument must be not null");
-		
+		if(selectedProviders == null || typeCodes.isEmpty())
+			return false;
 		selectedServicesByType = new ArrayList<Service>();
 		for(Provider p : selectedProviders) {
 			for(ServiceType st : p.getServiceTypes()) {

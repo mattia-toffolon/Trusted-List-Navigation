@@ -112,13 +112,7 @@ public class APIHandler {
 	private static HashMap<String,String> readFromFile(){
 		HashMap<String,String> ret = new HashMap<String,String>();
 		Scanner s = null;
-		try {
-			File myObj = new File("../../../../resources/proseccoCoding/TLN/model/tipi_servizi.txt");
-			s = new Scanner(myObj);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		s = new Scanner(APIHandler.class.getResourceAsStream("tipi_servizi.txt"));
 		while (s.hasNextLine()) {
     	 		String line = s.nextLine();
     	  		String[] array = line.split(";");

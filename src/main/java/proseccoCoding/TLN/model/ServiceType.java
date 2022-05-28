@@ -6,6 +6,8 @@ import javafx.util.Pair;
 
 public class ServiceType {
 	private static HashMap<String, ServiceType> instances = null;
+
+	private static boolean autoFetch = true;
 	
 	private String code;
 	private String name;
@@ -47,9 +49,9 @@ public class ServiceType {
 	 */
 	private static void init() {
 		instances = new HashMap<String, ServiceType>();
-		
-		for (Pair<String, String> p : APIHandler.retriveServiceTypes())
-			instances.put(p.getKey(), new ServiceType(p.getKey(), p.getValue()));
+		if(autoFetch)
+			for (Pair<String, String> p : APIHandler.retriveServiceTypes())
+				instances.put(p.getKey(), new ServiceType(p.getKey(), p.getValue()));
 	}
 
 	public String getName() {
@@ -82,6 +84,5 @@ public class ServiceType {
 		ServiceType other = (ServiceType) obj;
 		return Objects.equals(code, other.code);
 	}
-	
 	// MANCANO I METODI PRINT
 }
