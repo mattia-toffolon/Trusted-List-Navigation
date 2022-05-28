@@ -108,8 +108,10 @@ public class Query{
 		selectedServicesByType = new ArrayList<Service>();
 		for(Provider p : selectedProviders) {
 			for(ServiceType st : p.getServiceTypes()) {
-				for(Service s : p.getServices(st))
-					selectedServicesByType.add(s);
+				if(typeCodes.contains(st.getCode())) {
+					for(Service s : p.getServices(st))
+						selectedServicesByType.add(s);
+				}
 			}
 		}
 		
