@@ -79,11 +79,13 @@ public class APIHandler {
 	 * @return ArrayList with all the names of the countries
 	 */
 	public static ArrayList<String> retrieveCountriesNames() {
+		if (countriesData == null || countriesName == null)
+			init();
 		ArrayList<String> countries = new ArrayList<String>();
 		Iterator<Object> it = countriesName.iterator();
 		while (it.hasNext()) {
 			JSONObject object = (JSONObject) it.next();
-			countries.add((String) object.get("countryName"));
+			countries.add(object.getString("countryName"));
 		}
 
 		return countries;
@@ -97,12 +99,14 @@ public class APIHandler {
 	 *         class country as value
 	 */
 	public static HashMap<String, Country> retrieveCountries() {
+		if (countriesData == null || countriesName == null)
+			init();
 		HashMap<String, Country> countries = new HashMap<String, Country>();
 		Iterator<Object> it = countriesName.iterator();
 		while (it.hasNext()) {
 			JSONObject obj = (JSONObject) it.next();
 			countries.put((String) obj.get("countryCode"),
-					new Country((String) obj.get("countryCode"), (String) obj.get("countryName")));
+					new Country(obj.getString("countryCode"), obj.getString("countryName")));
 		}
 
 		return countries;
@@ -170,9 +174,9 @@ public class APIHandler {
 		Iterator<Object> itCountry = countriesName.iterator();
 		while (itCountry.hasNext()) {
 			JSONObject countryObject = (JSONObject) itCountry.next();
-			if ((((String) countryObject.get("countryCode")).equals(countryCode))) {
-				tempCountry = new Country((String) countryObject.get("countryCode"),
-						(String) countryObject.get("countryName"));
+			if (((countryObject.getString("countryCode")).equals(countryCode))) {
+				tempCountry = new Country(countryObject.getString("countryCode"),
+						countryObject.getString("countryName"));
 			}
 		}
 
@@ -182,19 +186,28 @@ public class APIHandler {
 		while (itProviders.hasNext()) {
 			JSONObject obj = (JSONObject) itProviders.next();
 
-			if (((String) obj.get("countryCode")).equals(countryCode) && itProviders.hasNext()) {
-				Provider tempProvider = new Provider((String) obj.get("name"), tempCountry);
+			if ((obj.getString("countryCode")).equals(countryCode) && itProviders.hasNext()) {
+				Provider tempProvider = new Provider(obj.getString("name"), tempCountry);
 				JSONArray services = obj.getJSONArray("services");
 
 				// Build each service object with status, name service and country code. After
 				// that it is put provider's Multimap
 				for (int i = 0; i < services.length(); i++) {
 					JSONObject temp = services.getJSONObject(i);
+					Scanner in = new Scanner((String) temp.get("qServiceTypes").toString());
+					in.useDelimiter("\\[|\\]|,|\" ");
 					String tempStatus = temp.getString("currentStatus");
-					Service tempService = new Service(temp.getString("serviceName"),
-							ServiceType.getInstance(temp.getString("countryCode")),
+					
+					//serviceString = serviceString.substring(2, serviceString.length()-2);
+					if(in.hasNext()) {
+						String typeString = (String) in.next();
+						typeString = typeString.substring(1, typeString.length() - 1);
+					
+					Service tempService = new Service(temp.getString("serviceName"), 
+							ServiceType.getInstance(typeString),
 							tempStatus.substring(50, tempStatus.length()), tempProvider);
 					tempProvider.addService(tempService);
+					}
 				}
 				tempCountry.addProvider(tempProvider);
 			}
