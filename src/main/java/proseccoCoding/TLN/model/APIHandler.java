@@ -3,22 +3,18 @@ package proseccoCoding.TLN.model;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map.Entry;
 import java.util.Scanner;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import javafx.scene.image.Image;
 import javafx.util.Pair;
 
 public class APIHandler {
@@ -107,15 +103,39 @@ public class APIHandler {
 
 		return countries;
 	}
-
+	
+	/**
+	 * private method that read from local file the service type data and return a map
+	 * where the key is the code of the type, the value is the full name
+	 * @return
+	 */
+	private static HashMap<String,String> readFromFile(){
+		HashMap<String,String> ret = new HashMap<String,String>();
+		Scanner s = null;
+		try {
+			File myObj = new File("../../../../resources/proseccoCoding/TLN/model/tipi_servizi.txt");
+			s = new Scanner(myObj);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		while (s.hasNextLine()) {
+    	  String line = s.nextLine();
+    	  String[] array = line.split(";");
+    	  ret.put(array[1], array[0]);
+		}
+		s.close();
+		return ret;
+	}
 	/**
 	 * Static method that parse the countryData and extract all types of services
 	 * from all countries
 	 * 
 	 * @return An ArrayList of String with the types
-	 */
-	public static ArrayList<Pair> retriveServiceTypes() {
-		ArrayList<Pair> serviceTypes = new ArrayList<Pair>();
+	 */	
+	public static ArrayList<Pair<String,String>> retriveServiceTypes() {
+		ArrayList<Pair<String,String>> serviceTypes = new ArrayList<Pair<String,String>>();
+		HashMap<String,String> pairSet = APIHandler.readFromFile(); // <type code, type full name>
 		Iterator<Object> it = countriesData.iterator();
 
 		while (it.hasNext()) {
@@ -127,30 +147,21 @@ public class APIHandler {
 				String temp;
 				while (in.hasNext()) {
 					temp = (String) in.next();
-					temp = temp.substring(1, temp.length() - 1);
-					Scanner s = null;
-					APIHandler.class.getClassLoader();
-					// PROBLEMA SCANNER
-					s = new Scanner(APIHandler.class.getResourceAsStream("tipi_servizi.txt"));
-					while (s.hasNextLine()) {
-						String line = s.nextLine();
-						String[] elem = line.split(";");
-						Pair service = new Pair(temp, elem[0]);
-						// If the pair is not already in the ArrayList, we add it
-						if (service.getKey().equals(elem[1]) && !serviceTypes.contains(service)) {
-							serviceTypes.add(service);
-							break;
-						}
-					}
+					temp = temp.substring(1, temp.length() - 1); // current type code
+					Pair<String,String> tempPair = null;
+					if(pairSet.get(temp) == null) // if the current service type code is not in the local file
+						tempPair = new Pair<String,String>(temp,temp+" complete name not found");
+					else  // if the current service type code is in the local file
+						tempPair = new Pair<String,String>(temp,pairSet.get(temp));
+					if(!serviceTypes.contains(tempPair)) // only pairs not already processed
+						serviceTypes.add(tempPair);
 				}
-				// Close the stream
 				in.close();
 			} catch (Exception e) {
 				System.err.println("error 3 " + e);
 				// e.printStackTrace();
 			}
 		}
-
 		return serviceTypes;
 	}
 
@@ -170,9 +181,10 @@ public class APIHandler {
 		Iterator<Object> itCountry = countriesName.iterator();
 		while (itCountry.hasNext()) {
 			JSONObject countryObject = (JSONObject) itCountry.next();
-			if ((((String) countryObject.get("countryCode")).equals(countryCode))) {
-				tempCountry = new Country((String) countryObject.get("countryCode"),
-						(String) countryObject.get("countryName"));
+			String tempCode = (String)countryObject.get("countryCode");
+			if (tempCode.equals(countryCode)) {
+				tempCountry = new Country(tempCode,(String) countryObject.get("countryName"));
+				break;
 			}
 		}
 
@@ -181,19 +193,24 @@ public class APIHandler {
 
 		while (itProviders.hasNext()) {
 			JSONObject obj = (JSONObject) itProviders.next();
-
-			if (((String) obj.get("countryCode")).equals(countryCode) && itProviders.hasNext()) {
+			// look if the provider is from the current country
+			if (((String) obj.get("countryCode")).equals(countryCode)) {
 				Provider tempProvider = new Provider((String) obj.get("name"), tempCountry);
 				JSONArray services = obj.getJSONArray("services");
 
 				// Build each service object with status, name service and country code. After
 				// that it is put provider's Multimap
-				for (int i = 0; i < services.length(); i++) {
+				for (int i = 0; i < services.length(); i++) { // loop for every service
 					JSONObject temp = services.getJSONObject(i);
-					String tempStatus = temp.getString("currentStatus");
-					Service tempService = new Service(temp.getString("serviceName"),
-							ServiceType.getInstance(temp.getString("countryCode")),
-							tempStatus.substring(50, tempStatus.length()), tempProvider);
+					
+					String tempName = temp.getString("serviceName");
+					// in the json is an array, but it actually always have 1 element
+					String tempTypeCode = obj.getJSONArray("qServiceTypes").getString(0);
+					ServiceType tempServiceType = ServiceType.getInstance(tempTypeCode);
+					String tempStatus = temp.getString("currentStatus"); // complete string
+					tempStatus = tempStatus.substring(50, tempStatus.length()); // only the status
+					
+					Service tempService = new Service(tempName,tempServiceType,tempStatus,tempProvider);
 					tempProvider.addService(tempService);
 				}
 				tempCountry.addProvider(tempProvider);
