@@ -28,6 +28,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("home"));
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.setTitle("Trusted List Navigation");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));
         stage.show();

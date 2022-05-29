@@ -6,16 +6,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proseccoCoding.TLN.control.SelectProvidersController">
+<AnchorPane prefHeight="460.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proseccoCoding.TLN.control.SelectProvidersController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="400.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
-      <Button fx:id="backSelectCountriesButton" layoutX="35.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToSelectCountries" prefHeight="26.0" prefWidth="50.0" text="Back" />
-      <TextField alignment="CENTER" editable="false" layoutX="35.0" layoutY="14.0" prefHeight="26.0" prefWidth="250.0" text="Select your service providers of interest" />
-      <Button fx:id="backSelectServicesButton" layoutX="236.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToSelectServices" prefHeight="26.0" prefWidth="49.0" text="Next" />
-      <ScrollPane hbarPolicy="NEVER" layoutX="35.0" layoutY="56.0" prefHeight="288.0" prefWidth="250.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="460.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
+      <Button fx:id="backSelectCountriesButton" layoutX="33.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectCountries" prefHeight="26.0" prefWidth="50.0" text="Back" />
+      <TextField alignment="CENTER" editable="false" layoutX="35.0" layoutY="14.0" prefHeight="26.0" prefWidth="335.0" text="Select your service providers of interest">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></TextField>
+      <Button fx:id="backSelectServicesButton" layoutX="321.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectServices" prefHeight="26.0" prefWidth="49.0" text="Next" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="33.0" layoutY="53.0" prefHeight="355.0" prefWidth="335.0">
          <content>
-            <VBox fx:id="nationPane" prefHeight="284.0" prefWidth="250.0" />
+            <VBox fx:id="nationPane" prefHeight="360.0" prefWidth="340.0" />
          </content>
       </ScrollPane>
    </children>

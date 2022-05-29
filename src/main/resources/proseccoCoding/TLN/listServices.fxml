@@ -5,12 +5,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proseccoCoding.TLN.control.ListServicesController">
+<AnchorPane prefHeight="460.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proseccoCoding.TLN.control.ListServicesController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="400.0" stroke="TRANSPARENT" strokeType="INSIDE" width="320.0" />
-      <Button fx:id="homeButton" layoutX="136.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToHome" text="Home" />
-      <TextField alignment="CENTER" editable="false" layoutX="35.0" layoutY="14.0" prefHeight="26.0" prefWidth="250.0" text="List of the Trust-Services types" />
-      <ListView fx:id="servicesList" layoutX="35.0" layoutY="49.0" prefHeight="297.0" prefWidth="250.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="460.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
+      <Button fx:id="homeButton" layoutX="176.0" layoutY="421.0" mnemonicParsing="false" onAction="#switchToHome" text="Home" />
+      <TextField alignment="CENTER" editable="false" layoutX="35.0" layoutY="14.0" prefHeight="26.0" prefWidth="330.0" text="Codes and full names of the Trust-Services types">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></TextField>
+      <ListView fx:id="servicesList" layoutX="35.0" layoutY="50.0" prefHeight="360.0" prefWidth="330.0" />
    </children>
 </AnchorPane>
