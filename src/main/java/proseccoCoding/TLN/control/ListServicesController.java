@@ -1,8 +1,6 @@
 package proseccoCoding.TLN.control;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.util.Pair;
@@ -25,13 +23,15 @@ public class ListServicesController {
 	@FXML
 	/**
 	 * Method called when ListServicesController is loaded. 
-	 * It adds the list of the service types to the private ListView object
+	 * It adds the list of the service types codes and full names to the private ListView object. 
+	 * The service types' informations are retrieved as Strings through the use of APIHandler class.
 	 */
 	private void initialize() {
     	// add countries to the ListView
 		for (Pair<String, String> s : APIHandler.retriveServiceTypes())
 			servicesList.getItems().add(s.getKey()+"\n﹂ "+s.getValue());
 	}
+	
     @FXML
     /**
      * Switches scene to the "home" one

@@ -1,18 +1,6 @@
 package proseccoCoding.TLN.control;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONTokener;
-
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import proseccoCoding.TLN.App;
@@ -34,7 +22,8 @@ public class ListCountriesController {
 	@FXML
 	/**
 	 * Method called when ListCountriesController is loaded. 
-	 * It adds the list of the countries to the private ListView object
+	 * It adds the list of the countries to the private ListView object.
+	 * The countries names are retrieved as Strings through the use of APIHandler class.
 	 */
 	private void initialize() {
     	// add countries to the ListView
