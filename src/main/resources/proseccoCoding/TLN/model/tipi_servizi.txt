@@ -12,10 +12,10 @@ Certificate for electronic seal;CertESeal
 Certificate for website authentication;WAC
 Validation service for electronic signature;ValESig
 Generation service for electronic signature;GenESig
-Preservation service for electronic signature;PresESeal
+Preservation service for electronic signature;PresESig
 Validation service for electronic seal;ValESeal
 Generation service for electronic seal;GenESeal
-Preservation service for electronic seal;PresESig
+Preservation service for electronic seal;PresESeal
 Time stamp service;Timestamp
 Electronic registrered delivery service;eRDS
 Non-regulatory, nationally defined trust service;NonRegulatory
