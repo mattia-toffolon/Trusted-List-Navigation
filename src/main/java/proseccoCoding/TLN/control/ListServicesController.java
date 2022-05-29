@@ -1,12 +1,13 @@
 package proseccoCoding.TLN.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.util.Pair;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.APIHandler;
-
-import javafx.util.Pair;
 
 /**
  * 
@@ -31,7 +32,6 @@ public class ListServicesController {
 		for (Pair<String, String> s : APIHandler.retriveServiceTypes())
 			servicesList.getItems().add(s.getKey()+"\n﹂ "+s.getValue());
 	}
-	
     @FXML
     /**
      * Switches scene to the "home" one
