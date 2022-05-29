@@ -42,7 +42,7 @@ public class ListServicesController {
     }
     
     /**
-     * Private method that calls APIHandler.requestServiceTypes(), which connects to an API that returns a 
+     * Private method that calls APIHandler.retriveServiceTypes(), which connects to an API that returns a 
      * .json file containing the list of the service types. That method parses that file to create and then return
      *  an ArrayList of strings containing those types.
      * @return ArrayList<String> containing all the service types
