@@ -35,7 +35,6 @@ public class TrustedListFacade {
 		Query q = new Query();
 		q.addSelectedCountries(trustedListData.getCountries(countryCodes));
 		queries.add(q);
-		
 		return true;
 	}
 	
@@ -51,7 +50,7 @@ public class TrustedListFacade {
 	
 	/**
 	 * Ends the current query and discards it if it isn't completed
-	 * @return The Query in use or null if there isn't one
+	 * @return True if the query is complete, false if it isn't completed
 	 */
 	public boolean endQuery() {
 		if(queries.get(queries.size()-1).isEnded())
@@ -60,7 +59,10 @@ public class TrustedListFacade {
 		return false;
 	}
 	
-	
+	/**
+	 * Return the object to access all the trusted data for each country
+	 * @return
+	 */
 	public TrustedListData getData() {
 		return trustedListData;
 	}
