@@ -7,44 +7,62 @@ import java.util.Iterator;
 
 import javafx.util.Pair;
 public class TrustedListData{
+	/**
+	 * Hashmap containing all the countries objects
+	 */
 	private HashMap<String,Country> countries;
 	
+	/**
+	 * Contructor for TrustedListData. Initializes the countries 
+	 */
 	public TrustedListData() {
 		countries = APIHandler.retrieveCountries();
 	}
+	
 	/**
 	 * return the Country object representing the country which the code specified as parameter
-	 * @param the code of the country to return
-	 * @return the Country object with the parameter code
+	 * @param the code of the country to return upper or lower case
+	 * @return the Country object associated with the parameter code, or null if the code isn't found
 	 * @throws IllegalArgumentException if the parameter is null
 	 */
-	public Country getCountry(String countryCode){
+	public Country getCountry(String countryCode) {
 		if (countryCode == null)
 			throw new IllegalArgumentException("Argument must not be null");
+		countryCode = countryCode.toUpperCase();
+		// retrieve the country from the map
 		Country ret = countries.get(countryCode);
-		if(!ret.isRetrieved())
+		// if no key is mapped with countryCode as key
+		if(ret == null)
+			return null;
+		
+		// if this country has not been retrieved, update the map and return
+		if(!ret.isRetrieved()) {
 			ret = APIHandler.retriveCountryData(countryCode);
+			countries.replace(countryCode, ret);
+		}
 		return ret;
 	}
 	/**
-	 * return a set of country objects representing the countries which the code is in the parameter set
+	 * Returns a list of country objects with data retrieved representing the countries 
+	 * that have the code in the given parameter list
 	 * @param an ArrayList of country codes
-	 * @return an ArrayList of corresponding Countries
-	 * @throws IllegalArgumentException if the parameter is null
+	 * @return an ArrayList of corresponding Countries objects with retrieved data
+	 * @throws IllegalArgumentException if the parameter is null or empty
 	 */
 	public ArrayList<Country> getCountries(ArrayList<String> countryCodes){
 		if (countryCodes == null)
 			throw new IllegalArgumentException("Argument must not be null");
+		if(countryCodes.isEmpty())
+			return null;
+		
 		ArrayList<Country> ret = new ArrayList<Country>();
-		Iterator<String> i = countryCodes.iterator();
-		while(i.hasNext()) {
-			String tempCode = i.next();
-			Country tempCountry = countries.get(tempCode);
-			if(!tempCountry.isRetrieved())
-				tempCountry = APIHandler.retriveCountryData(tempCode);
-			ret.add(tempCountry);
+		for(String s : countryCodes) {
+			Country temp = this.getCountry(s);
+			if(temp == null)
+				return null;
+			ret.add(temp);
 		}
-		// ret = countryCodes.stream().map((String s)->{return this.getCountry(s);}).collect(Collectors.toList());
+		
 		return ret;
 	}
 	/**

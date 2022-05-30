@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import proseccoCoding.TLN.model.APIHandler;
 
 import java.io.IOException;
 
@@ -60,6 +61,8 @@ public class App extends Application {
      * @param args
      */
     public static void main(String[] args) {
+    	APIHandler.initCountriesData();
+    	APIHandler.initCountriesName();
         launch();
     }
 
