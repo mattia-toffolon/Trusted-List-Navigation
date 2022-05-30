@@ -31,6 +31,7 @@ public class App extends Application {
         stage.setTitle("Trusted List Navigation");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));
         stage.show();
+        stage.setResizable(false);
     }
 
     /**

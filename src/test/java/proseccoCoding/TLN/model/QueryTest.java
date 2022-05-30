@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -202,15 +204,52 @@ class QueryTest {
 		assertTrue(ret.contains("STATUS2"));
 		assertTrue(ret.size()==2);
 	}
-	@Disabled
+	@DisplayName("SetSelectedServiceStatus testing: returns false if services aren't loaded or if the input is empty, true if types are loaded")
 	@Test
 	void testSetSelectedServiceStatus() {
-		fail("Not yet implemented");
+		ArrayList<String> types = new ArrayList<String>();
+		countryArr.addAll(Arrays.asList(country));
+		q.addSelectedCountries(countryArr);
+		ArrayList<String> input = new ArrayList<String>();
+		input.add(provider0[0].getCode());
+		input.add(provider1[0].getCode());
+		input.add(provider1[1].getCode());
+		q.setSelectedProviders(input);
+		types.add(type[0].getCode());
+		types.add(type[1].getCode());
+		// without types
+		ArrayList<String> status = new ArrayList<String>();
+		assertFalse(q.setSelectedServiceStatus(status));
+		// with service types
+		q.setSelectedServiceTypes(types);
+		status = q.getAvailableServiceStatus();
+		status.remove("STATUS1");
+		assertTrue(q.setSelectedServiceStatus(status));
 	}
 	@Disabled
 	@Test
 	void testGetResults() {
-		fail("Not yet implemented");
+		ArrayList<String> types = new ArrayList<String>();
+		ArrayList<String> status = new ArrayList<String>();
+		countryArr.addAll(Arrays.asList(country));
+		q.addSelectedCountries(countryArr);
+		ArrayList<String> input = new ArrayList<String>();
+		input.add(provider0[0].getCode());
+		input.add(provider1[0].getCode());
+		input.add(provider1[1].getCode());
+		q.setSelectedProviders(input);
+		types.add(type[0].getCode());
+		types.add(type[1].getCode());
+		status = q.getAvailableServiceStatus();
+		status.remove("STATUS1");
+		q.setSelectedServiceTypes(types);
+		ArrayList<String> ret = new ArrayList<String>(q.getResults().stream()
+				.map((Service s)->{return s.getName();})
+				.collect(Collectors.toList()));
+		// should be SR13 SR11 SR01
+		assertTrue(ret.contains("SR13"));
+		assertTrue(ret.contains("SR11"));
+		assertTrue(ret.contains("SR01"));
 	}
 
 }

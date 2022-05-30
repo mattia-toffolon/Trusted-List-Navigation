@@ -144,7 +144,8 @@ public class Query{
 	public boolean setSelectedServiceStatus(ArrayList<String> status) throws IllegalArgumentException {
 		if(status == null)
 			throw new IllegalArgumentException("Argument must be not null");
-		
+		if(selectedServicesByType == null || status.isEmpty())
+			return false;
 		selectedServiceStatus = status;
 		
 		return true;

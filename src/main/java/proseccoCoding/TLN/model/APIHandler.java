@@ -1,8 +1,6 @@
 package proseccoCoding.TLN.model;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -23,10 +21,35 @@ public class APIHandler {
 	private static JSONArray countriesData;
 
 	/**
-	 * Constructor of the class
+	 * Method that make a call to the API and initialize countriesName with countries codes and their full name
 	 */
-	private static void init() {
+	private static void initCountriesName() {
+		
+		try {
+			URL url;
+			url = new URL("https://esignature.ec.europa.eu/efda/tl-browser/api/v1/search/countries_list");
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("GET");
 
+			int responseCode = connection.getResponseCode();
+			System.out.println("GET Response Code :: " + responseCode);
+
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+				countriesName = new JSONArray(new JSONTokener(in));
+				in.close();
+			}
+		} catch (Exception e) {
+			System.err.println("error 2" + e);
+			// e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Method that make a call to the API and initialize countriesData
+	 */
+	private static void initCountriesData() {
+		
 		try {
 			URL url;
 			url = new URL("https://esignature.ec.europa.eu/efda/tl-browser/api/v1/search/tsp_list");
@@ -47,25 +70,6 @@ public class APIHandler {
 			System.err.println("error 1" + e);
 			// e.printStackTrace();
 		}
-
-		try {
-			URL url;
-			url = new URL("https://esignature.ec.europa.eu/efda/tl-browser/api/v1/search/countries_list");
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-			connection.setRequestMethod("GET");
-
-			int responseCode = connection.getResponseCode();
-			System.out.println("GET Response Code :: " + responseCode);
-
-			if (responseCode == HttpURLConnection.HTTP_OK) {
-				BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-				countriesName = new JSONArray(new JSONTokener(in));
-				in.close();
-			}
-		} catch (Exception e) {
-			System.err.println("error 2" + e);
-			// e.printStackTrace();
-		}
 	}
 
 	/**
@@ -75,11 +79,14 @@ public class APIHandler {
 	 * @return ArrayList with all the names of the countries
 	 */
 	public static ArrayList<String> retrieveCountriesNames() {
+		if (countriesName == null)
+			initCountriesName();
+		
 		ArrayList<String> countries = new ArrayList<String>();
 		Iterator<Object> it = countriesName.iterator();
 		while (it.hasNext()) {
 			JSONObject object = (JSONObject) it.next();
-			countries.add((String) object.get("countryName"));
+			countries.add(object.getString("countryName"));
 		}
 
 		return countries;
@@ -93,12 +100,15 @@ public class APIHandler {
 	 *         class country as value
 	 */
 	public static HashMap<String, Country> retrieveCountries() {
+		if (countriesName == null)
+			initCountriesName();
+		
 		HashMap<String, Country> countries = new HashMap<String, Country>();
 		Iterator<Object> it = countriesName.iterator();
 		while (it.hasNext()) {
 			JSONObject obj = (JSONObject) it.next();
-			countries.put((String) obj.get("countryCode"),
-					new Country((String) obj.get("countryCode"), (String) obj.get("countryName")));
+			countries.put(obj.getString("countryCode"),
+					new Country(obj.getString("countryCode"), obj.getString("countryName")));
 		}
 
 		return countries;
@@ -112,7 +122,12 @@ public class APIHandler {
 	private static HashMap<String,String> readFromFile(){
 		HashMap<String,String> ret = new HashMap<String,String>();
 		Scanner s = null;
-		s = new Scanner(APIHandler.class.getResourceAsStream("tipi_servizi.txt"));
+		try {
+			s = new Scanner(APIHandler.class.getResourceAsStream("tipi_servizi.txt"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		while (s.hasNextLine()) {
     	 		String line = s.nextLine();
     	  		String[] array = line.split(";");
@@ -121,6 +136,7 @@ public class APIHandler {
 		s.close();
 		return ret;
 	}
+	
 	/**
 	 * Static method that parse the countryData and extract all types of services
 	 * from all countries
@@ -128,6 +144,9 @@ public class APIHandler {
 	 * @return An ArrayList of String with the types
 	 */	
 	public static ArrayList<Pair<String,String>> retriveServiceTypes() {
+		if(countriesData == null)
+			initCountriesData();
+		
 		ArrayList<Pair<String,String>> serviceTypes = new ArrayList<Pair<String,String>>();
 		HashMap<String,String> pairSet = APIHandler.readFromFile(); // <type code, type full name>
 		Iterator<Object> it = countriesData.iterator();
@@ -136,7 +155,7 @@ public class APIHandler {
 			JSONObject obj = (JSONObject) it.next();
 			// Each array of services is going to be parse
 			try {
-				Scanner in = new Scanner((String) obj.get("qServiceTypes").toString());
+				Scanner in = new Scanner(obj.get("qServiceTypes").toString());
 				in.useDelimiter("\\[|\\]|,|\" ");
 				String temp;
 				while (in.hasNext()) {
@@ -167,17 +186,20 @@ public class APIHandler {
 	 * @return the Country object just created
 	 */
 	public static Country retriveCountryData(String countryCode) {
-		if (countriesData == null || countriesName == null)
-			init();
+		if (countriesData == null || countriesName == null) {
+			initCountriesName();
+			initCountriesData();
+		}
+
 		Country tempCountry = null;
 
 		// Build the country object with only name and country as attribute
 		Iterator<Object> itCountry = countriesName.iterator();
 		while (itCountry.hasNext()) {
 			JSONObject countryObject = (JSONObject) itCountry.next();
-			String tempCode = (String)countryObject.get("countryCode");
+			String tempCode = countryObject.getString("countryCode");
 			if (tempCode.equals(countryCode)) {
-				tempCountry = new Country(tempCode,(String) countryObject.get("countryName"));
+				tempCountry = new Country(tempCode, countryObject.getString("countryName"));
 				break;
 			}
 		}
@@ -188,7 +210,7 @@ public class APIHandler {
 		while (itProviders.hasNext()) {
 			JSONObject obj = (JSONObject) itProviders.next();
 			// look if the provider is from the current country
-			if (((String) obj.get("countryCode")).equals(countryCode)) {
+			if ((obj.getString("countryCode")).equals(countryCode)) {
 				Provider tempProvider = new Provider((String) obj.get("name"), tempCountry);
 				JSONArray services = obj.getJSONArray("services");
 
@@ -206,11 +228,10 @@ public class APIHandler {
 					
 					Service tempService = new Service(tempName,tempServiceType,tempStatus,tempProvider);
 					tempProvider.addService(tempService);
-				}
+					}
 				tempCountry.addProvider(tempProvider);
 			}
 		}
 		return tempCountry;
 	}
-
 }
