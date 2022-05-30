@@ -11,10 +11,10 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="460.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="88.0" layoutY="52.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
-      <Button fx:id="countriesButton" layoutX="86.0" layoutY="201.0" mnemonicParsing="false" onAction="#switchToListCountries" pickOnBounds="false" prefHeight="25.0" prefWidth="230.0" text="See the list of the EU Countries" textAlignment="CENTER" />
-      <Button fx:id="servicesButton" layoutX="87.0" layoutY="253.0" mnemonicParsing="false" onAction="#switchToListServices" prefHeight="25.0" prefWidth="230.0" text="See the list of the Trust-Service types" />
-      <Button fx:id="queryButton" layoutX="87.0" layoutY="305.0" mnemonicParsing="false" onAction="#switchToSelectCountries" prefHeight="25.0" prefWidth="230.0" text="Start a new query" />
-      <Hyperlink fx:id="creditsLink" layoutX="178.0" layoutY="423.0" onAction="#switchToCredits" text="Credits" />
+      <Button layoutX="86.0" layoutY="201.0" mnemonicParsing="false" onAction="#switchToListCountries" pickOnBounds="false" prefHeight="25.0" prefWidth="230.0" text="See the list of the EU Countries" textAlignment="CENTER" />
+      <Button layoutX="87.0" layoutY="253.0" mnemonicParsing="false" onAction="#switchToListServices" prefHeight="25.0" prefWidth="230.0" text="See the list of the Trust-Service types" />
+      <Button layoutX="87.0" layoutY="305.0" mnemonicParsing="false" onAction="#switchToSelectCountries" prefHeight="25.0" prefWidth="230.0" text="Start a new query" />
+      <Hyperlink layoutX="178.0" layoutY="423.0" onAction="#switchToCredits" text="Credits" />
       <Text fontSmoothingType="LCD" layoutX="66.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trusted List Navigation" textAlignment="CENTER" wrappingWidth="272.649169921875">
          <font>
             <Font name="Arial Bold" size="30.0" />

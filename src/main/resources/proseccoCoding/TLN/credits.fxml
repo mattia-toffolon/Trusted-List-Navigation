@@ -36,7 +36,7 @@
             <Font name="Arial" size="14.0" />
          </font>
       </Text>
-      <Text fill="#909090" layoutX="56.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elementi di Ingegneria del Software's group project. Università degli Studi di Padova, June 2022" textAlignment="CENTER" wrappingWidth="279.3824462890625">
+      <Text fill="#909090" layoutX="54.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Elementi di Ingegneria del Software&quot; 's group project. Università degli Studi di Padova, June 2022" textAlignment="CENTER" wrappingWidth="289.3824462890625">
          <font>
             <Font name="Arial" size="12.0" />
          </font>

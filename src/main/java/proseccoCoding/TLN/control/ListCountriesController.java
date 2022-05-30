@@ -17,7 +17,7 @@ public class ListCountriesController {
 	/**
 	 * ListView object used to contain the list of the countries 
 	 */
-	private ListView countriesList;
+	private ListView<String> countriesList;
 	
 	@FXML
 	/**

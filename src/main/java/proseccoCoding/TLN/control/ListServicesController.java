@@ -18,7 +18,7 @@ public class ListServicesController {
 	/**
 	 * ListView object used to contain the list of the services 
 	 */
-	private ListView servicesList;
+	private ListView<String> servicesList;
 	
 	@FXML
 	/**
