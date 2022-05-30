@@ -23,7 +23,7 @@ public class APIHandler {
 	/**
 	 * Method that make a call to the API and initialize countriesName with countries codes and their full name
 	 */
-	private static void initCountriesName() {
+	public static void initCountriesName() {
 		
 		try {
 			URL url;
@@ -48,7 +48,7 @@ public class APIHandler {
 	/**
 	 * Method that make a call to the API and initialize countriesData
 	 */
-	private static void initCountriesData() {
+	public static void initCountriesData() {
 		
 		try {
 			URL url;
@@ -94,10 +94,11 @@ public class APIHandler {
 
 	/**
 	 * Static method that populate an HashMap with country codes and Country objects
-	 * from the API call
+	 * from the API call. Country objects has complete data not retrieved, or in other words, 
+	 * if isRetrieved() is called it returns false
 	 * 
-	 * @return HashMap countries with the country code as key and the an object of
-	 *         class country as value
+	 * @return HashMap countries with the country code as key and the Country object without
+	 *         complete data as value
 	 */
 	public static HashMap<String, Country> retrieveCountries() {
 		if (countriesName == null)
@@ -235,5 +236,4 @@ public class APIHandler {
 		
 		return tempCountry;
 	}
-	
 }
