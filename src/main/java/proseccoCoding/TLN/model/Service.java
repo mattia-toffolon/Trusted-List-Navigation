@@ -46,7 +46,7 @@ public class Service {
 	 * @param status the status relative to this service
 	 * @param provider the provider that offers this service (not required)
 	 * @throws IllegalArgumentException if at least one required parameter is null
-	 */
+	 
 	public Service(String name, ServiceType type, String status, Provider provider) {
 		if(name == null || type == null || status == null)
 			throw new IllegalArgumentException("Arguments must be not null");
@@ -56,15 +56,13 @@ public class Service {
 		this.status = status;
 		this.provider = provider;
 	}
+	*/
 
 	public String getName() {
 		return name;
 	}
 	public ArrayList<ServiceType> getTypes() {
 		return types;
-	}
-	public ServiceType getType() {
-		return types.get(0);
 	}
 	public String getStatus() {
 		return status;

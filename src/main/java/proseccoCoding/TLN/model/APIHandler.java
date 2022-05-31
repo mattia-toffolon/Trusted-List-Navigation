@@ -218,14 +218,17 @@ public class APIHandler {
 				// that it is put provider's Multimap
 				for (int i = 0; i < services.length(); i++) { // loop for every service
 					JSONObject temp = services.getJSONObject(i);
-					
 					String tempName = temp.getString("serviceName");
 					// in the json is an array, but it actually always have 1 element
-					String tempTypeCode = temp.getJSONArray("qServiceTypes").getString(0);
-					ServiceType tempServiceType = ServiceType.getInstance(tempTypeCode);
+					JSONArray serviceTypes = temp.getJSONArray("qServiceTypes");
+					ArrayList<ServiceType> tempServiceTypes = new ArrayList<ServiceType>();
+					for(int j=0; j<serviceTypes.length(); j++) {
+						String tempTypeCode = temp.getJSONArray("qServiceTypes").getString(j);
+						tempServiceTypes.add(ServiceType.getInstance(tempTypeCode));
+					}
 					String tempStatus = temp.getString("currentStatus"); // complete string
 					tempStatus = tempStatus.substring(50, tempStatus.length()); // only the status
-					Service tempService = new Service(tempName,tempServiceType,tempStatus,tempProvider);
+					Service tempService = new Service(tempName,tempServiceTypes,tempStatus,tempProvider);
 					tempProvider.addService(tempService);
 					}
 				tempCountry.addProvider(tempProvider);
