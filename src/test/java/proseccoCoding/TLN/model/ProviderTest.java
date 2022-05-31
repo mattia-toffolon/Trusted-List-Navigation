@@ -2,6 +2,8 @@ package proseccoCoding.TLN.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,11 +17,17 @@ class ProviderTest {
 	static Provider pr2;
 	// object representing another provider with same name to pr2
 	static Provider pr2_bis;
+	// provider with a service with multiple types
+	static Provider pr4;
 
 	static Service sr1;
 	static Service sr2;
 	static Service sr1_bis;
 	static Service sr3;
+	static Service sr4;
+	static Service sr5;
+	
+	static ArrayList<ServiceType> typesSr4;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,6 +39,17 @@ class ProviderTest {
 		sr2 = new Service("s2", ServiceType.getInstance("t2"), "granted", null);
 		sr1_bis = new Service("s1", ServiceType.getInstance("t1"), "granted", null);
 		sr3 =  new Service("s3", ServiceType.getInstance("t1"), "granted", null);
+		
+		typesSr4 = new ArrayList<ServiceType>();
+		typesSr4.add(ServiceType.getInstance("t1"));
+		typesSr4.add(ServiceType.getInstance("t2"));
+		
+		pr4 = new Provider("provider1", new Country("DD", "dd"));
+		sr4 = new Service("s1", typesSr4, "granted", null);
+		sr5 = new Service("s2", ServiceType.getInstance("t2"), "granted", null);
+		
+		pr4.addService(sr4);
+		pr4.addService(sr5);
 	}
 
 	@Test
@@ -88,6 +107,13 @@ class ProviderTest {
 		assertEquals(2, pr1.getServices(sr1.getType()).size());
 		assertEquals(1, pr1.getServices(sr2.getType()).size());
 		assertEquals(0, pr1.getServices(ServiceType.getInstance("xx")).size());
+	}
+	
+	@Test
+	@DisplayName("GetServices with multiple types service testing: Must return the service")
+	void testGetServicesMultiple() {
+		for(ServiceType st : typesSr4)
+			assertTrue(pr4.getServices(st).contains(sr4));		
 	}
 
 	@Test

@@ -46,13 +46,18 @@ public class Provider {
 	/**
 	 * Adds the service to the provider 
 	 * @param service The service to add
-	 * @return True if the services has been added successfully, false otherwise
-	 * @throws IllegalArgumentException If the provider is null
+	 * @return True if the service is been added successfully, false otherwise
+	 * @throws IllegalArgumentException If the service is null
 	 */
 	public boolean addService(Service service) throws IllegalArgumentException{
 		if(service == null)
 			throw new IllegalArgumentException("Argument must be not null");
-		return services.put(service.getType(), service);
+		for(ServiceType type : service.getTypes()) {
+			if(!services.put(type, service))
+				return false;
+		}
+			
+		return true;
 	}
 	
 	/**
