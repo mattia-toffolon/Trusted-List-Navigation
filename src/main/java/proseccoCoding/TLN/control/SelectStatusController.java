@@ -2,6 +2,7 @@ package proseccoCoding.TLN.control;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,6 +12,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import proseccoCoding.TLN.App;
+import proseccoCoding.TLN.model.ServiceType;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
@@ -64,9 +66,12 @@ public class SelectStatusController {
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);
 		selectAll.indeterminateProperty().addListener(selectAllListener);
+		
+		ArrayList<String> serviceStatuses = TrustedListFacade.getQuery().getAvailableServiceStatus();
+		Collections.sort(serviceStatuses);
 
 		// a CheckBox is added with a ChangeListener for each provider which country has been selected
-		for (String s : TrustedListFacade.getQuery().getAvailableServiceStatus()) {
+		for (String s : serviceStatuses) {
 			CheckBox cb = new CheckBox(s);
 			cb.selectedProperty().addListener(checkBoxListener);
 			serviceStatusesPane.getChildren().add(cb);

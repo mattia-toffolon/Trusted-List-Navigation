@@ -11,7 +11,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
 import java.util.ArrayList;
+import java.util.Collections;
+
 import proseccoCoding.TLN.App;
+import proseccoCoding.TLN.model.Provider;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
@@ -63,10 +66,16 @@ public class SelectCountriesController {
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);
 		selectAll.indeterminateProperty().addListener(selectAllListener);
+		
+		ArrayList<String> countriesNames = new ArrayList<String>();
+		for (Pair<String, String> p : TrustedListFacade.getData().printCountries()) 
+			countriesNames.add(p.getKey()+" - "+p.getValue());
+		
+		Collections.sort(countriesNames);
 
     	// a CheckBox is added with a ChangeListener for each country
-		for (Pair<String, String> p : TrustedListFacade.getData().printCountries()) {
-			CheckBox cb = new CheckBox(p.getKey()+" - "+p.getValue());
+		for (String s : countriesNames) {
+			CheckBox cb = new CheckBox(s);
 			cb.selectedProperty().addListener(checkBoxListener);
 			countriesPane.getChildren().add(cb);
 		}

@@ -2,6 +2,7 @@ package proseccoCoding.TLN.control;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -64,10 +65,16 @@ public class SelectProvidersController {
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);
 		selectAll.indeterminateProperty().addListener(selectAllListener);
-
+		
+		ArrayList<String> providerNames = new ArrayList<String>();
+		for (Provider p : TrustedListFacade.getQuery().getAvailableProviders()) 
+			providerNames.add(p.getCode()+" \n﹂"+p.getName());
+		
+		Collections.sort(providerNames);
+			
 		// a CheckBox is added with a ChangeListener for each provider which country was previously selected
-		for (Provider p : TrustedListFacade.getQuery().getAvailableProviders()) {
-			CheckBox cb = new CheckBox(p.getCode()+" \n﹂"+p.getName());
+		for (String s : providerNames) {
+			CheckBox cb = new CheckBox(s);
 			cb.selectedProperty().addListener(checkBoxListener);
 			providersPane.getChildren().add(cb);
 		}
