@@ -3,8 +3,11 @@ package proseccoCoding.TLN.control;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import java.util.ArrayList;
+import java.util.Collections;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.Service;
+import proseccoCoding.TLN.model.ServiceType;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
@@ -28,11 +31,21 @@ public class QueryResultsController {
 	 */
 	private void initialize() {
     	// add countries to the ListView
-		for (Service s : TrustedListFacade.getQuery().getResults())
-			queryResultsList.getItems().add(s.getName() +"\n﹂ Country: "+ s.getProvider().getCountry().getName()
-					                                    +"\n﹂ Provider: "+ s.getProvider().getName()
-					                                    +"\n﹂ ServiceType: "+ s.getType().getName()
-					                                    +"\n﹂ Status: "+ s.getStatus() + "\n\n");
+		ArrayList<String> results = new ArrayList<String>();
+		for (Service s : TrustedListFacade.getQuery().getResults()) {
+			String serviceTypes = new String();
+			for(ServiceType st : s.getTypes())
+				serviceTypes += (st.getName()+"; ");
+			
+			String result = s.getName() +"\n﹂ Country: "+ s.getProvider().getCountry().getName()
+		                    +"\n﹂ Provider: "+ s.getProvider().getName()
+		                    +"\n﹂ ServiceTypes: "+ serviceTypes.substring(0, serviceTypes.length()-2)
+		                    +"\n﹂ Status: "+ s.getStatus() + "\n\n";
+			results.add(result);
+		}
+		Collections.sort(results);
+		for(String s : results)
+			queryResultsList.getItems().add(s);
 	}
 	
     @FXML
