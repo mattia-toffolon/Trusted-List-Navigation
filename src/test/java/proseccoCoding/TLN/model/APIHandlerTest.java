@@ -4,9 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,24 +13,44 @@ import javafx.util.Pair;
 
 class APIHandlerTest {
 	
-	static String name1 = "Italy";
-	static String name2 = "Mexico";
-	static String code1 = "IT";
-	static String code2 = "ME";
-	static Country country1 = new Country(code1, name1);
-	static String typeServiceCode1 = "QCertESig";
-	static String typeServiceName1 = "Qualified certificate for electronic signature";
-	static Pair<String,String> pair1 = new Pair(typeServiceCode1,typeServiceName1);
-	static String typeServiceCode2 = "AAA";
-	static String typeServiceName2 = "BBB";
-	static Pair<String,String> pair2 = new Pair(typeServiceCode2,typeServiceName2);
-	static String providerName1 = "Actalis S.p.A.";
-
-	@Disabled
-	@Test
-	void testAPIHandler() {
-		
-		fail("Not yet implemented");
+	static String name1;
+	static String name2;
+	static String code1;
+	static String code2;
+	static Country country1;
+	static Country country2;
+	static String typeServiceCode1;
+	static String typeServiceCode2;
+	static String typeServiceCode3;
+	static String typeServiceCode4;
+	static String typeServiceName1;
+	static Pair<String,String> pair1;
+	static String typeServiceName2;
+	static Pair<String,String> pair2;
+	static Provider provider1;
+	static String providerName1;
+	static String providerName2;
+	static Service service1;
+	
+	
+	@BeforeEach
+	void setUp() {
+		name1 = "Austria";
+		name2 = "Mexico";
+		code1 = "AT";
+		code2 = "ME";
+		country1 = new Country(code1, name1);
+		country2 = new Country("BE", "Belgium");
+		typeServiceCode1 = "QCertESig";
+		typeServiceName1 = "Qualified certificate for electronic signature";
+		typeServiceCode2 = "AAA";
+		typeServiceName2 = "BBB";
+		typeServiceCode3 = "QValQESig";
+		typeServiceCode4 = "QValQESeal";
+		pair1 = new Pair<String,String>(typeServiceCode1,typeServiceName1);
+		pair2 = new Pair<String,String>(typeServiceCode2,typeServiceName2);
+		providerName1 = "A-Trust Gesellschaft für Sicherheitssysteme im elektronischen Datenverkehr GmbH";
+		providerName2 = "Belgian Mobile ID SA/NV"; 
 	}
 	
 	@Test
@@ -79,18 +98,39 @@ class APIHandlerTest {
 	}
 
 	@Test
-	@DisplayName("retrieveServiceTypes fail testing: test is passed if the method do not return a null pointer with a reasonable parameter")
+	@DisplayName("retrieveCountryData fail testing: test is passed if the method do not return a null pointer with a reasonable parameter"
+			+ "and if the providers pointer is not null")
 	void testRetriveCountryDataFail() {
 		assertNotNull(APIHandler.retriveCountryData(code1));
 		assertNull(APIHandler.retriveCountryData(code2));
+		assertNotNull(APIHandler.retriveCountryData(code1).getProviders());
+		assertNotNull((APIHandler.retriveCountryData(code1).getProviders()).get(0).getServiceTypes());
 	}
-	@Disabled
+	
 	@Test
-	void testRetrieveCountryData() {
-		HashSet<Provider> set = new HashSet();
-		Provider provider1 = new Provider(providerName1, country1);
-		Country country2 = APIHandler.retriveCountryData(code1);
-		//asserEquals(prov)
+	@DisplayName("retrieveCountryData testing: test is passed if the country contains the provider and the service associated")
+	void retrieveCountryData() {
+		country1 = APIHandler.retriveCountryData(country1.getCode());
+		country2 = APIHandler.retriveCountryData(country2.getCode());
+		
+		ServiceType serviceType1 = ServiceType.getInstance(typeServiceCode1);
+		ArrayList<ServiceType> arrServiceType1 = new ArrayList<ServiceType>();
+		arrServiceType1 .add(serviceType1);
+		Service service1 = new Service("TrustSign-Sig-01 (key no. 1)",
+				arrServiceType1 , "withdraw", country1.getProviders().get(2));
+		
+		assertEquals(providerName1, country1.getProviders().get(2).getName());
+		assertFalse(country1.getProviders().get(2).addService(service1));
+		
+		ServiceType serviceType2 = ServiceType.getInstance(typeServiceCode3);
+		ArrayList<ServiceType> arrServiceType2 = new ArrayList<ServiceType>();
+		arrServiceType2.add(serviceType2);
+		arrServiceType2.add(ServiceType.getInstance(typeServiceCode4));
+		Service service2 = new Service("itsme Sign Validation",
+				arrServiceType2 , "granted", country2.getProviders().get(10));
+		
+		assertEquals(providerName2, country2.getProviders().get(10).getName());
+		assertFalse(country2.getProviders().get(10).addService(service2));
 	}
-
 }
+
