@@ -4,11 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,15 +18,20 @@ class APIHandlerTest {
 	static String code1;
 	static String code2;
 	static Country country1;
+	static Country country2;
 	static String typeServiceCode1;
+	static String typeServiceCode2;
+	static String typeServiceCode3;
+	static String typeServiceCode4;
 	static String typeServiceName1;
 	static Pair<String,String> pair1;
-	static String typeServiceCode2;
 	static String typeServiceName2;
 	static Pair<String,String> pair2;
 	static Provider provider1;
 	static String providerName1;
+	static String providerName2;
 	static Service service1;
+	
 	
 	@BeforeEach
 	void setUp() {
@@ -38,18 +40,17 @@ class APIHandlerTest {
 		code1 = "AT";
 		code2 = "ME";
 		country1 = new Country(code1, name1);
+		country2 = new Country("BE", "Belgium");
 		typeServiceCode1 = "QCertESig";
 		typeServiceName1 = "Qualified certificate for electronic signature";
 		typeServiceCode2 = "AAA";
 		typeServiceName2 = "BBB";
+		typeServiceCode3 = "QValQESig";
+		typeServiceCode4 = "QValQESeal";
 		pair1 = new Pair<String,String>(typeServiceCode1,typeServiceName1);
 		pair2 = new Pair<String,String>(typeServiceCode2,typeServiceName2);
 		providerName1 = "A-Trust Gesellschaft für Sicherheitssysteme im elektronischen Datenverkehr GmbH";
-		
-		//country1.addProvider(provider1);
-		
-		
-				
+		providerName2 = "Belgian Mobile ID SA/NV"; 
 	}
 	
 	@Test
@@ -107,21 +108,29 @@ class APIHandlerTest {
 	}
 	
 	@Test
-	@DisplayName("retrieveCountryData testing:")
+	@DisplayName("retrieveCountryData testing: test is passed if the country contains the provider and the service associated")
 	void retrieveCountryData() {
 		country1 = APIHandler.retriveCountryData(country1.getCode());
-		assertEquals(providerName1, country1.getProviders().get(2).getName());
-		System.out.println(country1.getProviders().get(2).getName());
+		country2 = APIHandler.retriveCountryData(country2.getCode());
+		
 		ServiceType serviceType1 = ServiceType.getInstance(typeServiceCode1);
+		ArrayList<ServiceType> arrServiceType1 = new ArrayList<ServiceType>();
+		arrServiceType1 .add(serviceType1);
 		Service service1 = new Service("TrustSign-Sig-01 (key no. 1)",
-				serviceType1, "withdraw", country1.getProviders().get(2));
-		System.out.println(service1.getProvider().getName());
-		ArrayList<ServiceType> tipp = country1.getProviders().get(2).getServiceTypes();
-		System.out.println(tipp.size());
-		//for(Service e : tipp)
-			//System.out.println(e.getName());
+				arrServiceType1 , "withdraw", country1.getProviders().get(2));
+		
+		assertEquals(providerName1, country1.getProviders().get(2).getName());
 		assertFalse(country1.getProviders().get(2).addService(service1));
+		
+		ServiceType serviceType2 = ServiceType.getInstance(typeServiceCode3);
+		ArrayList<ServiceType> arrServiceType2 = new ArrayList<ServiceType>();
+		arrServiceType2.add(serviceType2);
+		arrServiceType2.add(ServiceType.getInstance(typeServiceCode4));
+		Service service2 = new Service("itsme Sign Validation",
+				arrServiceType2 , "granted", country2.getProviders().get(10));
+		
+		assertEquals(providerName2, country2.getProviders().get(10).getName());
+		assertFalse(country2.getProviders().get(10).addService(service2));
 	}
-
 }
 
