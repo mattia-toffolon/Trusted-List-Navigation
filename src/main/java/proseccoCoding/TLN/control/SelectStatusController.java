@@ -122,6 +122,8 @@ public class SelectStatusController {
 	    			selectedStatuses.add(cb.getText());
     		}
     	}
+    	if(selectedStatuses.isEmpty())
+    		return;
     	TrustedListFacade.getQuery().setSelectedServiceStatus(selectedStatuses);
         App.setRoot("queryResults");
     }

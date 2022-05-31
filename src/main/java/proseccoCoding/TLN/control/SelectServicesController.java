@@ -121,6 +121,8 @@ public class SelectServicesController {
 	    		}
     		}
     	}
+    	if(selectedServiceTypesCodes.isEmpty())
+    		return;
     	TrustedListFacade.getQuery().setSelectedServiceTypes(selectedServiceTypesCodes);
         App.setRoot("selectStatus");
     }

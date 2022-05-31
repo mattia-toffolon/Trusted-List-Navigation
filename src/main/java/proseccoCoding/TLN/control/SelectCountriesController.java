@@ -122,6 +122,8 @@ public class SelectCountriesController {
 	    			selectedCountryCodes.add(cb.getText().charAt(0) +""+ cb.getText().charAt(1));
     		}
     	}
+    	if(selectedCountryCodes.isEmpty())
+    		return;
     	TrustedListFacade.startQuery(selectedCountryCodes);
         App.setRoot("selectProviders");
     }

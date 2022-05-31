@@ -130,6 +130,8 @@ public class SelectProvidersController {
 	    		}
     		}
     	}
+    	if(selectedProvidersCodes.isEmpty())
+    		return;
     	TrustedListFacade.getQuery().setSelectedProviders(selectedProvidersCodes);
         App.setRoot("selectServices");
     }
