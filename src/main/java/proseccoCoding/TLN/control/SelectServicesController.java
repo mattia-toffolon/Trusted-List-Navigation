@@ -1,6 +1,7 @@
 package proseccoCoding.TLN.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -26,7 +27,7 @@ public class SelectServicesController {
 	 */
 	private VBox serviceTypesPane;
 	/**
-	 * CheckBox used to select/deselect all the countries CheckBoxes at the same time
+	 * CheckBox used to select/deselect all the service types CheckBoxes at the same time
 	 */
 	private CheckBox selectAll;
 	/**
@@ -99,10 +100,28 @@ public class SelectServicesController {
 
     @FXML
     /**
-     * Switches scene to the "selectStatus" one
+     * Switches scene to the "selectStatus" one.
+     * This method also tracks down the selected service types via checking the status of the CheckBoxs and sets selectedServicesByType in TrustedListFacade's Query.
      * @throws IOException
      */
     private void switchToSelectStatus() throws IOException {
+    	ArrayList<String> selectedServiceTypesCodes = new ArrayList<String>();
+    	for(Node node : serviceTypesPane.getChildren()) {
+    		if(node.getClass().equals(CheckBox.class) && !node.equals(selectAll)) {
+	    		CheckBox cb = (CheckBox)node;
+	    		if(cb.isSelected()==true) {
+	    			String code = new String();
+	    			for(int i=0; i<cb.getText().length(); i++) {
+	    				if(cb.getText().charAt(i)!=' ')
+	    					code += cb.getText().charAt(i);
+	    				else
+	    					break;
+	    			}
+	    			selectedServiceTypesCodes.add(code);
+	    		}
+    		}
+    	}
+    	TrustedListFacade.getQuery().setSelectedServiceTypes(selectedServiceTypesCodes);
         App.setRoot("selectStatus");
     }
     

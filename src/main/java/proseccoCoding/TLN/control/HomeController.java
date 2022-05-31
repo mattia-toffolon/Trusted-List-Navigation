@@ -32,11 +32,12 @@ public class HomeController {
     
     @FXML
     /**
-     * Switches scene to the "selectCountries" one and initialize TrustedListFacade
+     * Switches scene to the "selectCountries" one and initialize TrustedListFacade if it hasn't been done yet
      * @throws IOException
      */
     private void switchToSelectCountries() throws IOException {
-    	TrustedListFacade.init();
+    	if(TrustedListFacade.getData()==null)
+    		TrustedListFacade.init();
         App.setRoot("selectCountries");
     }
     

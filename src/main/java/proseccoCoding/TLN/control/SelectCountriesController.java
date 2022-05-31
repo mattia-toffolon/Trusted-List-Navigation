@@ -99,16 +99,18 @@ public class SelectCountriesController {
 
     @FXML
     /**
-     * Switches scene to the "home" one
+     * Switches scene to the "home" one. If a Query has been created it gets ended.
      * @throws IOException
      */
     private void switchToHome() throws IOException {
+    	TrustedListFacade.endQuery();
         App.setRoot("home");
     }
     
     @FXML
     /**
-     * Switches scene to the "selectProviders" one
+     * Switches scene to the "selectProviders" one.
+     * This method also tracks down the selected countries via checking the status of the CheckBoxs and sets selectedCountries in TrustedListFacade's Query.
      * @throws IOException
      */
     private void switchToSelectProviders() throws IOException {

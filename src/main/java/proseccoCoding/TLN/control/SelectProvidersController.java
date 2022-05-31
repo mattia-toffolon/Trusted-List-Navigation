@@ -27,7 +27,7 @@ public class SelectProvidersController {
 	 */
 	private VBox providersPane;
 	/**
-	 * CheckBox used to select/deselect all the countries CheckBoxes at the same time
+	 * CheckBox used to select/deselect all the providers CheckBoxes at the same time
 	 */
 	private CheckBox selectAll;
 	/**
@@ -109,7 +109,8 @@ public class SelectProvidersController {
     
     @FXML
     /**
-     * Switches scene to the "selectServices" one and sets selectedProviders of TrustedListFacade's Query
+     * Switches scene to the "selectServices".
+     * This method also tracks down the selected providers via checking the status of the CheckBoxs and sets selectedProviders in TrustedListFacade's Query.
      * @throws IOException
      */
     private void switchToSelectServices() throws IOException {
