@@ -45,7 +45,7 @@ public class Query{
 	}
 	
 	/**
-	 * This method retrives from selectedCountries all the relative Provider objects and returns them as an ArrayList
+	 * This method retrieves from selectedCountries all the relative Provider objects and returns them as an ArrayList
 	 * @return ArraList of Provider objects that contains all the possible providers from the selected countries
 	 */
 	public ArrayList<Provider> getAvailableProviders(){
@@ -54,6 +54,8 @@ public class Query{
 			return null;
 		for(Country c : selectedCountries) {
 			ArrayList<Provider> thisCountryProviders = c.getProviders();
+			if(thisCountryProviders==null)
+				continue;
 			for(Provider p : thisCountryProviders)
 				availableProviders.add(p);
 		}
