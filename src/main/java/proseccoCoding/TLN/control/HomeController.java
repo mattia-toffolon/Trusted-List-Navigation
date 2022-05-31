@@ -3,6 +3,7 @@ package proseccoCoding.TLN.control;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import proseccoCoding.TLN.App;
+import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
  * 
@@ -31,10 +32,12 @@ public class HomeController {
     
     @FXML
     /**
-     * Switches scene to the "selectCountries" one
+     * Switches scene to the "selectCountries" one and initialize TrustedListFacade if it hasn't been done yet
      * @throws IOException
      */
     private void switchToSelectCountries() throws IOException {
+    	if(TrustedListFacade.getData()==null)
+    		TrustedListFacade.init();
         App.setRoot("selectCountries");
     }
     

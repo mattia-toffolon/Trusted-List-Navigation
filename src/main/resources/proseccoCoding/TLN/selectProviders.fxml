@@ -13,9 +13,9 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="460.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
       <Button layoutX="33.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectCountries" prefHeight="26.0" prefWidth="50.0" text="Back" />
       <Button layoutX="321.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectServices" prefHeight="26.0" prefWidth="49.0" text="Next" />
-      <ScrollPane hbarPolicy="NEVER" layoutX="33.0" layoutY="53.0" prefHeight="355.0" prefWidth="335.0">
+      <ScrollPane layoutX="33.0" layoutY="53.0" maxWidth="-Infinity" prefHeight="355.0" prefWidth="335.0">
          <content>
-            <VBox fx:id="nationPane" prefHeight="360.0" prefWidth="340.0" />
+            <VBox fx:id="providersPane" fillWidth="false" maxWidth="-Infinity" />
          </content>
       </ScrollPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" layoutX="35.0" layoutY="19.0" stroke="TRANSPARENT" strokeType="INSIDE" width="330.0" />

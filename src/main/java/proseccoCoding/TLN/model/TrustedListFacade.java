@@ -6,16 +6,16 @@ public class TrustedListFacade {
 	/**
 	 * List containing all completely done queries
 	 */
-	private ArrayList<Query> queries;
+	private static ArrayList<Query> queries;
 	/**
 	 * Trusted data from the trusted service list
 	 */
-	private TrustedListData trustedListData;
+	private static TrustedListData trustedListData;
 	
 	/**
-	 * Constructor for the facade object. It initializes the trusted list data structure.
+	 * Initializer method for the facade class. It initializes the trusted list data structure.
 	 */
-	public TrustedListFacade() {
+	public static void init() {
 		queries = new ArrayList<Query>();
 		trustedListData = new TrustedListData();
 	}
@@ -26,7 +26,7 @@ public class TrustedListFacade {
 	 * @return true if the query has been initialized, false 
 	 * @throws IllegalArgumentException In case of null parameter
 	 */
-	public boolean startQuery(ArrayList<String> countryCodes) throws IllegalArgumentException {
+	public static boolean startQuery(ArrayList<String> countryCodes) throws IllegalArgumentException {
 		if(countryCodes == null)
 			throw new IllegalArgumentException("Parameter must be not null");
 		if(countryCodes.size() <= 0)
@@ -42,7 +42,7 @@ public class TrustedListFacade {
 	 * Gets the current query or null if there isn't one
 	 * @return The Query in use or null if there isn't one
 	 */
-	public Query getQuery() {
+	public static Query getQuery() {
 		if(queries.size() <= 0)
 			return null;
 		return queries.get(queries.size()-1);
@@ -52,7 +52,7 @@ public class TrustedListFacade {
 	 * Ends the current query and discards it if it isn't completed
 	 * @return True if the query is complete, false if it isn't completed
 	 */
-	public boolean endQuery() {
+	public static boolean endQuery() {
 		if(queries.get(queries.size()-1).isEnded())
 			return true;
 		queries.remove(queries.size()-1);
@@ -63,7 +63,7 @@ public class TrustedListFacade {
 	 * Return the object to access all the trusted data for each country
 	 * @return
 	 */
-	public TrustedListData getData() {
+	public static TrustedListData getData() {
 		return trustedListData;
 	}
 }
