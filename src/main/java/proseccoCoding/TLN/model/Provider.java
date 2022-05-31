@@ -20,7 +20,7 @@ public class Provider {
 	 */
 	private static int counter = 0;
 	/**
-	 * The country in wich this provider is located
+	 * The country in which this provider is located
 	 */
 	private Country country;
 	/**
@@ -29,7 +29,7 @@ public class Provider {
 	private SetMultimap<ServiceType, Service> services;
 	
 	/**
-	 * Contructor for class Provider
+	 * Constructor for class Provider
 	 * @param name Complete name of the provider
 	 * @param countryCode Code that identify the provider country, must be of length 2 
 	 */

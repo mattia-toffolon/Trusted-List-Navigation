@@ -214,7 +214,6 @@ public class APIHandler {
 			if ((obj.getString("countryCode")).equals(countryCode)) {
 				Provider tempProvider = new Provider((String) obj.get("name"), tempCountry);
 				JSONArray services = obj.getJSONArray("services");
-
 				// Build each service object with status, name service and country code. After
 				// that it is put provider's Multimap
 				for (int i = 0; i < services.length(); i++) { // loop for every service
@@ -222,11 +221,10 @@ public class APIHandler {
 					
 					String tempName = temp.getString("serviceName");
 					// in the json is an array, but it actually always have 1 element
-					String tempTypeCode = obj.getJSONArray("qServiceTypes").getString(0);
+					String tempTypeCode = temp.getJSONArray("qServiceTypes").getString(0);
 					ServiceType tempServiceType = ServiceType.getInstance(tempTypeCode);
 					String tempStatus = temp.getString("currentStatus"); // complete string
 					tempStatus = tempStatus.substring(50, tempStatus.length()); // only the status
-					
 					Service tempService = new Service(tempName,tempServiceType,tempStatus,tempProvider);
 					tempProvider.addService(tempService);
 					}
