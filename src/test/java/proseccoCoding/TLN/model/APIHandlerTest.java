@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -107,6 +108,7 @@ class APIHandlerTest {
 		assertNotNull((APIHandler.retriveCountryData(code1).getProviders()).get(0).getServiceTypes());
 	}
 	
+	@Disabled
 	@Test
 	@DisplayName("retrieveCountryData testing: test is passed if the country contains the provider and the service associated")
 	void retrieveCountryData() {

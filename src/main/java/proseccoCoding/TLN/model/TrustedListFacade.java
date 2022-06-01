@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class TrustedListFacade {
 	/**
-	 * List containing all completely done queries
+	 * The query currently used or the latest used
 	 */
-	private static ArrayList<Query> queries;
+	private static Query query;
 	/**
 	 * Trusted data from the trusted service list
 	 */
@@ -16,7 +16,7 @@ public class TrustedListFacade {
 	 * Initializer method for the facade class. It initializes the trusted list data structure.
 	 */
 	public static void init() {
-		queries = new ArrayList<Query>();
+		query = null;
 		trustedListData = new TrustedListData();
 	}
 	
@@ -32,9 +32,8 @@ public class TrustedListFacade {
 		if(countryCodes.size() <= 0)
 			return false;
 		
-		Query q = new Query();
-		q.addSelectedCountries(trustedListData.getCountries(countryCodes));
-		queries.add(q);
+		query = new Query();
+		query.addSelectedCountries(trustedListData.getCountries(countryCodes));
 		return true;
 	}
 	
@@ -43,9 +42,9 @@ public class TrustedListFacade {
 	 * @return The Query in use or null if there isn't one
 	 */
 	public static Query getQuery() {
-		if(queries.size() <= 0)
+		if(query == null)
 			return null;
-		return queries.get(queries.size()-1);
+		return query;
 	}
 	
 	/**
@@ -53,9 +52,9 @@ public class TrustedListFacade {
 	 * @return True if the query is complete, false if it isn't completed
 	 */
 	public static boolean endQuery() {
-		if(queries.get(queries.size()-1).isEnded())
+		if(query.isEnded())
 			return true;
-		queries.remove(queries.size()-1);
+		query = null;
 		return false;
 	}
 	
