@@ -61,7 +61,7 @@ public class APIHandler {
 
 			if (responseCode == HttpURLConnection.HTTP_OK) {
 				// read from response body
-				BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+				BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
 				// parse the response body of the jsonfile
 				countriesData = new JSONArray(new JSONTokener(in));
 				in.close();
