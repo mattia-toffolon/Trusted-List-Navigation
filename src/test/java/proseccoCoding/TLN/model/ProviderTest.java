@@ -3,6 +3,7 @@ package proseccoCoding.TLN.model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -35,10 +36,10 @@ class ProviderTest {
 		pr2 = new Provider("provider2", new Country("BB", "BB"));
 		pr2_bis = new Provider("provider2", new Country("BB", "BB"));
 		
-		sr1 = new Service("s1", ServiceType.getInstance("t1"), "granted", null);
-		sr2 = new Service("s2", ServiceType.getInstance("t2"), "granted", null);
-		sr1_bis = new Service("s1", ServiceType.getInstance("t1"), "granted", null);
-		sr3 =  new Service("s3", ServiceType.getInstance("t1"), "granted", null);
+		sr1 = new Service("s1", new ArrayList<ServiceType>(Arrays.asList(ServiceType.getInstance("t1"))), "granted", null);
+		sr2 = new Service("s2", new ArrayList<ServiceType>(Arrays.asList(ServiceType.getInstance("t2"))), "granted", null);
+		sr1_bis = new Service("s1", new ArrayList<ServiceType>(Arrays.asList(ServiceType.getInstance("t1"))), "granted", null);
+		sr3 =  new Service("s3", new ArrayList<ServiceType>(Arrays.asList(ServiceType.getInstance("t1"))), "granted", null);
 		
 		typesSr4 = new ArrayList<ServiceType>();
 		typesSr4.add(ServiceType.getInstance("t1"));
@@ -46,7 +47,7 @@ class ProviderTest {
 		
 		pr4 = new Provider("provider1", new Country("DD", "dd"));
 		sr4 = new Service("s1", typesSr4, "granted", null);
-		sr5 = new Service("s2", ServiceType.getInstance("t2"), "granted", null);
+		sr5 = new Service("s2", new ArrayList<ServiceType>(Arrays.asList(ServiceType.getInstance("t2"))), "granted", null);
 		
 		pr4.addService(sr4);
 		pr4.addService(sr5);
@@ -104,8 +105,8 @@ class ProviderTest {
 		// same type as sr1
 		pr1.addService(sr3);
 		
-		assertEquals(2, pr1.getServices(sr1.getType()).size());
-		assertEquals(1, pr1.getServices(sr2.getType()).size());
+		assertEquals(2, pr1.getServices(sr1.getTypes().get(0)).size());
+		assertEquals(1, pr1.getServices(sr2.getTypes().get(0)).size());
 		assertEquals(0, pr1.getServices(ServiceType.getInstance("xx")).size());
 	}
 	

@@ -27,17 +27,17 @@ class QueryTest {
 	// for country 0
 	private static Provider[] provider0 = {new Provider("PR1", country[0]), new Provider("PR2", country[0])};
 	private static Service[] service0 = {
-			new Service("SR01", type[0], "STATUS1", provider0[0]),
-			new Service("SR02", type[1], "STATUS2", provider0[0]),
-			new Service("SR03", type[0], "STATUS1", provider0[1]),
-			new Service("SR04", type[1], "STATUS2", provider0[1])
+			new Service("SR01", new ArrayList<ServiceType>(Arrays.asList(type[0])), "STATUS1", provider0[0]),
+			new Service("SR02", new ArrayList<ServiceType>(Arrays.asList(type[1])), "STATUS2", provider0[0]),
+			new Service("SR03", new ArrayList<ServiceType>(Arrays.asList(type[0])), "STATUS1", provider0[1]),
+			new Service("SR04", new ArrayList<ServiceType>(Arrays.asList(type[1])), "STATUS2", provider0[1])
 			};
 	// for country 1
 	private static Provider[] provider1 = {new Provider("PR1", country[1]), new Provider("PR2", country[1])};
 	private static Service[] service1 = {
-			new Service("SR11", type[0], "STATUS1", provider1[0]),
-			new Service("SR12", type[1], "STATUS2", provider1[0]),
-			new Service("SR13", type[0], "STATUS1", provider1[1]),
+			new Service("SR11", new ArrayList<ServiceType>(Arrays.asList(type[0])), "STATUS1", provider1[0]),
+			new Service("SR12", new ArrayList<ServiceType>(Arrays.asList(type[1])), "STATUS2", provider1[0]),
+			new Service("SR13", new ArrayList<ServiceType>(Arrays.asList(type[0])), "STATUS1", provider1[1]),
 			};
 	
 	@BeforeAll
