@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import proseccoCoding.TLN.model.APIHandler;
 
 import java.io.IOException;
 
@@ -31,9 +30,9 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Trusted List Navigation");
+        System.out.println("App- " + getClass().getResourceAsStream("eu_icon.png"));
         stage.getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));
         stage.show();
-        stage.setResizable(false);
     }
 
     /**
@@ -61,8 +60,6 @@ public class App extends Application {
      * @param args
      */
     public static void main(String[] args) {
-    	APIHandler.initCountriesData();
-    	APIHandler.initCountriesName();
         launch();
     }
 

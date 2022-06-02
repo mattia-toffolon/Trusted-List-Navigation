@@ -8,9 +8,14 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.ServiceType;
 import proseccoCoding.TLN.model.TrustedListFacade;
@@ -116,6 +121,7 @@ public class SelectStatusController {
     /**
      * Switches scene to the "queryResults" one.
      * This method also tracks down the selected service statuses via checking the status of the CheckBoxs and sets selectedServiceStatus in TrustedListFacade's Query.
+     * If no service status was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
     private void switchToQueryResults() throws IOException {
@@ -127,8 +133,14 @@ public class SelectStatusController {
 	    			selectedStatuses.add(cb.getText());
     		}
     	}
-    	if(selectedStatuses.isEmpty())
+    	if(selectedStatuses.isEmpty()){
+    		Alert a = new Alert(AlertType.WARNING, "User must select at least one service status.");
+    		a.setHeaderText("Invalid parameters selection");
+			a.setTitle("Warning");
+			//((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    		
+			a.showAndWait();
     		return;
+    	}
     	TrustedListFacade.getQuery().setSelectedServiceStatus(selectedStatuses);
         App.setRoot("queryResults");
     }

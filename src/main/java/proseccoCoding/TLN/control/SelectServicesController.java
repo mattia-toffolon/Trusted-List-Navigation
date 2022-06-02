@@ -8,8 +8,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.TrustedListFacade;
@@ -110,6 +112,7 @@ public class SelectServicesController {
     /**
      * Switches scene to the "selectStatus" one.
      * This method also tracks down the selected service types via checking the status of the CheckBoxs and sets selectedServicesByType in TrustedListFacade's Query.
+     * If no service type was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
     private void switchToSelectStatus() throws IOException {
@@ -129,8 +132,14 @@ public class SelectServicesController {
 	    		}
     		}
     	}
-    	if(selectedServiceTypesCodes.isEmpty())
+    	if(selectedServiceTypesCodes.isEmpty()){
+    		Alert a = new Alert(AlertType.WARNING, "User must select at least one service type.");
+    		a.setHeaderText("Invalid parameters selection");
+			a.setTitle("Warning");
+			//((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    		
+    		a.showAndWait();
     		return;
+    	}
     	TrustedListFacade.getQuery().setSelectedServiceTypes(selectedServiceTypesCodes);
         App.setRoot("selectStatus");
     }

@@ -8,8 +8,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.TrustedListFacade;
@@ -118,6 +120,7 @@ public class SelectProvidersController {
     /**
      * Switches scene to the "selectServices".
      * This method also tracks down the selected providers via checking the status of the CheckBoxs and sets selectedProviders in TrustedListFacade's Query.
+     * If no provider was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
     private void switchToSelectServices() throws IOException {
@@ -137,8 +140,14 @@ public class SelectProvidersController {
 	    		}
     		}
     	}
-    	if(selectedProvidersCodes.isEmpty())
+    	if(selectedProvidersCodes.isEmpty()){
+    		Alert a = new Alert(AlertType.WARNING, "User must select at least one provider.");
+    		a.setHeaderText("Invalid parameters selection");
+			a.setTitle("Warning");
+			//((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    		
+    		a.showAndWait();
     		return;
+    	}
     	TrustedListFacade.getQuery().setSelectedProviders(selectedProvidersCodes);
         App.setRoot("selectServices");
     }
