@@ -30,7 +30,6 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Trusted List Navigation");
-        System.out.println("App- " + getClass().getResourceAsStream("eu_icon.png"));
         stage.getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));
         stage.show();
     }

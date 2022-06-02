@@ -13,11 +13,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import proseccoCoding.TLN.App;
-import proseccoCoding.TLN.model.ServiceType;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**

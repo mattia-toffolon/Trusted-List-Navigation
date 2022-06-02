@@ -15,7 +15,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.TrustedListFacade;
-import proseccoCoding.TLN.model.Provider;
 import proseccoCoding.TLN.model.ServiceType;
 
 /**
