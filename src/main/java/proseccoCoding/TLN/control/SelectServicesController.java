@@ -74,7 +74,7 @@ public class SelectServicesController {
 		selectAll.indeterminateProperty().addListener(selectAllListener);
 		
 		ArrayList<String> serviceTypeNames = new ArrayList<String>();
-		for (ServiceType st : TrustedListFacade.getQuery().getAvailableServiceTypes()) 
+		for (ServiceType st : TrustedListFacade.getInstance().getQuery().getAvailableServiceTypes()) 
 			serviceTypeNames.add(st.getCode() +" \n﹂ "+ st.getName());
 		
 		Collections.sort(serviceTypeNames);
@@ -144,7 +144,7 @@ public class SelectServicesController {
     		a.showAndWait();
     		return;
     	}
-    	TrustedListFacade.getQuery().setSelectedServiceTypes(selectedServiceTypesCodes);
+    	TrustedListFacade.getInstance().getQuery().setSelectedServiceTypes(selectedServiceTypesCodes);
         App.setRoot("selectStatus");
     }
     

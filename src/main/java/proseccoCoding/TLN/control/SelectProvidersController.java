@@ -74,7 +74,7 @@ public class SelectProvidersController {
 		selectAll.indeterminateProperty().addListener(selectAllListener);
 		
 		ArrayList<String> providerNames = new ArrayList<String>();
-		for (Provider p : TrustedListFacade.getQuery().getAvailableProviders()) 
+		for (Provider p : TrustedListFacade.getInstance().getQuery().getAvailableProviders()) 
 			providerNames.add(p.getCode()+" \n﹂ "+p.getName());
 		
 		Collections.sort(providerNames);
@@ -153,7 +153,7 @@ public class SelectProvidersController {
     		a.showAndWait();
     		return;
     	}
-    	TrustedListFacade.getQuery().setSelectedProviders(selectedProvidersCodes);
+    	TrustedListFacade.getInstance().getQuery().setSelectedProviders(selectedProvidersCodes);
         App.setRoot("selectServices");
     }
 }
