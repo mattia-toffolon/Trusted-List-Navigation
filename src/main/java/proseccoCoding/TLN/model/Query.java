@@ -3,7 +3,14 @@ package proseccoCoding.TLN.model;
 import java.util.ArrayList;
 import java.sql.Timestamp;
 
-public class Query{
+/**
+ * This class represents a Query used for the trusted services search. It is necessary to use this given
+ * order of method calls to correctly make the selection.\n 
+ * addSelectedCountries - setSelectedProviders - setSelectedserviceTypes - setSelectedServiceStatus\n
+ * And at the end the results can be retrieved using getResults().
+ * It is also possible to retrieve all the possible choices for the next selection, after a selection is made.
+ */
+public class Query {
 	/**
 	 * The timestamp representing the query starting time
 	 */
@@ -173,5 +180,13 @@ public class Query{
 	 */
 	public boolean isEnded() {
 		return (selectedServiceStatus==null ? false : true);
+	}
+	
+	/**
+	 * Returns the timestamp of the time in which this query was been instantiated.
+	 * @return the timestamp of initialization time
+	 */
+	public Timestamp getStartTime() {
+		return startTime;
 	}
 }
