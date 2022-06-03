@@ -4,6 +4,8 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.APIHandler;
@@ -31,6 +33,7 @@ public class HomeController {
 			Alert a = new Alert(AlertType.ERROR, "Error: " +e+ "\n\nThe error is caused by either the user's or the server's internet connection.", ButtonType.CLOSE);
 			a.setHeaderText("Connection Error");
 			a.setTitle("Error");
+			((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    		
 			a.showAndWait();
 			System.exit(0);
 		}

@@ -13,6 +13,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.TrustedListFacade;
 import proseccoCoding.TLN.model.ServiceType;
@@ -135,7 +137,7 @@ public class SelectServicesController {
     		Alert a = new Alert(AlertType.WARNING, "User must select at least one service type.");
     		a.setHeaderText("Invalid parameters selection");
 			a.setTitle("Warning");
-			//((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    		
+			((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    		
     		a.showAndWait();
     		return;
     	}

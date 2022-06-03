@@ -140,7 +140,7 @@ public class SelectCountriesController {
     		Alert a = new Alert(AlertType.WARNING, "User must select at least one country.");
     		a.setHeaderText("Invalid parameters selection");
 			a.setTitle("Warning");
-			//((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    		
+			((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    		
     		a.showAndWait();
     		return;
     	}
