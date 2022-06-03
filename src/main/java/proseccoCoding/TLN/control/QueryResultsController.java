@@ -32,7 +32,7 @@ public class QueryResultsController {
 	private void initialize() {
     	// add countries to the ListView
 		ArrayList<String> results = new ArrayList<String>();
-		for (Service s : TrustedListFacade.getQuery().getResults()) {
+		for (Service s : TrustedListFacade.getInstance().getQuery().getResults()) {
 			String serviceTypes = new String();
 			for(ServiceType st : s.getTypes())
 				serviceTypes += (st.getName()+"; ");
@@ -64,7 +64,7 @@ public class QueryResultsController {
      * @throws IOException
      */
     private void switchToHome() throws IOException {
-    	TrustedListFacade.endQuery();
+    	TrustedListFacade.getInstance().endQuery();
         App.setRoot("home");
     }
 }

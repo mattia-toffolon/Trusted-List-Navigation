@@ -73,7 +73,7 @@ public class SelectStatusController {
 		selectAll.selectedProperty().addListener(selectAllListener);
 		selectAll.indeterminateProperty().addListener(selectAllListener);
 		
-		ArrayList<String> serviceStatuses = TrustedListFacade.getQuery().getAvailableServiceStatus();
+		ArrayList<String> serviceStatuses = TrustedListFacade.getInstance().getQuery().getAvailableServiceStatus();
 		Collections.sort(serviceStatuses);
 
 		// a CheckBox is added with a ChangeListener for each provider which country has been selected
@@ -142,7 +142,7 @@ public class SelectStatusController {
 			a.showAndWait();
     		return;
     	}
-    	TrustedListFacade.getQuery().setSelectedServiceStatus(selectedStatuses);
+    	TrustedListFacade.getInstance().getQuery().setSelectedServiceStatus(selectedStatuses);
         App.setRoot("queryResults");
     }
 }

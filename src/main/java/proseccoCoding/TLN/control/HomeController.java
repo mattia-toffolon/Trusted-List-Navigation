@@ -63,8 +63,6 @@ public class HomeController {
      * @throws IOException
      */
     private void switchToSelectCountries() throws IOException {
-    	if(TrustedListFacade.getData()==null)
-    		TrustedListFacade.init();
         App.setRoot("selectCountries");
     }
     

@@ -74,7 +74,7 @@ public class SelectCountriesController {
 		selectAll.indeterminateProperty().addListener(selectAllListener);
 		
 		ArrayList<String> countriesNames = new ArrayList<String>();
-		for (Pair<String, String> p : TrustedListFacade.getData().printCountries()) 
+		for (Pair<String, String> p : TrustedListFacade.getInstance().getData().printCountries()) 
 			countriesNames.add(p.getKey()+" - "+p.getValue());
 		
 		Collections.sort(countriesNames);
@@ -118,8 +118,8 @@ public class SelectCountriesController {
      * @throws IOException
      */
     private void switchToHome() throws IOException {
-    	if(TrustedListFacade.getQuery()!=null)
-    		TrustedListFacade.endQuery();
+    	if(TrustedListFacade.getInstance().getQuery()!=null)
+    		TrustedListFacade.getInstance().endQuery();
         App.setRoot("home");
     }
     
@@ -147,7 +147,7 @@ public class SelectCountriesController {
     		a.showAndWait();
     		return;
     	}
-    	TrustedListFacade.startQuery(selectedCountryCodes);
+    	TrustedListFacade.getInstance().startQuery(selectedCountryCodes);
         App.setRoot("selectProviders");
     }
 }
