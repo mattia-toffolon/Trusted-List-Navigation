@@ -41,7 +41,8 @@ public class QueryResultsController {
 		                    +"\n﹂ Provider: "+ s.getProvider().getName()
 		                    +"\n﹂ ServiceTypes: "+ serviceTypes.substring(0, serviceTypes.length()-2)
 		                    +"\n﹂ Status: "+ s.getStatus() + "\n\n";
-			results.add(result);
+			if(!results.contains(result))
+				results.add(result);
 		}
 		Collections.sort(results);
 		for(String s : results)

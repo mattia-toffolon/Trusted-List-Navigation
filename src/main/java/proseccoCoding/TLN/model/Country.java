@@ -5,6 +5,10 @@ import java.util.HashMap;
 
 import javafx.util.Pair;
 
+/**
+ * This class represents a country with all its trusted providers (that provide services).
+ * Every country must be identified by its international code of two characters.
+ */
 public class Country {
 	/**
 	 * String code that represent the country, must be in format "CC" both upper case 
@@ -48,19 +52,6 @@ public class Country {
 		this.name = name;
 		this.providers = providers;
 	}
-	
-//	/**
-//	 * Adds the providers to the country if they haven't been already added 
-//	 * @param providers HashSet containing all the providers of this country
-//	 * @return True if the providers has been added, false otherwise
-//	 */
-//	public boolean addProviders(ArrayList<Provider> providers) {
-//		if(isRetrieved)
-//			return false;
-//		this.providers = new HashMap<String,Provider>(this.providers.size());
-//		return true;
-//	}
-
 	
 	/**
 	 * Returns the provider with the specified providerCode if there is one in this country
@@ -119,9 +110,17 @@ public class Country {
 		return new ArrayList<Provider>(providers.values());
 	}
 	
+	/**
+	 * Getter for country code
+	 * @return The country code string
+	 */
 	public String getCode() {
 		return code;
 	}
+	/**
+	 * Getter for country name
+	 * @return The country name string
+	 */
 	public String getName() {
 		return name;
 	}

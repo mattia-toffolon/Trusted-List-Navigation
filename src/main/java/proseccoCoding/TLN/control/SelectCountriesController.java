@@ -7,10 +7,17 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Separator;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
+import javafx.geometry.Insets;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 import java.util.ArrayList;
+import java.util.Collections;
+
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
@@ -57,16 +64,24 @@ public class SelectCountriesController {
 	private void initialize() {    
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
+		countriesPane.setSpacing(5);
+		countriesPane.setPadding(new Insets(5));
 		countriesPane.getChildren().add(selectAll);
-		countriesPane.getChildren().add(new Label("————————————————————————————"));		
+		countriesPane.getChildren().add(new Separator());		
 		
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);
 		selectAll.indeterminateProperty().addListener(selectAllListener);
+		
+		ArrayList<String> countriesNames = new ArrayList<String>();
+		for (Pair<String, String> p : TrustedListFacade.getData().printCountries()) 
+			countriesNames.add(p.getKey()+" - "+p.getValue());
+		
+		Collections.sort(countriesNames);
 
     	// a CheckBox is added with a ChangeListener for each country
-		for (Pair<String, String> p : TrustedListFacade.getData().printCountries()) {
-			CheckBox cb = new CheckBox(p.getKey()+" - "+p.getValue());
+		for (String s : countriesNames) {
+			CheckBox cb = new CheckBox(s);
 			cb.selectedProperty().addListener(checkBoxListener);
 			countriesPane.getChildren().add(cb);
 		}
@@ -103,7 +118,8 @@ public class SelectCountriesController {
      * @throws IOException
      */
     private void switchToHome() throws IOException {
-    	TrustedListFacade.endQuery();
+    	if(TrustedListFacade.getQuery()!=null)
+    		TrustedListFacade.endQuery();
         App.setRoot("home");
     }
     
@@ -111,6 +127,7 @@ public class SelectCountriesController {
     /**
      * Switches scene to the "selectProviders" one.
      * This method also tracks down the selected countries via checking the status of the CheckBoxs and sets selectedCountries in TrustedListFacade's Query.
+     * If no country was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
     private void switchToSelectProviders() throws IOException {
@@ -122,8 +139,14 @@ public class SelectCountriesController {
 	    			selectedCountryCodes.add(cb.getText().charAt(0) +""+ cb.getText().charAt(1));
     		}
     	}
-    	if(selectedCountryCodes.isEmpty())
+    	if(selectedCountryCodes.isEmpty()) {
+    		Alert a = new Alert(AlertType.WARNING, "User must select at least one country.");
+    		a.setHeaderText("Invalid parameters selection");
+			a.setTitle("Warning");
+			((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    		
+    		a.showAndWait();
     		return;
+    	}
     	TrustedListFacade.startQuery(selectedCountryCodes);
         App.setRoot("selectProviders");
     }

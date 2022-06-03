@@ -23,32 +23,32 @@ public class APIHandler {
 	/**
 	 * Method that make a call to the API and initialize countriesName with countries codes and their full name
 	 */
-	public static void initCountriesName() {
+	public static void initCountriesName() throws Exception{
 		
-		try {
+		if(countriesName!=null)
+			return;
+		
 			URL url;
-			url = new URL("https://esignature.ec.europa.eu/efda/tl-browser/api/v1/search/countries_list");
+			url = new URL("https://esignature.ec.europa.eu/efda/tl-browser/api/v1/search/countries_list_no_lotl_territory");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
 
 			int responseCode = connection.getResponseCode();
-			System.out.println("GET Response Code :: " + responseCode);
 
 			if (responseCode == HttpURLConnection.HTTP_OK) {
 				BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 				countriesName = new JSONArray(new JSONTokener(in));
 				in.close();
 			}
-		} catch (Exception e) {
-			System.err.println("error 2" + e);
-			// e.printStackTrace();
-		}
 	}
 	
 	/**
 	 * Method that make a call to the API and initialize countriesData
 	 */
 	public static void initCountriesData() {
+		
+		if(countriesData!=null)
+			return;
 		
 		try {
 			URL url;
@@ -57,11 +57,10 @@ public class APIHandler {
 			connection.setRequestMethod("GET");
 
 			int responseCode = connection.getResponseCode();
-			System.out.println("GET Response Code :: " + responseCode);
 
 			if (responseCode == HttpURLConnection.HTTP_OK) {
 				// read from response body
-				BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+				BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
 				// parse the response body of the jsonfile
 				countriesData = new JSONArray(new JSONTokener(in));
 				in.close();
@@ -79,8 +78,13 @@ public class APIHandler {
 	 * @return ArrayList with all the names of the countries
 	 */
 	public static ArrayList<String> retrieveCountriesNames() {
-		if (countriesName == null)
-			initCountriesName();
+		if (countriesName == null) {
+			try {
+				initCountriesName();
+			} catch (Exception e) {
+				System.err.print(e);
+			}
+		}
 		
 		ArrayList<String> countries = new ArrayList<String>();
 		Iterator<Object> it = countriesName.iterator();
@@ -101,8 +105,13 @@ public class APIHandler {
 	 *         complete data as value
 	 */
 	public static HashMap<String, Country> retrieveCountries() {
-		if (countriesName == null)
-			initCountriesName();
+		if (countriesName == null){
+			try {
+				initCountriesName();
+			} catch (Exception e) {
+				System.err.print(e);
+			}
+		}
 		
 		HashMap<String, Country> countries = new HashMap<String, Country>();
 		Iterator<Object> it = countriesName.iterator();
@@ -188,8 +197,12 @@ public class APIHandler {
 	 */
 	public static Country retriveCountryData(String countryCode) {
 		if (countriesData == null || countriesName == null) {
-			initCountriesName();
-			initCountriesData();
+			try {
+				initCountriesName();
+				initCountriesData();
+			} catch (Exception e) {
+				System.err.print(e);
+			}
 		}
 
 		Country tempCountry = null;

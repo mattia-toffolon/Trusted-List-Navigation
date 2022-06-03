@@ -6,6 +6,12 @@ import java.util.Objects;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.SetMultimap;
 
+/**
+ * This class represents a provider of trusted services. It includes name, code, country and its services.\n
+ * It is recommended to not instantiate the Country object in the constructor of the Provider, but to
+ * pass the effective Country object that contains this Provider. This parameter is used as
+ * additional info and to generate the provider code.
+ */
 public class Provider {
 	/**
 	 * Provider complete name
@@ -31,7 +37,7 @@ public class Provider {
 	/**
 	 * Constructor for class Provider
 	 * @param name Complete name of the provider
-	 * @param countryCode Code that identify the provider country, must be of length 2 
+	 * @param country Object of the provider country, should be the effective object that contains this provider 
 	 */
 	public Provider(String name, Country country) throws IllegalArgumentException {
 		if(name == null || name.isBlank() || country == null)
@@ -102,12 +108,24 @@ public class Provider {
 		return Objects.equals(code, other.code);
 	}
 
+	/**
+	 * Getter for provider name
+	 * @return The provider name string
+	 */
 	public String getName() {
 		return name;
 	}
+	/**
+	 * Getter for provider code
+	 * @return The provider code string
+	 */
 	public String getCode() {
 		return code;
 	}
+	/**
+	 * Getter for provider country
+	 * @return The provider country object
+	 */
 	public Country getCountry() {
 		return country;
 	}

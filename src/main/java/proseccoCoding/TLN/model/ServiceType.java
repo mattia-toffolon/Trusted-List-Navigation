@@ -7,6 +7,13 @@ import java.util.stream.Collectors;
 
 import javafx.util.Pair;
 
+/**
+ * This class represents a type of service with his name and code. It implements the Singleton
+ * pattern customized to be used for not one but all known service types. To retrieve the instance
+ * only the type code is needed and, if the code is known, automatically his complete name is associated with it.
+ * In case of unrecognized type code this class uses the code as name, adding "(complete name not found)".
+ * In both cases the fact that the object would be a singleton is granted.
+ */
 public class ServiceType {
 	private static HashMap<String, ServiceType> instances = null;
 
@@ -60,10 +67,18 @@ public class ServiceType {
 				instances.put(p.getKey(), new ServiceType(p.getKey(), p.getValue()));
 	}
 
+	/**
+	 * Getter for type name
+	 * @return The type name string
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Getter for type code
+	 * @return The type code string
+	 */
 	public String getCode() {
 		return code;
 	}

@@ -2,14 +2,20 @@ package proseccoCoding.TLN.control;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.TrustedListFacade;
 import proseccoCoding.TLN.model.Provider;
@@ -58,16 +64,24 @@ public class SelectProvidersController {
 	private void initialize() {
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
+		providersPane.setSpacing(5);
+		providersPane.setPadding(new Insets(5));
 		providersPane.getChildren().add(selectAll);
-		providersPane.getChildren().add(new Label("————————————————————————————"));		
+		providersPane.getChildren().add(new Separator());		
 		
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);
 		selectAll.indeterminateProperty().addListener(selectAllListener);
-
+		
+		ArrayList<String> providerNames = new ArrayList<String>();
+		for (Provider p : TrustedListFacade.getQuery().getAvailableProviders()) 
+			providerNames.add(p.getCode()+" \n﹂ "+p.getName());
+		
+		Collections.sort(providerNames);
+			
 		// a CheckBox is added with a ChangeListener for each provider which country was previously selected
-		for (Provider p : TrustedListFacade.getQuery().getAvailableProviders()) {
-			CheckBox cb = new CheckBox(p.getCode()+" \n﹂"+p.getName());
+		for (String s : providerNames) {
+			CheckBox cb = new CheckBox(s);
 			cb.selectedProperty().addListener(checkBoxListener);
 			providersPane.getChildren().add(cb);
 		}
@@ -111,6 +125,7 @@ public class SelectProvidersController {
     /**
      * Switches scene to the "selectServices".
      * This method also tracks down the selected providers via checking the status of the CheckBoxs and sets selectedProviders in TrustedListFacade's Query.
+     * If no provider was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
     private void switchToSelectServices() throws IOException {
@@ -130,8 +145,14 @@ public class SelectProvidersController {
 	    		}
     		}
     	}
-    	if(selectedProvidersCodes.isEmpty())
+    	if(selectedProvidersCodes.isEmpty()){
+    		Alert a = new Alert(AlertType.WARNING, "User must select at least one provider.");
+    		a.setHeaderText("Invalid parameters selection");
+			a.setTitle("Warning");
+			((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    		
+    		a.showAndWait();
     		return;
+    	}
     	TrustedListFacade.getQuery().setSelectedProviders(selectedProvidersCodes);
         App.setRoot("selectServices");
     }
