@@ -108,7 +108,6 @@ class APIHandlerTest {
 		assertNotNull((APIHandler.retriveCountryData(code1).getProviders()).get(0).getServiceTypes());
 	}
 	
-	@Disabled
 	@Test
 	@DisplayName("retrieveCountryData testing: test is passed if the country contains the provider and the service associated")
 	void retrieveCountryData() {

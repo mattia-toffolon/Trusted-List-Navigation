@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-
 import javafx.util.Pair;
-public class TrustedListData{
+/**
+ * This class wraps all the objects that represents EU trusted entities (country, provider, service).
+ * In fact an object of this class contains a set of countries that contains providers that contains services.
+ * At the time of construction this object is automatically populated using @{link APIHandler.retrieveCountries} method
+ */
+public class TrustedListData {
 	/**
 	 * Hashmap containing all the countries objects
 	 */
@@ -66,6 +70,7 @@ public class TrustedListData{
 		return ret;
 	}
 	/**
+	 * Returns a list containing all names and codes for every country. It would be a facility to print them
 	 * @return an ArrayList of pair, which pairs are "conutry code" and "country name" for each country
 	 */
 	public ArrayList<Pair<String,String>> printCountries(){
