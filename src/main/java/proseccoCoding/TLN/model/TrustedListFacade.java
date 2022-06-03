@@ -6,21 +6,29 @@ import java.util.ArrayList;
  * Provides access to all trusted data and some basic methods for query management and query interaction.
  */
 public class TrustedListFacade {
+	
+	private static TrustedListFacade instance = null;
 	/**
 	 * The query currently used or the latest used
 	 */
-	private static Query query;
+	private Query query;
 	/**
 	 * Trusted data from the trusted service list
 	 */
-	private static TrustedListData trustedListData;
+	private TrustedListData trustedListData;
 	
 	/**
-	 * Initializer method for the facade class. It initializes the trusted list data structure.
+	 * Constructor for the facade class. It initializes the trusted list data structure.
 	 */
-	public static void init() {
+	private TrustedListFacade() {
 		query = null;
 		trustedListData = new TrustedListData();
+	}
+	
+	public static TrustedListFacade getInstance() {
+		if(instance == null)
+			instance = new TrustedListFacade();
+		return instance;
 	}
 	
 	/**
@@ -29,7 +37,7 @@ public class TrustedListFacade {
 	 * @return true if the query has been initialized, false 
 	 * @throws IllegalArgumentException In case of null parameter
 	 */
-	public static boolean startQuery(ArrayList<String> countryCodes) throws IllegalArgumentException {
+	public boolean startQuery(ArrayList<String> countryCodes) throws IllegalArgumentException {
 		if(countryCodes == null)
 			throw new IllegalArgumentException("Parameter must be not null");
 		if(countryCodes.size() <= 0)
@@ -44,7 +52,7 @@ public class TrustedListFacade {
 	 * Gets the current query or null if there isn't one
 	 * @return The Query in use or null if there isn't one
 	 */
-	public static Query getQuery() {
+	public Query getQuery() {
 		if(query == null)
 			return null;
 		return query;
@@ -54,7 +62,7 @@ public class TrustedListFacade {
 	 * Ends the current query and discards it if it isn't completed
 	 * @return True if the query is complete, false if it isn't completed
 	 */
-	public static boolean endQuery() {
+	public boolean endQuery() {
 		if(query.isEnded())
 			return true;
 		query = null;
@@ -65,7 +73,7 @@ public class TrustedListFacade {
 	 * Return the object to access all the trusted data for each country
 	 * @return
 	 */
-	public static TrustedListData getData() {
+	public TrustedListData getData() {
 		return trustedListData;
 	}
 }
