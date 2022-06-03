@@ -7,10 +7,11 @@ import java.util.Collections;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
@@ -63,8 +64,10 @@ public class SelectProvidersController {
 	private void initialize() {
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
+		providersPane.setSpacing(5);
+		providersPane.setPadding(new Insets(5));
 		providersPane.getChildren().add(selectAll);
-		providersPane.getChildren().add(new Label("————————————————————————————"));		
+		providersPane.getChildren().add(new Separator());		
 		
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);
@@ -72,7 +75,7 @@ public class SelectProvidersController {
 		
 		ArrayList<String> providerNames = new ArrayList<String>();
 		for (Provider p : TrustedListFacade.getQuery().getAvailableProviders()) 
-			providerNames.add(p.getCode()+" \n﹂"+p.getName());
+			providerNames.add(p.getCode()+" \n﹂ "+p.getName());
 		
 		Collections.sort(providerNames);
 			

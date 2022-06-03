@@ -7,10 +7,11 @@ import java.util.Collections;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
@@ -63,8 +64,10 @@ public class SelectStatusController {
 	private void initialize() {
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
+		serviceStatusesPane.setSpacing(5);
+		serviceStatusesPane.setPadding(new Insets(5));
 		serviceStatusesPane.getChildren().add(selectAll);
-		serviceStatusesPane.getChildren().add(new Label("————————————————————————————"));		
+		serviceStatusesPane.getChildren().add(new Separator());		
 		
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);

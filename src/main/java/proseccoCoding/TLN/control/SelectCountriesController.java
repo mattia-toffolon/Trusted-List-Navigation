@@ -7,11 +7,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
+import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import java.util.ArrayList;
@@ -63,8 +64,10 @@ public class SelectCountriesController {
 	private void initialize() {    
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
+		countriesPane.setSpacing(5);
+		countriesPane.setPadding(new Insets(5));
 		countriesPane.getChildren().add(selectAll);
-		countriesPane.getChildren().add(new Label("————————————————————————————"));		
+		countriesPane.getChildren().add(new Separator());		
 		
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);
