@@ -226,26 +226,33 @@ class QueryTest {
 		status.remove("STATUS1");
 		assertTrue(q.setSelectedServiceStatus(status));
 	}
-	@Disabled
+	
 	@Test
 	void testGetResults() {
 		ArrayList<String> types = new ArrayList<String>();
-		ArrayList<String> status = new ArrayList<String>();
 		countryArr.addAll(Arrays.asList(country));
 		q.addSelectedCountries(countryArr);
+		// add providers
 		ArrayList<String> input = new ArrayList<String>();
 		input.add(provider0[0].getCode());
 		input.add(provider1[0].getCode());
 		input.add(provider1[1].getCode());
 		q.setSelectedProviders(input);
+		// add types
 		types.add(type[0].getCode());
 		types.add(type[1].getCode());
-		status = q.getAvailableServiceStatus();
-		status.remove("STATUS1");
 		q.setSelectedServiceTypes(types);
+		// add status
+		ArrayList<String> status = new ArrayList<String>();
+		status = q.getAvailableServiceStatus();
+		status.remove("STATUS0");
+		q.setSelectedServiceStatus(status);
+		
+		// test results
 		ArrayList<String> ret = new ArrayList<String>(q.getResults().stream()
 				.map((Service s)->{return s.getName();})
 				.collect(Collectors.toList()));
+		System.out.println(ret);
 		// should be SR13 SR11 SR01
 		assertTrue(ret.contains("SR13"));
 		assertTrue(ret.contains("SR11"));

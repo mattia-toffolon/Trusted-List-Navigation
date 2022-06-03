@@ -1,7 +1,10 @@
 package proseccoCoding.TLN.model;
 
 import java.util.ArrayList;
-
+/**
+ * This class is used as interface for all the business logic operations.
+ * Provides access to all trusted data and some basic methods for query management and query interaction.
+ */
 public class TrustedListFacade {
 	/**
 	 * The query currently used or the latest used
