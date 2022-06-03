@@ -118,20 +118,20 @@ class APIHandlerTest {
 		ArrayList<ServiceType> arrServiceType1 = new ArrayList<ServiceType>();
 		arrServiceType1 .add(serviceType1);
 		Service service1 = new Service("TrustSign-Sig-01 (key no. 1)",
-				arrServiceType1 , "withdraw", country1.getProviders().get(2));
+				arrServiceType1 , "withdraw", country1.getProviders().get(0));
 		
-		assertEquals(providerName1, country1.getProviders().get(2).getName());
-		assertFalse(country1.getProviders().get(2).addService(service1));
+		assertEquals(providerName1, country1.getProviders().get(0).getName());
+		assertFalse(country1.getProviders().get(0).addService(service1));
 		
 		ServiceType serviceType2 = ServiceType.getInstance(typeServiceCode3);
 		ArrayList<ServiceType> arrServiceType2 = new ArrayList<ServiceType>();
 		arrServiceType2.add(serviceType2);
 		arrServiceType2.add(ServiceType.getInstance(typeServiceCode4));
 		Service service2 = new Service("itsme Sign Validation",
-				arrServiceType2 , "granted", country2.getProviders().get(10));
+				arrServiceType2 , "granted", country2.getProviders().get(1));
 		
-		assertEquals(providerName2, country2.getProviders().get(10).getName());
-		assertFalse(country2.getProviders().get(10).addService(service2));
+		assertEquals(providerName2, country2.getProviders().get(1).getName());
+		assertFalse(country2.getProviders().get(1).addService(service2));
 	}
 }
 
