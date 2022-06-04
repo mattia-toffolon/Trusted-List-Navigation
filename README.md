@@ -34,16 +34,36 @@ Here it is described in few steps how to run this application and how to properl
     <img src="https://user-images.githubusercontent.com/48312863/171994713-d200c139-33f9-4de1-9e82-3eeb773f4f34.png"  height="300" /> <br />
     Here you can select all your preferred countries or all countries using *Select all* checkbox and press <ins>*Next*</ins> to go on trough the query. <br />
     (:warning: **Warning:** you must select at least one country).
+    
 3. The application should display the first selection page: **Provider selection**: <br />
     <img src="https://user-images.githubusercontent.com/48312863/171995165-3149b176-9b5d-41ba-a698-c422d4e0cd79.png"  height="300" /> <br />
     Here you can select all your preferred providers or all providers using *Select all* checkbox and press <ins>*Next*</ins> to go on trough the query. <br />
     If you want to change the previous selection you can press the <ins>*Back*</ins> button. <br />
     (:warning: **Warning:** you must select at least one provider).
+    
+4. The application should display the second selection page: **Service type selection**: <br />
+    <img src="https://user-images.githubusercontent.com/48312863/171995272-3d306d5d-6a3b-4001-bed2-d2a65799a344.png"  height="300" /> <br /> 
+    Here you can select all your preferred service types or all types using *Select all* checkbox and press <ins>*Next*</ins> to go on trough the query. <br />
+    If you want to change the previous selection you can press the <ins>*Back*</ins> button. <br />
+    (:warning: **Warning:** you must select at least one service type).
 
-
-
-<img src="https://user-images.githubusercontent.com/48312863/171995272-3d306d5d-6a3b-4001-bed2-d2a65799a344.png"  height="300" /> <br />
-<img src="https://user-images.githubusercontent.com/48312863/171995295-521a9c01-85d7-442e-9e07-1afb221fb425.png"  height="300" /> <br />
-<img src="https://user-images.githubusercontent.com/48312863/171995321-454fd542-780a-40b8-ab4e-31d2d618fe72.png"  height="300" /> <br />
-
-
+5. The application should display the third selection page: **Service status selection**: <br />
+    <img src="https://user-images.githubusercontent.com/48312863/171995295-521a9c01-85d7-442e-9e07-1afb221fb425.png"  height="300" /> <br />
+    Here you can select all your preferred service status or all status using *Select all* checkbox and press <ins>*Start*</ins> to display the results. <br />
+    If you want to change the previous selection you can press the <ins>*Back*</ins> button. <br />
+    (:warning: **Warning:** you must select at least one service status).
+    
+6. Finally the application should display the **result page** <br />
+    <img src="https://user-images.githubusercontent.com/48312863/171995321-454fd542-780a-40b8-ab4e-31d2d618fe72.png"  height="300" /> <br />
+    Here are listed all the services that meet all the selections that you made. <br />
+    Now you can go back to one of the selection page with the <ins>*Back*</ins> button or end the query and display the homepage pressing the <ins>*Home*</ins> button.
+<br />
+:warning: **Warning:** In some cases, like when you try to go to the next selection page without having no checkboxes selected, an error message like this is displayed: <br />
+    <img src="https://user-images.githubusercontent.com/48312863/171997619-98eaa0a7-3c6a-4f78-b91f-15dce627cde5.png"  height="100" />
+    To continue the query parameter selection **you must close** this **alert window**, otherwise it is not possible to interact with the main window. <br/>
+    
+    
+# Some concepts about the implementation of TLN application
+    <<<da completare>>>>
+# External libraries and functionality used in TNL application
+    <<<<da completare>>>
