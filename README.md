@@ -1,6 +1,7 @@
 # Trusted-List-Navigation
 gruppo: ProseccoCoding
-
+## Useful links to files
+- Complete Javadoc documentation can be found [here](https://github.com/mattia-toffolon/Trusted-List-Navigation/edit/main/docs/javadoc/proseccoCoding/model/package-summary.html)
 ## How to run Trusted List Navigation application
 Here it is described in few steps how to run this application and how to properly use it.
 ### Prerequisites
