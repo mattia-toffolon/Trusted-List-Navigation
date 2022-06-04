@@ -2,7 +2,7 @@
 gruppo: ProseccoCoding
 ## Useful links to files
 - Complete Javadoc documentation can be found at /docs/javadoc/proseccoCoding/model/package-summary.html
-- JUnit test report can be found at /docs/....
+- JUnit test report can be found at /docs/surefire-report.html
 ## How to run Trusted List Navigation application
 Here it is described in few steps how to run this application and how to properly use it.
 ### Prerequisites
