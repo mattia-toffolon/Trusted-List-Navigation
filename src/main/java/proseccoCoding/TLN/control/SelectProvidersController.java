@@ -67,7 +67,9 @@ public class SelectProvidersController {
 		providersPane.setSpacing(5);
 		providersPane.setPadding(new Insets(5));
 		providersPane.getChildren().add(selectAll);
-		providersPane.getChildren().add(new Separator());		
+		Separator sep = new Separator();
+		sep.setMinWidth(315);
+		providersPane.getChildren().add(sep);		
 		
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);

@@ -10,10 +10,10 @@
 <AnchorPane prefHeight="460.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proseccoCoding.TLN.control.ListServicesController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="460.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
-      <Button layoutX="176.0" layoutY="421.0" mnemonicParsing="false" onAction="#switchToHome" text="Home" />
-      <ListView fx:id="servicesList" layoutX="35.0" layoutY="50.0" prefHeight="360.0" prefWidth="330.0" />
+      <Button layoutX="176.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="27.0" prefWidth="55.0" style="-fx-background-color: white; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-border-radius: 4; -fx-cursor: hand;" text="Home" />
+      <ListView fx:id="servicesList" focusTraversable="false" layoutX="35.0" layoutY="50.0" prefHeight="360.0" prefWidth="330.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" layoutX="35.0" layoutY="20.0" stroke="TRANSPARENT" strokeType="INSIDE" width="330.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="15.0" prefHeight="35.0" prefWidth="328.0" text="Codes and full names of the Trust-Services types" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="15.0" prefHeight="35.0" prefWidth="328.0" text="Codes and full names of the Trust-Service types" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>

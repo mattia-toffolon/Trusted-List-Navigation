@@ -67,7 +67,9 @@ public class SelectServicesController {
 		serviceTypesPane.setSpacing(5);
 		serviceTypesPane.setPadding(new Insets(5));
 		serviceTypesPane.getChildren().add(selectAll);
-		serviceTypesPane.getChildren().add(new Separator());		
+		Separator sep = new Separator();
+		sep.setMinWidth(315);
+		serviceTypesPane.getChildren().add(sep);		
 		
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);
