@@ -60,11 +60,10 @@ public class QueryResultsController {
     
     @FXML
     /**
-     * Switches scene to the "home" one and ends the Query if it has been concluded
+     * Switches scene to the "home" one
      * @throws IOException
      */
     private void switchToHome() throws IOException {
-    	TrustedListFacade.getInstance().endQuery();
         App.setRoot("home");
     }
 }

@@ -114,12 +114,10 @@ public class SelectCountriesController {
 
     @FXML
     /**
-     * Switches scene to the "home" one. If a Query has been created it gets ended.
+     * Switches scene to the "home" one
      * @throws IOException
      */
     private void switchToHome() throws IOException {
-    	if(TrustedListFacade.getInstance().getQuery()!=null)
-    		TrustedListFacade.getInstance().endQuery();
         App.setRoot("home");
     }
     

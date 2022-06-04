@@ -11,10 +11,7 @@ import java.sql.Timestamp;
  * It is also possible to retrieve all the possible choices for the next selection, after a selection is made.
  */
 public class Query {
-	/**
-	 * The timestamp representing the query starting time
-	 */
-	private Timestamp startTime;
+	
 	/**
 	 * ArrayList that stores the Country objects selected by the user
 	 */
@@ -31,10 +28,6 @@ public class Query {
 	 * ArrayList that stores the possible service statuses among the selected services as Strings
 	 */
 	private ArrayList<String> selectedServiceStatus;
-	
-	public Query() {
-		startTime = new Timestamp(System.currentTimeMillis());
-	}
 
 	/**
 	 * This method sets selectedCountries with the given parameter
@@ -173,20 +166,5 @@ public class Query {
 		}
 		
 		return results;
-	}
-	/**
-	 * This method tells if the query is completed or hasn't been completed yet
-	 * @return true if the query is completed, false otherwise
-	 */
-	public boolean isEnded() {
-		return (selectedServiceStatus==null ? false : true);
-	}
-	
-	/**
-	 * Returns the timestamp of the time in which this query was been instantiated.
-	 * @return the timestamp of initialization time
-	 */
-	public Timestamp getStartTime() {
-		return startTime;
 	}
 }

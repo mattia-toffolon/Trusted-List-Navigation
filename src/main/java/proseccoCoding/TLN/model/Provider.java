@@ -85,14 +85,6 @@ public class Provider {
 		return new ArrayList<ServiceType>(services.keySet());
 	}
 
-//	/**
-//	 * Generate an hash code based only on the code of the provider
-//	 */
-//	@Override
-//	public int hashCode() {
-//		return Objects.hash(code);
-//	}
-//
 	/**
 	 * Checks if the object passed as argument is equal to this object only by their codes
 	 */

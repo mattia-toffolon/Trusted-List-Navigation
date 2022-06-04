@@ -15,11 +15,18 @@ import javafx.util.Pair;
  * In both cases the fact that the object would be a singleton is granted.
  */
 public class ServiceType {
+	
+	/**
+	 * HashMap used to contain all possible instances of ServiceType objects
+	 */
 	private static HashMap<String, ServiceType> instances = null;
-
-	private static boolean autoFetch = true;
-
+	/**
+	 * Code of this service type
+	 */
 	private String code;
+	/**
+	 * Name of this service type
+	 */
 	private String name;
 
 	/**
@@ -60,11 +67,10 @@ public class ServiceType {
 	/**
 	 * Initializes and fills the hashmap with all the known types complete data
 	 */
-	public static void init() {
+	private static void init() {
 		instances = new HashMap<String, ServiceType>();
-		if (autoFetch)
-			for (Pair<String, String> p : APIHandler.retriveServiceTypes())
-				instances.put(p.getKey(), new ServiceType(p.getKey(), p.getValue()));
+		for (Pair<String, String> p : APIHandler.retriveServiceTypes())
+			instances.put(p.getKey(), new ServiceType(p.getKey(), p.getValue()));
 	}
 
 	/**

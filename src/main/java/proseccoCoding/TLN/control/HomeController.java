@@ -28,7 +28,7 @@ public class HomeController {
 	private void initialize() {
 		try {
 			APIHandler.initCountriesData();
-	    	APIHandler.initCountriesName();
+	    	APIHandler.initCountriesNames();
 		} catch (Exception e) {
 			Alert a = new Alert(AlertType.ERROR, "Error: " +e+ "\n\nThe error is caused by either the user's or the server's internet connection.", ButtonType.CLOSE);
 			a.setHeaderText("Connection Error");

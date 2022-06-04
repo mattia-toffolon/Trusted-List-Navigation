@@ -24,7 +24,7 @@ public class APIHandler {
 	/**
 	 * JSONArray that contains JSONObjects with the country names and the country codes
 	 */
-	private static JSONArray countriesName;
+	private static JSONArray countriesNames;
 	/**
 	 * JSONArray that contains JSONObjects with all the information about all countries
 	 */
@@ -33,9 +33,9 @@ public class APIHandler {
 	/**
 	 * Initializer method for variable countriesName. It initialize countriesName with countries codes and their full name
 	 */
-	public static void initCountriesName() throws Exception{
+	public static void initCountriesNames() throws Exception{
 		
-		if(countriesName!=null)
+		if(countriesNames!=null)
 			return;
 		
 		try {
@@ -48,7 +48,7 @@ public class APIHandler {
 
 			if (responseCode == HttpURLConnection.HTTP_OK) {
 				BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-				countriesName = new JSONArray(new JSONTokener(in));
+				countriesNames = new JSONArray(new JSONTokener(in));
 				in.close();
 			}
 		}
@@ -89,16 +89,16 @@ public class APIHandler {
 	 * @return ArrayList with all the names of the countries
 	 */
 	public static ArrayList<String> retrieveCountriesNames() {
-		if (countriesName == null) {
+		if (countriesNames == null) {
 			try {
-				initCountriesName();
+				initCountriesNames();
 			} catch (Exception e) {
 				System.err.print(e);
 			}
 		}
 		
 		ArrayList<String> countries = new ArrayList<String>();
-		Iterator<Object> it = countriesName.iterator();
+		Iterator<Object> it = countriesNames.iterator();
 		while (it.hasNext()) {
 			JSONObject object = (JSONObject) it.next();
 			countries.add(object.getString("countryName"));
@@ -114,16 +114,16 @@ public class APIHandler {
 	 *         complete data as value
 	 */
 	public static HashMap<String, Country> retrieveCountries() {
-		if (countriesName == null){
+		if (countriesNames == null){
 			try {
-				initCountriesName();
+				initCountriesNames();
 			} catch (Exception e) {
 				System.err.print(e);
 			}
 		}
 		
 		HashMap<String, Country> countries = new HashMap<String, Country>();
-		Iterator<Object> it = countriesName.iterator();
+		Iterator<Object> it = countriesNames.iterator();
 		while (it.hasNext()) {
 			JSONObject obj = (JSONObject) it.next();
 			countries.put(obj.getString("countryCode"),
@@ -209,9 +209,9 @@ public class APIHandler {
 	public static Country retriveCountryData(String countryCode) {
 		if(countryCode == null)
 			throw new IllegalArgumentException("Argument must be not null");
-		if (countriesData == null || countriesName == null) {
+		if (countriesData == null || countriesNames == null) {
 			try {
-				initCountriesName();
+				initCountriesNames();
 				initCountriesData();
 			} catch (Exception e) {
 				System.err.print(e);
@@ -221,7 +221,7 @@ public class APIHandler {
 		Country tempCountry = null;
 
 		// Build the country object with only name and country as attribute
-		Iterator<Object> itCountry = countriesName.iterator();
+		Iterator<Object> itCountry = countriesNames.iterator();
 		while (itCountry.hasNext()) {
 			JSONObject countryObject = (JSONObject) itCountry.next();
 			String tempCode = countryObject.getString("countryCode");

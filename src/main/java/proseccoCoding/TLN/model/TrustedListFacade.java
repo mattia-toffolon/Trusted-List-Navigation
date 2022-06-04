@@ -7,6 +7,9 @@ import java.util.ArrayList;
  */
 public class TrustedListFacade {
 	
+	/**
+	 * Unique instance of TrustedListFacade class
+	 */
 	private static TrustedListFacade instance = null;
 	/**
 	 * The query currently used or the latest used
@@ -56,17 +59,6 @@ public class TrustedListFacade {
 		if(query == null)
 			return null;
 		return query;
-	}
-	
-	/**
-	 * Ends the current query and discards it if it isn't completed
-	 * @return True if the query is complete, false if it isn't completed
-	 */
-	public boolean endQuery() {
-		if(query.isEnded())
-			return true;
-		query = null;
-		return false;
 	}
 	
 	/**
