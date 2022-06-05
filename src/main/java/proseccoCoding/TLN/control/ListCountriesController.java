@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.APIHandler;
+import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
  * Controller of the listCountries view.
@@ -25,7 +26,7 @@ public class ListCountriesController {
 	 * The countries names are retrieved as Strings through the use of an APIHandler method.
 	 */
 	private void initialize() {
-		for (String s : APIHandler.retrieveCountriesNames())
+		for (String s : TrustedListFacade.getInstance().retrieveCountriesNames())
 			countriesList.getItems().add(s);
 	}
 	

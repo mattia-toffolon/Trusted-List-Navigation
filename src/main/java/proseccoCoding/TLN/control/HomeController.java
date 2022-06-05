@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.APIHandler;
+import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
  * Controller of the home view.
@@ -24,8 +25,7 @@ public class HomeController {
 	 */
 	private void initialize() {
 		try {
-			APIHandler.initCountriesData();
-	    	APIHandler.initCountriesNames();
+			TrustedListFacade.getInstance().requestData();
 		} catch (Exception e) {
 			Alert a = new Alert(AlertType.ERROR, "Error: " +e+ "\n\nThe error is caused by either the user's or the server's internet connection.", ButtonType.CLOSE);
 			a.setHeaderText("Connection Error");

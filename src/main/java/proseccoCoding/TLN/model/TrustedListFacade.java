@@ -1,6 +1,8 @@
 package proseccoCoding.TLN.model;
 
 import java.util.ArrayList;
+
+import javafx.util.Pair;
 /**
  * This class is used as interface for all the business logic operations.
  * Provides access to all trusted data and some basic methods for query management and query interaction.
@@ -50,6 +52,31 @@ public class TrustedListFacade {
 		query = new Query();
 		query.addSelectedCountries(trustedListData.getCountries(countryCodes));
 		return true;
+	}
+	
+	/**
+	 * Tells APIHandler to request the services data to the TrustedListAPI
+	 * @throws Exception
+	 */
+	public void requestData() throws Exception {
+		APIHandler.initCountriesData();
+    	APIHandler.initCountriesNames();
+	}
+	
+	/**
+	 * Retrieves from APIHandler the list of the EU countries names
+	 * @return ArrayList<String> containing the names of the EU countries
+	 */
+	public ArrayList<String> retrieveCountriesNames() {
+		return APIHandler.retrieveCountriesNames();
+	}
+	
+	/**
+	 * Retrieves from APIHandler the list of the service types names and codes
+	 * @return ArrayList<Pair<String, String>> containing Pairs which first value is the service type's code and the second one is its name
+	 */
+	public ArrayList<Pair<String, String>> retriveServiceTypes() {
+		return APIHandler.retriveServiceTypes();
 	}
 	
 	/**

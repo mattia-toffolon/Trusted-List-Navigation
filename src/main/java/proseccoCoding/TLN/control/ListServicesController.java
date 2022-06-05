@@ -6,6 +6,7 @@ import javafx.scene.control.ListView;
 import javafx.util.Pair;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.APIHandler;
+import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
  * Controller of the listServices view
@@ -26,7 +27,7 @@ public class ListServicesController {
 	 * The service types' informations are retrieved as Strings through the use of an APIHandler method.
 	 */
 	private void initialize() {
-		for (Pair<String, String> s : APIHandler.retriveServiceTypes())
+		for (Pair<String, String> s : TrustedListFacade.getInstance().retriveServiceTypes())
 			servicesList.getItems().add(s.getKey()+"\n﹂ "+s.getValue());
 	}
 	
