@@ -76,4 +76,7 @@ Every Service object contains attributes for type, status and others minor infor
 When the user starts a new search a Query object is created. This Query object contains all the selected countries objects (with all their data), and for each selection the user make, it compute a subset of informations from the initial set of countries that mach the user selection. At the end of the selections only the services that meet them will remains, and they can be shown.<br />
 
 # External libraries and functionality used in TNL application
-    <<<<da completare>>>
+- **org.openjfx** libraries to build the graphical user interface
+- **org.json** library to handle json data retrieved from the API services
+-  **com.google.guava** libraries used only for the MultiMap implementation for storing services in provider class
+-  **org.junit** library used for unit class testing
