@@ -19,6 +19,8 @@ Here it is described in few steps how to run this application and how to properl
 <br /> :memo: **Note:** In case of not working internet connection or EU trusted data's server fault can be displayed an error before the application launch. In this case you should try again from point 2.
 4. Finally, if no error occurs the application should display home view. <br />
     <img src="https://user-images.githubusercontent.com/48312863/171995190-607a8846-d0f2-422a-b704-96c82248f52d.png"  height="300" /> <br />
+    <img src="https://user-images.githubusercontent.com/96696061/172061538-b92ebc08-e02b-41c7-9e96-1c323d21055e.png"  height="300" /> <br />
+
  
 
 ### View countries and service types lists
