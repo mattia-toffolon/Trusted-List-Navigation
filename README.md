@@ -2,7 +2,7 @@
 gruppo: ProseccoCoding
 
 ## Links to some deliverable files
-- Complete Javadoc documentation can be found [here](https://mattia-toffolon.github.io/mattia-toffolon/Trusted-List-Navigation/javadoc/index.html).
+- Complete Javadoc documentation can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/javadoc/index.html).
 - JUnit test report can be found [here](https://mattia-toffolon.github.io/mattia-toffolon/Trusted-List-Navigation/surfire/surefire-report.html).
 
 ## How to run Trusted List Navigation application
