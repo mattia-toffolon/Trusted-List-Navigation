@@ -8,9 +8,8 @@ import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.APIHandler;
 
 /**
- * 
  * Controller of the listServices view
- *
+ * It has the duty to show the list of the Trust-Service types to the user and to let him go back to the homepage.
  */
 public class ListServicesController {
 

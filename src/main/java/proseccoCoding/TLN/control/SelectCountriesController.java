@@ -22,9 +22,9 @@ import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
- * 
- * Controller of the selectCountries view
- *
+ * Controller of the selectCountries view.
+ * It has the duty to let the user choose his countries of interest with a view to creating a query.
+ * It also has to let the user move forward to the providers selection and go back to the homepage.
  */
 public class SelectCountriesController {
 	

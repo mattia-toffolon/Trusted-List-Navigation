@@ -52,6 +52,7 @@ public class Service {
 	public String getName() {
 		return name;
 	}
+	
 	/**
 	 * Getter for service type
 	 * @return The ServiceType object
@@ -66,6 +67,7 @@ public class Service {
 	public String getStatus() {
 		return status;
 	}
+	
 	/**
 	 * Getter for the service provider, could be null if it is not known
 	 * @return The Provider object
@@ -73,7 +75,6 @@ public class Service {
 	public Provider getProvider() {
 		return provider;
 	}
-	
 
 	/**
 	 * Gets the hash code for this service calculated with both name and type

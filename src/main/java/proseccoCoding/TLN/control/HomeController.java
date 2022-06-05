@@ -11,9 +11,8 @@ import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.APIHandler;
 
 /**
- * 
- * Controller of the home view
- *
+ * Controller of the home view.
+ * It has the duty to let user access all the features of the TrusteListNavigation program.
  */
 public class HomeController {
 	

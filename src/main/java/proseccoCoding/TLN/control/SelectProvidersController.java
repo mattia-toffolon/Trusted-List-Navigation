@@ -21,9 +21,9 @@ import proseccoCoding.TLN.model.TrustedListFacade;
 import proseccoCoding.TLN.model.Provider;
 
 /**
- * 
- * Controller of the selectProviders view
- *
+ * Controller of the selectProviders view.
+ * It has the duty to let the user choose his providers of interest with a view to creating a query.
+ * It also has to let the user move forward to the service types selection and go back to the countries selection.
  */
 public class SelectProvidersController {
 

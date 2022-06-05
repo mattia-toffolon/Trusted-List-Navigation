@@ -11,9 +11,9 @@ import proseccoCoding.TLN.model.ServiceType;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
- * 
- * Controller of the queryResults view
- *
+ * Controller of the queryResults view.
+ * It has the duty to show the user the list of his query results. 
+ * It also has to let the user move to the hompage and go back to the service statuses selection.
  */
 public class QueryResultsController {
 

@@ -7,9 +7,8 @@ import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.APIHandler;
 
 /**
- * 
- * Controller of the listCountries view
- *
+ * Controller of the listCountries view.
+ * It has the duty to show the list of the EU countries to the user and to let him go back to the homepage.
  */
 public class ListCountriesController {
 

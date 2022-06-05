@@ -21,9 +21,9 @@ import proseccoCoding.TLN.model.TrustedListFacade;
 import proseccoCoding.TLN.model.ServiceType;
 
 /**
- * 
- * Controller of the selectServices view
- *
+ * Controller of the selectServices view.
+ * It has the duty to let the user choose his service types of interest with a view to creating a query.
+ * It also has to let the user move forward to the service statuses selection and go back to the providers selection.
  */
 public class SelectServicesController {
 	

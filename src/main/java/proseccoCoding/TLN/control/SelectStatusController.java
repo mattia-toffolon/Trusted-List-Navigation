@@ -20,9 +20,9 @@ import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
- * 
  * Controller of the selectStatus view
- *
+ * It has the duty to let the user choose his service statuses of interest with a view to creating a query.
+ * It also has to let the user move forward to the queryResults view and go back to the service types selection.
  */
 public class SelectStatusController {
 
