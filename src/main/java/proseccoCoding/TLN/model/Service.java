@@ -84,7 +84,7 @@ public class Service {
 	}
 
 	/**
-	 * Compares two objects of service calculated with both name and type
+	 * Compares the given Service object to this one by comparing both name and type
 	 */
 	@Override
 	public boolean equals(Object obj) {

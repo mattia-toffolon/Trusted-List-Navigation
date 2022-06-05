@@ -4,6 +4,7 @@ import java.util.ArrayList;
 /**
  * This class is used as interface for all the business logic operations.
  * Provides access to all trusted data and some basic methods for query management and query interaction.
+ * It implements the Singleton pattern since there's the necessity to guarantee the uniqueness of the Facade.
  */
 public class TrustedListFacade {
 	
@@ -37,7 +38,7 @@ public class TrustedListFacade {
 	/**
 	 * Starts and initialize a new query with the given countries 
 	 * @param countryCodes Country codes of the selected countries (must have size>0)
-	 * @return true if the query has been initialized, false 
+	 * @return true if the query has been initialized, false otherwise
 	 * @throws IllegalArgumentException In case of null parameter
 	 */
 	public boolean startQuery(ArrayList<String> countryCodes) throws IllegalArgumentException {
@@ -52,7 +53,7 @@ public class TrustedListFacade {
 	}
 	
 	/**
-	 * Gets the current query or null if there isn't one
+	 * Returns the current query or null if there isn't one
 	 * @return The Query in use or null if there isn't one
 	 */
 	public Query getQuery() {
@@ -62,8 +63,8 @@ public class TrustedListFacade {
 	}
 	
 	/**
-	 * Return the object to access all the trusted data for each country
-	 * @return
+	 * Returns the TrustedListData object
+	 * @return trustedListData
 	 */
 	public TrustedListData getData() {
 		return trustedListData;

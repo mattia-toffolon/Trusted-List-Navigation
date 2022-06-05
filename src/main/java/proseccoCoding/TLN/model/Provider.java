@@ -52,8 +52,8 @@ public class Provider {
 	/**
 	 * Adds the service to the provider 
 	 * @param service The service to add
-	 * @return True if the service is been added successfully, false otherwise
-	 * @throws IllegalArgumentException If the service is null
+	 * @return True if the service has been added successfully, false otherwise
+	 * @throws IllegalArgumentException if the service is null
 	 */
 	public boolean addService(Service service) throws IllegalArgumentException{
 		if(service == null)
@@ -67,18 +67,18 @@ public class Provider {
 	}
 	
 	/**
-	 * Returns all the services provided by this provider that have type value 
-	 * equals to the one given as parameter.
-	 * @param type The type to search for
-	 * @return ArrayList with services if there are, or empty (not null) if there aren't
+	 * Returns all the services saved in the services Multimap that have a service type 
+	 * as value that equals the one given as parameter.
+	 * @param type The service type to search for
+	 * @return ArrayList of services if there are with the given service type, or empty (not null) if there aren't
 	 */
 	public ArrayList<Service> getServices(ServiceType type) {
 		return new ArrayList<Service>(services.get(type)); 
 	}
 	
 	/**
-	 * Returns all the service types provided by this provider. If this provider has no services
-	 * the ArrayList would be empty (not null)
+	 * Returns all the service types provided by this provider. 
+	 * If this provider has no services, the ArrayList will be empty (not null).
 	 * @return An ArrayList containing all service types without duplicates
 	 */
 	public ArrayList<ServiceType> getServiceTypes() {
@@ -86,7 +86,7 @@ public class Provider {
 	}
 
 	/**
-	 * Checks if the object passed as argument is equal to this object only by their codes
+	 * Checks if the object passed as argument is equal to this object only by comparing their codes
 	 */
 	@Override
 	public boolean equals(Object obj) {

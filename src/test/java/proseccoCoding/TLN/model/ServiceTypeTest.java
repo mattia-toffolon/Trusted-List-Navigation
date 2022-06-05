@@ -3,7 +3,6 @@ package proseccoCoding.TLN.model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.DisplayName;
@@ -55,7 +54,6 @@ class ServiceTypeTest {
 		vals.addAll(APIHandler.retriveServiceTypes().stream()
 				.map((Pair<String, String> p)->{return p.getKey();})
 				.collect(Collectors.toList()));
-		ServiceType.init();
 		for (String string : vals)
 			ServiceType.getInstance(string);
 		ArrayList<Pair<String,String>> ret = ServiceType.printServiceTypes();

@@ -89,7 +89,7 @@ public class SelectCountriesController {
 	
 	/**
 	 * This private method is used to change every CheckBox status to the selectAll one
-	 * @param value
+	 * @param value status of selectAll CheckBox
 	 */
 	private void selectAllChanged(Boolean value) {
     	if(selectAll.isIndeterminate())
@@ -106,7 +106,7 @@ public class SelectCountriesController {
 	/**
 	 * This private method is used to manage the indeterminate status of the selectAll CheckBox.
 	 * If a country CheckBox is set to false and the selectAll one was previously set to true, selectAll becomes indeterminate.
-	 * @param newValue
+	 * @param newValue updated status of the selected CheckBox
 	 */
     private void checkBoxChanged(Boolean newValue) {
     	if(newValue == false && selectAll.isSelected())

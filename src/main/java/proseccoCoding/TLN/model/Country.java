@@ -7,7 +7,7 @@ import javafx.util.Pair;
 
 /**
  * This class represents a country with all its trusted providers (that provide services).
- * Every country must be identified by its international code of two characters.
+ * Every country must be identified by its international code made of two characters.
  */
 public class Country {
 	/**

@@ -15,23 +15,23 @@ import org.json.JSONTokener;
 
 import javafx.util.Pair;
 /**
- * This class allows to contact the API and retrieve data from it.
- * The class contains two methods for the API call and the others static methods 
- * are used for molding the data and creating Objects with the required specifications.
+ * This class allows to interact with the TrustedListAPI and retrieve data from it.
+ * This class contains two methods for the API calls and others static methods 
+ * used to mold the data and create Objects with the required specifications.
  */
 public class APIHandler {
 
 	/**
-	 * JSONArray that contains JSONObjects with the country names and the country codes
+	 * JSONArray that contains JSONObjects with the country names and codes
 	 */
 	private static JSONArray countriesNames;
 	/**
-	 * JSONArray that contains JSONObjects with all the information about all countries
+	 * JSONArray that contains JSONObjects with all the information about each country
 	 */
 	private static JSONArray countriesData;
 
 	/**
-	 * Initializer method for variable countriesName. It initialize countriesName with countries codes and their full name
+	 * Initializer method for variable countriesNames. It initializes countriesNames with countries codes and full names
 	 */
 	public static void initCountriesNames() throws Exception{
 		
@@ -58,7 +58,7 @@ public class APIHandler {
 	}
 	
 	/**
-	 * Initializer method for variable countriesData. It initialize countriesData with all information about the countries
+	 * Initializer method for variable countriesData. It initializes countriesData with all the information about each country
 	 */
 	public static void initCountriesData() {
 		
@@ -84,8 +84,7 @@ public class APIHandler {
 	}
 
 	/**
-	 * Static method that creates an ArrayList of strings with only the names of the countries
-	 * 
+	 * Static method that returns an ArrayList of Strings containing the names of the EU countries
 	 * @return ArrayList with all the names of the countries
 	 */
 	public static ArrayList<String> retrieveCountriesNames() {
@@ -108,10 +107,8 @@ public class APIHandler {
 	}
 
 	/**
-	 * Static method that populate an HashMap with countries codes as keys and Country objects as values
-	 * 
-	 * @return HashMap countries with the country code as key and the Country object without
-	 *         complete data as value
+	 * Static method that returns an HashMap containing entries with country codes as keys and Country objects as values.
+	 * @return HashMap containing entries with country codes as keys and Country objects (without complete data) as values
 	 */
 	public static HashMap<String, Country> retrieveCountries() {
 		if (countriesNames == null){
@@ -134,9 +131,8 @@ public class APIHandler {
 	}
 	
 	/**
-	 * Private method that read from local file the service type data and return an HashMap
-	 * 
-	 * @return HashMap where the key is the code of the type and the value is the full name
+	 * Private method that reads from local file the service types data and return an HashMap containing entries with service type codes as keys and service type names as values.
+	 * @return HashMap containing entries with service type codes as keys and service type names as values
 	 */
 	private static HashMap<String,String> readFromFile(){
 		HashMap<String,String> ret = new HashMap<String,String>();
@@ -156,22 +152,20 @@ public class APIHandler {
 	}
 	
 	/**
-	 * Static method that parse the countryData's JSONArray and extracts all types of services from all countries
-	 * 
-	 * @return ArrayList of Pairs where the first element is the type code and the second is the type full name
+	 * Static method that parses countryData and extracts all service types from all countries
+	 * @return ArrayList of Pair<String, String> composed of a service type code as first value and a service type full name as second value
 	 */	
 	public static ArrayList<Pair<String,String>> retriveServiceTypes() {
 		if(countriesData == null)
 			initCountriesData();
 		
 		ArrayList<Pair<String,String>> serviceTypes = new ArrayList<Pair<String,String>>();
-		// <type code, type full name>
 		HashMap<String,String> pairSet = APIHandler.readFromFile(); 
 		Iterator<Object> it = countriesData.iterator();
 
 		while (it.hasNext()) {
 			JSONObject obj = (JSONObject) it.next();
-			// Each array of services is going to be parse
+			// Each array of services is going to be parsed
 			try {
 				Scanner in = new Scanner(obj.get("qServiceTypes").toString());
 				in.useDelimiter("\\[|\\]|,|\" ");
@@ -187,7 +181,7 @@ public class APIHandler {
 					// if the current service type code is in the local file
 					else 
 						tempPair = new Pair<String,String>(temp,pairSet.get(temp));
-					// only pairs not already processed
+					// only pairs not already processed are added to serviceTypes
 					if(!serviceTypes.contains(tempPair)) 
 						serviceTypes.add(tempPair);
 				}
@@ -200,13 +194,12 @@ public class APIHandler {
 	}
 
 	/**
-	 * Static method that parse the countryData's JSONArray and extracts the data to create a Country object
-	 * 
+	 * Static method that parses countryData and extracts the data to create a Country object
 	 * @param countryCode The code that identifies each country
 	 * @return the Country object just created
 	 * @throws IllegalArgumentException in case of null parameter 
 	 */
-	public static Country retriveCountryData(String countryCode) {
+	public static Country retriveCountryData(String countryCode) throws IllegalArgumentException {
 		if(countryCode == null)
 			throw new IllegalArgumentException("Argument must be not null");
 		if (countriesData == null || countriesNames == null) {
@@ -220,7 +213,7 @@ public class APIHandler {
 
 		Country tempCountry = null;
 
-		// Build the country object with only name and country as attribute
+		// Build the country object with only name and country as attributes
 		Iterator<Object> itCountry = countriesNames.iterator();
 		while (itCountry.hasNext()) {
 			JSONObject countryObject = (JSONObject) itCountry.next();
@@ -231,7 +224,7 @@ public class APIHandler {
 			}
 		}
 
-		// Add the providers with the relative services
+		// Add the providers with the relative services to the Country object
 		Iterator<Object> itProviders = countriesData.iterator();
 
 		while (itProviders.hasNext()) {
@@ -241,8 +234,8 @@ public class APIHandler {
 				Provider tempProvider = new Provider((String) obj.get("name"), tempCountry);
 				JSONArray services = obj.getJSONArray("services");
 				
-				// Build each service object with status, name service and country code. After
-				// that it is put in provider's MultiMap
+				// Build each service object with status, name service and country code.
+				// After that, it gets added to the country's providers MultiMap
 				for (int i = 0; i < services.length(); i++) { // loop for every service
 					JSONObject temp = services.getJSONObject(i);
 					String tempName = temp.getString("serviceName");
@@ -254,10 +247,10 @@ public class APIHandler {
 						tempServiceTypes.add(ServiceType.getInstance(tempTypeCode));
 					}
 					
-					//Status
+					//retrieve Status as String
 					String tempStatus = temp.getString("currentStatus");
 					tempStatus = tempStatus.substring(50, tempStatus.length());
-					//Service creation
+					//create Service object
 					Service tempService = new Service(tempName,tempServiceTypes,tempStatus,tempProvider);
 					tempProvider.addService(tempService);
 				}

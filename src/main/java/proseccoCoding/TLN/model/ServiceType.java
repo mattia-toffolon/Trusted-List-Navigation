@@ -65,7 +65,7 @@ public class ServiceType {
 	}
 
 	/**
-	 * Initializes and fills the hashmap with all the known types complete data
+	 * Initializes and fills "instances" with all the known service types
 	 */
 	private static void init() {
 		instances = new HashMap<String, ServiceType>();
@@ -90,7 +90,7 @@ public class ServiceType {
 	}
 
 	/**
-	 * Return the list of Pairs that represents all the known service types
+	 * Returns the list of Pairs that represents all the known service types
 	 * @return An ArrayList of Pairs containing as Key the type code, and as value the type name
 	 */
 	public static ArrayList<Pair<String, String>> printServiceTypes() {
@@ -113,9 +113,8 @@ public class ServiceType {
 	}
 
 	/**
-	 * Equals method that compare service types only by code
-	 * 
-	 * @param obj Second object to compare to this
+	 * Equals method that compares service types only by code
+	 * @param obj object to compare to this
 	 */
 	@Override
 	public boolean equals(Object obj) {

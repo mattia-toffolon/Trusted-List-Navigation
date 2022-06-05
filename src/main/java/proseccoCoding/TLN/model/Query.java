@@ -1,7 +1,6 @@
 package proseccoCoding.TLN.model;
 
 import java.util.ArrayList;
-import java.sql.Timestamp;
 
 /**
  * This class represents a Query used for the trusted services search. It is necessary to use this given
@@ -25,7 +24,8 @@ public class Query {
 	 */
 	private ArrayList<Service> selectedServicesByType;
 	/**
-	 * ArrayList that stores the possible service statuses among the selected services as Strings
+	 * ArrayList that stores the selected service statuses that are associated with at least 
+	 * one service which service type, country and provider has been selected by the user, as Strings.
 	 */
 	private ArrayList<String> selectedServiceStatus;
 
@@ -62,6 +62,7 @@ public class Query {
 		
 		return availableProviders;
 	}
+	
 	/**
 	 * This method adds to selectedProviders the providers object associated with the Strings contained in providerCodes
 	 * @param providerCodes , ArrayList of Strings that contains all the codes of the selected providers
@@ -81,6 +82,7 @@ public class Query {
 		
 		return true;
 	}
+	
 	/**
 	 * This method returns an ArrayList of all the possible service types user can select in this query
 	 * @return ArrayList of ServiceType objects
@@ -100,6 +102,7 @@ public class Query {
 		
 		return availableServiceTypes;
 	}
+	
 	/**
 	 * This method adds to selectedServicesByType all the Service objects contained in selectedProviders' Provider objects 
 	 * which service type is among the selected ones by the user
@@ -124,8 +127,9 @@ public class Query {
 		
 		return true;
 	}
+	
 	/**
-	 * This method saves and returns all possible service status from selectedServicesByType in an ArrayLIst as Strings
+	 * This method saves and returns all possible service status from selectedServicesByType in an ArrayList of Strings
 	 * @return ArrayList of Strings 
 	 */
 	public ArrayList<String> getAvailableServiceStatus() {
@@ -137,6 +141,7 @@ public class Query {
 		
 		return availableServiceStatus;
 	}
+	
 	/**
 	 * This method adds to selectedServiceStatus all the service statuses selected by the user
 	 * @param status , ArrayList of Strings
@@ -152,6 +157,7 @@ public class Query {
 		
 		return true;
 	}
+	
 	/**
 	 * This method returns all Service objects from selectedServiceByType 
 	 * which status is among the ones contained in selectedServiceStatus
