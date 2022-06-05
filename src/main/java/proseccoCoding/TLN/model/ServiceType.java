@@ -68,11 +68,9 @@ public class ServiceType {
 	 * Initializes and fills "instances" with all the known service types
 	 */
 	public static void init() {
-		if(instances==null) {
-			instances = new HashMap<String, ServiceType>();
-			for (Pair<String, String> p : APIHandler.retriveServiceTypes())
-				instances.put(p.getKey(), new ServiceType(p.getKey(), p.getValue()));
-		}
+		instances = new HashMap<String, ServiceType>();
+		for (Pair<String, String> p : APIHandler.retriveServiceTypes())
+			instances.put(p.getKey(), new ServiceType(p.getKey(), p.getValue()));
 	}
 
 	/**
