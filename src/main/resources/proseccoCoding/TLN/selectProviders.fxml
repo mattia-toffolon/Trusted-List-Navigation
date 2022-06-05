@@ -11,8 +11,8 @@
 <AnchorPane prefHeight="460.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proseccoCoding.TLN.control.SelectProvidersController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="460.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
-      <Button layoutX="33.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectCountries" prefHeight="27.0" prefWidth="55.0" style="-fx-background-color: white; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-border-radius: 4; -fx-cursor: hand;" text="Back" />
-      <Button layoutX="313.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectServices" prefHeight="27.0" prefWidth="55.0" style="-fx-background-color: white; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-border-radius: 4; -fx-cursor: hand;" text="Next" />
+      <Button layoutX="33.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectCountries" prefHeight="27.0" prefWidth="55.0" text="Back" />
+      <Button layoutX="313.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectServices" prefHeight="27.0" prefWidth="55.0" text="Next" />
       <ScrollPane layoutX="33.0" layoutY="53.0" maxWidth="-Infinity" prefHeight="355.0" prefWidth="335.0" style="-fx-background-color: white;">
          <content>
             <VBox fx:id="providersPane" fillWidth="false" minHeight="360.0" minWidth="340.0" style="-fx-background-color: white;" />

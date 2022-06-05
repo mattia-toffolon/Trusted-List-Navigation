@@ -11,7 +11,7 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="460.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" layoutX="35.0" layoutY="16.0" stroke="TRANSPARENT" strokeType="INSIDE" width="330.0" />
-      <Button layoutX="176.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="27.0" prefWidth="55.0" style="-fx-background-color: white; -fx-background-radius: 4; -fx-border-color: #cccccc; -fx-border-radius: 4; -fx-cursor: hand;" text="Home" />
+      <Button layoutX="176.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="27.0" prefWidth="55.0" text="Home" />
       <ListView fx:id="countriesList" focusTraversable="false" layoutX="35.0" layoutY="50.0" prefHeight="360.0" prefWidth="330.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="11.0" prefHeight="35.0" prefWidth="328.0" text="List of the EU Countries" textAlignment="CENTER">
          <font>

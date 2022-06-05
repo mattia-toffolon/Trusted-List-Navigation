@@ -1,6 +1,7 @@
 package proseccoCoding.TLN;
 
 import javafx.application.Application;
+import javafx.css.Style;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,6 +28,10 @@ public class App extends Application {
      */
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("home"));
+        scene.getStylesheets().add(getClass().getResource("checkbox.css").toExternalForm());  
+        scene.getStylesheets().add(getClass().getResource("button.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("scrollpane.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("listcell.css").toExternalForm());        
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Trusted List Navigation");
