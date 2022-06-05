@@ -68,6 +68,12 @@ Here it is described in few steps how to run this application and how to properl
     
     
 # Some concepts about the implementation of TLN application
-    <<<da completare>>>>
+This application interacts with the EU Trusted List API to retrieve data at [EU Trust Services](https://esignature.ec.europa.eu/efda/home/#/screen/home) and provide useful search and display functions.
+The API interaction is done over http protocol at the time of application launch. One call is made for retrieving country code and name, and the other is made for retrieving all the providers and services for every country.
+The calls to API services retrieve data in json format, and this data is stored as JSONObject and converted in Country, Provider, Service, Type objects only if it is needed. In this way only two http calls are done so their time overhead is reduced at a minimum point, but only needed countries are parsed in specific object so the time and space complexity is reduced. It is important to note that a county with its data is parsed to specific objects only one time, then is kept in case of future use.
+When a country data is needed it is parsed in a Country object that contains a collection of Providers objects and every Provider contains its services in a multimap using as key the service type. Doing like that we can obtain a minimal time complexity to retrieve services by type.
+Every Service object contains attributes for type, status and others minor informations.
+When the user starts a new search a Query object is created. This Query object contains all the selected countries objects (with all their data), and for each selection the user make, it compute a subset of informations from the initial set of countries that mach the user selection. At the end of the selections only the services that meet them will remains, and they can be shown.
+
 # External libraries and functionality used in TNL application
     <<<<da completare>>>
