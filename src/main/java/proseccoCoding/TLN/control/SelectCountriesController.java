@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.css.Style;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
@@ -24,7 +23,7 @@ import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
  * 
- * Controller of the "selectCountries" section
+ * Controller of the selectCountries view
  *
  */
 public class SelectCountriesController {
@@ -39,7 +38,7 @@ public class SelectCountriesController {
 	 */
 	private CheckBox selectAll;
 	/**
-	 * Custom ChangeListener used to define the first part of the selectAll CheckBox behavior
+	 * Custom ChangeListener used to define the first part of the selectAll CheckBox behavior.
 	 */
 	ChangeListener<Boolean> selectAllListener = new ChangeListener<Boolean>(){
 	    @Override
@@ -105,7 +104,8 @@ public class SelectCountriesController {
     }
     
 	/**
-	 * This private method is used to manage the indeterminate status of the selectAll CheckBox
+	 * This private method is used to manage the indeterminate status of the selectAll CheckBox.
+	 * If a country CheckBox is set to false and the selectAll one was previously set to true, selectAll becomes indeterminate.
 	 * @param newValue
 	 */
     private void checkBoxChanged(Boolean newValue) {
@@ -125,7 +125,7 @@ public class SelectCountriesController {
     @FXML
     /**
      * Switches scene to the "selectProviders" one.
-     * This method also tracks down the selected countries via checking the status of the CheckBoxs and sets selectedCountries in TrustedListFacade's Query.
+     * This method also tracks down the selected countries via checking the status of the CheckBoxes and sets selectedCountries in TrustedListFacade's Query.
      * If no country was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */

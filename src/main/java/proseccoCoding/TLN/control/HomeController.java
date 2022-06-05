@@ -9,12 +9,10 @@ import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
 import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.APIHandler;
-import proseccoCoding.TLN.model.TrustedListFacade;
-
 
 /**
  * 
- * Controller of the "home" section
+ * Controller of the home view
  *
  */
 public class HomeController {
@@ -22,8 +20,8 @@ public class HomeController {
 	@FXML
 	/**
 	 * Method called when HomesController is loaded. 
-	 * This method initialize the JSONArrays in APIHandler if it hasn't been done yet.
-	 * In case of connection errors, this method displays an error dialog pane that informs the user and then closes the application.
+	 * This method initialize the JSONArrays in APIHandler if this hasn't been done yet.
+	 * In case of connection errors, this method displays an error dialog pane that informs the user and then proceeds to close the application.
 	 */
 	private void initialize() {
 		try {
@@ -59,7 +57,7 @@ public class HomeController {
     
     @FXML
     /**
-     * Switches scene to the "selectCountries" one and initialize TrustedListFacade if it hasn't been done yet
+     * Switches scene to the "selectCountries" one
      * @throws IOException
      */
     private void switchToSelectCountries() throws IOException {

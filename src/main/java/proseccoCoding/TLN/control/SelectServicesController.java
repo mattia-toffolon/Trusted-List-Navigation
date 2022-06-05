@@ -22,7 +22,7 @@ import proseccoCoding.TLN.model.ServiceType;
 
 /**
  * 
- * Controller of the "selectServices" section
+ * Controller of the selectServices view
  *
  */
 public class SelectServicesController {
@@ -59,7 +59,7 @@ public class SelectServicesController {
 	/**
 	 * Method called when SelectServicesController is loaded.
 	 * This method adds to serviceTypesPane the selectAll CheckBox and a CheckBox for each service type 
-	 * which country and provider was previously selected, all with their ChangeListener.
+	 * that is associated with at least one service which country and provider was previously selected, all with their ChangeListener.
 	 */
 	private void initialize() {
 		// selectAll CheckBox is created 
@@ -107,6 +107,7 @@ public class SelectServicesController {
     
 	/**
 	 * This private method is used to manage the indeterminate status of the selectAll CheckBox
+	 * If a service type CheckBox is set to false and the selectAll one was previously set to true, selectAll becomes indeterminate.
 	 * @param newValue
 	 */
     private void checkBoxChanged(Boolean newValue) {
@@ -117,7 +118,7 @@ public class SelectServicesController {
     @FXML
     /**
      * Switches scene to the "selectStatus" one.
-     * This method also tracks down the selected service types via checking the status of the CheckBoxs and sets selectedServicesByType in TrustedListFacade's Query.
+     * This method also tracks down the selected service types via checking the status of the CheckBoxes and sets selectedServicesByType in TrustedListFacade's Query.
      * If no service type was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */

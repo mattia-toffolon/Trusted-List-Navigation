@@ -8,25 +8,24 @@ import proseccoCoding.TLN.model.APIHandler;
 
 /**
  * 
- * Controller of the "listCountries" section
+ * Controller of the listCountries view
  *
  */
 public class ListCountriesController {
 
 	@FXML
 	/**
-	 * ListView object used to contain the list of the countries 
+	 * ListView object used to contain the list of the countries' names 
 	 */
 	private ListView<String> countriesList;
 	
 	@FXML
 	/**
 	 * Method called when ListCountriesController is loaded. 
-	 * It adds the list of the countries to the private ListView object.
-	 * The countries names are retrieved as Strings through the use of APIHandler class.
+	 * It adds the list of the countries' names to the private ListView object.
+	 * The countries names are retrieved as Strings through the use of an APIHandler method.
 	 */
 	private void initialize() {
-    	// add countries to the ListView
 		for (String s : APIHandler.retrieveCountriesNames())
 			countriesList.getItems().add(s);
 	}

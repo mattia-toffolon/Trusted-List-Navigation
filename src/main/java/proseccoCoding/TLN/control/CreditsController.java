@@ -6,7 +6,7 @@ import proseccoCoding.TLN.App;
 
 /**
  * 
- * Controller of the "credits" section
+ * Controller of the credits view
  *
  */
 public class CreditsController {

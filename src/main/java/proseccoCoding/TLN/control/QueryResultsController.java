@@ -12,7 +12,7 @@ import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
  * 
- * Controller of the "queryResults" section
+ * Controller of the queryResults view
  *
  */
 public class QueryResultsController {
@@ -30,7 +30,6 @@ public class QueryResultsController {
 	 * These informations are retrieved as Strings through the use of TrustedListFacade's Query public methods.
 	 */
 	private void initialize() {
-    	// add countries to the ListView
 		ArrayList<String> results = new ArrayList<String>();
 		for (Service s : TrustedListFacade.getInstance().getQuery().getResults()) {
 			String serviceTypes = new String();

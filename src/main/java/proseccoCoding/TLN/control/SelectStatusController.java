@@ -21,7 +21,7 @@ import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
  * 
- * Controller of the "selectStatus" section
+ * Controller of the selectStatus view
  *
  */
 public class SelectStatusController {
@@ -59,7 +59,7 @@ public class SelectStatusController {
 	/**
 	 * Method called when SelectServiceStatusController is loaded.
 	 * This method adds to serviceStatusesPane the selectAll CheckBox and a CheckBox for each service status 
-	 * which service type, country and provider was previously selected, all with their ChangeListener.
+	 * that is associated with at least one service which service type, country and provider was previously selected, all with their ChangeListener.
 	 */
 	private void initialize() {
 		// selectAll CheckBox is created 
@@ -102,6 +102,7 @@ public class SelectStatusController {
     
 	/**
 	 * This private method is used to manage the indeterminate status of the selectAll CheckBox
+	 * If a service status CheckBox is set to false and the selectAll one was previously set to true, selectAll becomes indeterminate.
 	 * @param newValue
 	 */
     private void checkBoxChanged(Boolean newValue) {
@@ -121,7 +122,7 @@ public class SelectStatusController {
     @FXML
     /**
      * Switches scene to the "queryResults" one.
-     * This method also tracks down the selected service statuses via checking the status of the CheckBoxs and sets selectedServiceStatus in TrustedListFacade's Query.
+     * This method also tracks down the selected service statuses via checking the status of the CheckBoxes and sets selectedServiceStatus in TrustedListFacade's Query.
      * If no service status was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */

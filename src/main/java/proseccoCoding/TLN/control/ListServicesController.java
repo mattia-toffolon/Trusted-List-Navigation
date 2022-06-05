@@ -9,14 +9,14 @@ import proseccoCoding.TLN.model.APIHandler;
 
 /**
  * 
- * Controller of the "listServices" section
+ * Controller of the listServices view
  *
  */
 public class ListServicesController {
 
 	@FXML
 	/**
-	 * ListView object used to contain the list of the services 
+	 * ListView object used to contain the list of the service types' codes and names 
 	 */
 	private ListView<String> servicesList;
 	
@@ -24,10 +24,9 @@ public class ListServicesController {
 	/**
 	 * Method called when ListServicesController is loaded. 
 	 * It adds the list of the service types codes and full names to the private ListView object. 
-	 * The service types' informations are retrieved as Strings through the use of APIHandler class.
+	 * The service types' informations are retrieved as Strings through the use of an APIHandler method.
 	 */
 	private void initialize() {
-    	// add countries to the ListView
 		for (Pair<String, String> s : APIHandler.retriveServiceTypes())
 			servicesList.getItems().add(s.getKey()+"\n﹂ "+s.getValue());
 	}

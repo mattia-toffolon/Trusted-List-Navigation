@@ -22,7 +22,7 @@ import proseccoCoding.TLN.model.Provider;
 
 /**
  * 
- * Controller of the "selectProviders" section
+ * Controller of the selectProviders view
  *
  */
 public class SelectProvidersController {
@@ -106,7 +106,8 @@ public class SelectProvidersController {
     }
     
 	/**
-	 * This private method is used to manage the indeterminate status of the selectAll CheckBox
+	 * This private method is used to manage the indeterminate status of the selectAll CheckBox.
+	 * If a provider CheckBox is set to false and the selectAll one was previously set to true, selectAll becomes indeterminate.
 	 * @param newValue
 	 */
     private void checkBoxChanged(Boolean newValue) {
@@ -126,7 +127,7 @@ public class SelectProvidersController {
     @FXML
     /**
      * Switches scene to the "selectServices".
-     * This method also tracks down the selected providers via checking the status of the CheckBoxs and sets selectedProviders in TrustedListFacade's Query.
+     * This method also tracks down the selected providers via checking the status of the CheckBoxes and sets selectedProviders in TrustedListFacade's Query.
      * If no provider was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
