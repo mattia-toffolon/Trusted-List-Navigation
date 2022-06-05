@@ -36,29 +36,34 @@ Here it is described in few steps how to run this application and how to properl
 1. In the home view you can find the button <ins>*Start a new query*</ins> and press it. <br />
 2. The application should display the first selection page: **Country selection**: <br />
     <img src="https://user-images.githubusercontent.com/48312863/171994713-d200c139-33f9-4de1-9e82-3eeb773f4f34.png"  height="300" /> <br />
+    <img src="(https://user-images.githubusercontent.com/96696061/172064000-3c9ae6d4-28f7-4c86-9d8d-b5b0f7895f78.png"  height="300" /> <br />
     Here you can select all your preferred countries or all countries using *Select all* checkbox and press <ins>*Next*</ins> to go on trough the query. <br />
     (:warning: **Warning:** you must select at least one country).
     
 3. The application should display the first selection page: **Provider selection**: <br />
     <img src="https://user-images.githubusercontent.com/48312863/171995165-3149b176-9b5d-41ba-a698-c422d4e0cd79.png"  height="300" /> <br />
+    <img src="(https://user-images.githubusercontent.com/96696061/172064033-8c3758e9-4028-4b38-a623-d23e593e749b.png"  height="300" /> <br />
     Here you can select all your preferred providers or all providers using *Select all* checkbox and press <ins>*Next*</ins> to go on trough the query. <br />
     If you want to change the previous selection you can press the <ins>*Back*</ins> button. <br />
     (:warning: **Warning:** you must select at least one provider).
     
 4. The application should display the second selection page: **Service type selection**: <br />
     <img src="https://user-images.githubusercontent.com/48312863/171995272-3d306d5d-6a3b-4001-bed2-d2a65799a344.png"  height="300" /> <br /> 
+    <img src="https://user-images.githubusercontent.com/96696061/172064064-d947cecf-de89-4c6b-9537-61492b5db941.png"  height="300" /> <br /> 
     Here you can select all your preferred service types or all types using *Select all* checkbox and press <ins>*Next*</ins> to go on trough the query. <br />
     If you want to change the previous selection you can press the <ins>*Back*</ins> button. <br />
     (:warning: **Warning:** you must select at least one service type).
 
 5. The application should display the third selection page: **Service status selection**: <br />
     <img src="https://user-images.githubusercontent.com/48312863/171995295-521a9c01-85d7-442e-9e07-1afb221fb425.png"  height="300" /> <br />
+    <img src="https://user-images.githubusercontent.com/96696061/172064169-1b342464-666b-4e66-906e-71eed9f7e5e8.png"  height="300" /> <br />
     Here you can select all your preferred service status or all status using *Select all* checkbox and press <ins>*Start*</ins> to display the results. <br />
     If you want to change the previous selection you can press the <ins>*Back*</ins> button. <br />
     (:warning: **Warning:** you must select at least one service status).
     
 6. Finally the application should display the **result page** <br />
     <img src="https://user-images.githubusercontent.com/48312863/171995321-454fd542-780a-40b8-ab4e-31d2d618fe72.png"  height="300" /> <br />
+    <img src="https://user-images.githubusercontent.com/96696061/172064312-bf8997b9-e055-4470-97b7-7b2d8d295c1c.png"  height="300" /> <br />
     Here are listed all the services that meet all the selections that you made. <br />
     Now you can go back to one of the selection page with the <ins>*Back*</ins> button or end the query and display the homepage pressing the <ins>*Home*</ins> button.
 <br />
