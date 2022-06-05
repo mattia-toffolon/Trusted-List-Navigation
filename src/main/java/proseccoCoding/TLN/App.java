@@ -1,7 +1,6 @@
 package proseccoCoding.TLN;
 
 import javafx.application.Application;
-import javafx.css.Style;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
