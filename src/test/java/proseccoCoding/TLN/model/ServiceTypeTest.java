@@ -54,6 +54,7 @@ class ServiceTypeTest {
 		vals.addAll(APIHandler.retriveServiceTypes().stream()
 				.map((Pair<String, String> p)->{return p.getKey();})
 				.collect(Collectors.toList()));
+		ServiceType.init();
 		for (String string : vals)
 			ServiceType.getInstance(string);
 		ArrayList<Pair<String,String>> ret = ServiceType.printServiceTypes();
