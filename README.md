@@ -1,10 +1,10 @@
 # Trusted-List-Navigation
 Group: ProseccoCoding
 Members:
-- Mattia Toffolon
-- Francesco Stella
-- Filippo D'Emilio
-- Alberto Guerrini
+- Mattia Toffolon   <br/>
+- Francesco Stella  <br/>
+- Filippo D'Emilio  <br/>
+- Alberto Guerrini  <br/>
 
 ## Links to some deliverable files
 - Complete Javadoc documentation can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/javadoc/index.html).
@@ -18,7 +18,7 @@ Here it is described in few steps how to run this application and how to properl
 3. You must have this repository on your local sistem. There are two ways to achieve that:
     - Clone it on your system moving in your preferred local folder and entering in your terminal `$ git clone https://github.com/mattia-toffolon/Trusted-List-Navigation.git` (you must have git installed).
     - Or download it as zip from the green button on the top right of this page, unzip and open the unzipped folder (no additional software required).
-
+ <br/>
 
 ### Launching the application
 1. Firstly you have to move in the base directory (where is located the `.jar` file) and open a terminal on it.
@@ -35,7 +35,7 @@ Here it is described in few steps how to run this application and how to properl
 **2. View service types list** <br />
     - As for countries, in the home view you can find the button <ins>*See the list of the Trust-Service types*</ins> and press it. <br />
     - The application should display the complete list of EU service types and a button to return to the homepage. <br /><br />
-
+ <br/>
 
 ### Search for trusted-services
 1. In the home view you can find the button <ins>*Start a new query*</ins> and press it. <br />
@@ -71,11 +71,13 @@ Here it is described in few steps how to run this application and how to properl
     <img src="https://user-images.githubusercontent.com/48312863/171997619-98eaa0a7-3c6a-4f78-b91f-15dce627cde5.png"  height="100" /> <br />
     To continue the query parameter selection **you must close** this **alert window**, otherwise it is not possible to interact with the main window. <br/>
     
+ <br/> 
     
 # Some concepts about the implementation of TLN application
 This application interacts with the EU Trusted List API to retrieve data at [EU Trust Services](https://esignature.ec.europa.eu/efda/home/#/screen/home) and provide useful search and display functions to **analize EU trusted services data**.<br />
 The API interaction is done over http protocol at the time of application launch. One call is made for retrieving country code and name, and the other is made for retrieving all the providers and services for every country.<br />
-The calls to API services retrieve data in json format, and this data is stored as JSONObject and converted in Country, Provider, Service, Type objects only if it is needed. In this way only two http calls are done so their time overhead is reduced at a minimum point, but only needed countries are parsed in specific object so the time and space complexity is reduced. It is important to note that a county with its data is parsed to specific objects only one time, then is kept in case of future use.<br />
+The calls to API services retrieve data in json format, and this data is stored as JSONObject and converted in Country, Provider, Service, Type objects only if it is needed. In this way only two http calls are done so their time overhead is reduced at a minimum point.  <br/>
+Moreover only needed countries are parsed in specific object so the time and space complexity is reduced. It is important to note that a county with its data is parsed to specific objects only one time, then is kept in case of future use.<br />
 When a country data is needed it is parsed in a Country object that contains a collection of Providers objects and every Provider contains its services in a multimap using as key the service type. Doing like that we can obtain a minimal time complexity to retrieve services by type.<br />
 Every Service object contains attributes for type, status and others minor informations.<br />
 When the user starts a new search a Query object is created. This Query object contains all the selected countries objects (with all their data), and for each selection the user make, it compute a subset of informations from the initial set of countries that mach the user selection. At the end of the selections only the services that meet them will remains, and they can be shown.<br />
