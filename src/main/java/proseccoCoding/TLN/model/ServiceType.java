@@ -15,11 +15,18 @@ import javafx.util.Pair;
  * In both cases the fact that the object would be a singleton is granted.
  */
 public class ServiceType {
+	
+	/**
+	 * HashMap used to contain all possible instances of ServiceType objects
+	 */
 	private static HashMap<String, ServiceType> instances = null;
-
-	private static boolean autoFetch = true;
-
+	/**
+	 * Code of this service type
+	 */
 	private String code;
+	/**
+	 * Name of this service type
+	 */
 	private String name;
 
 	/**
@@ -58,13 +65,12 @@ public class ServiceType {
 	}
 
 	/**
-	 * Initializes and fills the hashmap with all the known types complete data
+	 * Initializes and fills "instances" with all the known service types
 	 */
 	public static void init() {
 		instances = new HashMap<String, ServiceType>();
-		if (autoFetch)
-			for (Pair<String, String> p : APIHandler.retriveServiceTypes())
-				instances.put(p.getKey(), new ServiceType(p.getKey(), p.getValue()));
+		for (Pair<String, String> p : APIHandler.retriveServiceTypes())
+			instances.put(p.getKey(), new ServiceType(p.getKey(), p.getValue()));
 	}
 
 	/**
@@ -84,7 +90,7 @@ public class ServiceType {
 	}
 
 	/**
-	 * Return the list of Pairs that represents all the known service types
+	 * Returns the list of Pairs that represents all the known service types
 	 * @return An ArrayList of Pairs containing as Key the type code, and as value the type name
 	 */
 	public static ArrayList<Pair<String, String>> printServiceTypes() {
@@ -107,9 +113,8 @@ public class ServiceType {
 	}
 
 	/**
-	 * Equals method that compare service types only by code
-	 * 
-	 * @param obj Second object to compare to this
+	 * Equals method that compares service types only by code
+	 * @param obj object to compare to this
 	 */
 	@Override
 	public boolean equals(Object obj) {

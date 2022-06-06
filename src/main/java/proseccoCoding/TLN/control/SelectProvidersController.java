@@ -21,16 +21,16 @@ import proseccoCoding.TLN.model.TrustedListFacade;
 import proseccoCoding.TLN.model.Provider;
 
 /**
- * 
- * Controller of the "selectProviders" section
- *
+ * Controller of the selectProviders view.
+ * It has the duty to let the user choose his providers of interest with a view to creating a query.
+ * It also has to let the user move forward to the service types selection and go back to the countries selection.
  */
 public class SelectProvidersController {
 
-	@FXML
 	/**
 	 * VBox object used to contain all the CheckBoxes used to let the user select his providers of interest
 	 */
+	@FXML
 	private VBox providersPane;
 	/**
 	 * CheckBox used to select/deselect all the providers CheckBoxes at the same time
@@ -55,19 +55,21 @@ public class SelectProvidersController {
 	    }
 	};
 	
-	@FXML
 	/**
 	 * Method called when SelectProvidersController is loaded. 
 	 * This method adds to providersPane the selectAll CheckBox and a CheckBox for each provider 
 	 * which country was previously selected, all with their ChangeListener.
 	 */
+	@FXML
 	private void initialize() {
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
 		providersPane.setSpacing(5);
 		providersPane.setPadding(new Insets(5));
 		providersPane.getChildren().add(selectAll);
-		providersPane.getChildren().add(new Separator());		
+		Separator sep = new Separator();
+		sep.setMinWidth(315);
+		providersPane.getChildren().add(sep);		
 		
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);
@@ -89,7 +91,7 @@ public class SelectProvidersController {
 
 	/**
 	 * This private method is used to change every CheckBox status to the selectAll one
-	 * @param value
+	 * @param value status of selectAll CheckBox
 	 */
 	private void selectAllChanged(Boolean value) {
     	if(selectAll.isIndeterminate())
@@ -104,30 +106,31 @@ public class SelectProvidersController {
     }
     
 	/**
-	 * This private method is used to manage the indeterminate status of the selectAll CheckBox
-	 * @param newValue
+	 * This private method is used to manage the indeterminate status of the selectAll CheckBox.
+	 * If a provider CheckBox is set to false and the selectAll one was previously set to true, selectAll becomes indeterminate.
+	 * @param newValue updated status of the selected CheckBox
 	 */
     private void checkBoxChanged(Boolean newValue) {
     	if(newValue == false && selectAll.isSelected())
     		selectAll.setIndeterminate(true);
     }
 	
-    @FXML
     /**
      * Switches scene to the "selectCountries" one
      * @throws IOException
      */
+    @FXML
     private void switchToSelectCountries() throws IOException {
         App.setRoot("selectCountries");
     }
     
-    @FXML
     /**
      * Switches scene to the "selectServices".
-     * This method also tracks down the selected providers via checking the status of the CheckBoxs and sets selectedProviders in TrustedListFacade's Query.
+     * This method also tracks down the selected providers via checking the status of the CheckBoxes and sets selectedProviders in TrustedListFacade's Query.
      * If no provider was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
+    @FXML
     private void switchToSelectServices() throws IOException {
     	ArrayList<String> selectedProvidersCodes = new ArrayList<String>();
     	for(Node node : providersPane.getChildren()) {

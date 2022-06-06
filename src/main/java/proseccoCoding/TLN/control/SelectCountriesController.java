@@ -22,23 +22,23 @@ import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
- * 
- * Controller of the "selectCountries" section
- *
+ * Controller of the selectCountries view.
+ * It has the duty to let the user choose his countries of interest with a view to creating a query.
+ * It also has to let the user move forward to the providers selection and go back to the homepage.
  */
 public class SelectCountriesController {
 	
-	@FXML
 	/**
 	 * VBox object used to contain all the CheckBoxes used to let the user select his countries of interest
 	 */
+	@FXML
 	private VBox countriesPane;
 	/**
 	 * CheckBox used to select/deselect all the countries CheckBoxes at the same time
 	 */
 	private CheckBox selectAll;
 	/**
-	 * Custom ChangeListener used to define the first part of the selectAll CheckBox behavior
+	 * Custom ChangeListener used to define the first part of the selectAll CheckBox behavior.
 	 */
 	ChangeListener<Boolean> selectAllListener = new ChangeListener<Boolean>(){
 	    @Override
@@ -56,11 +56,11 @@ public class SelectCountriesController {
 	    }
 	};
 	
-	@FXML
 	/**
 	 * Method called when SelectCountriesController is loaded. 
 	 * This method adds to countriesPane the selectAll CheckBox and a CheckBox for each country, all with their ChangeListener.
 	 */
+	@FXML
 	private void initialize() {    
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
@@ -89,7 +89,7 @@ public class SelectCountriesController {
 	
 	/**
 	 * This private method is used to change every CheckBox status to the selectAll one
-	 * @param value
+	 * @param value status of selectAll CheckBox
 	 */
 	private void selectAllChanged(Boolean value) {
     	if(selectAll.isIndeterminate())
@@ -104,32 +104,31 @@ public class SelectCountriesController {
     }
     
 	/**
-	 * This private method is used to manage the indeterminate status of the selectAll CheckBox
-	 * @param newValue
+	 * This private method is used to manage the indeterminate status of the selectAll CheckBox.
+	 * If a country CheckBox is set to false and the selectAll one was previously set to true, selectAll becomes indeterminate.
+	 * @param newValue updated status of the selected CheckBox
 	 */
     private void checkBoxChanged(Boolean newValue) {
     	if(newValue == false && selectAll.isSelected())
     		selectAll.setIndeterminate(true);
     }
 
-    @FXML
     /**
-     * Switches scene to the "home" one. If a Query has been created it gets ended.
+     * Switches scene to the "home" one
      * @throws IOException
      */
+    @FXML
     private void switchToHome() throws IOException {
-    	if(TrustedListFacade.getInstance().getQuery()!=null)
-    		TrustedListFacade.getInstance().endQuery();
         App.setRoot("home");
     }
     
-    @FXML
     /**
      * Switches scene to the "selectProviders" one.
-     * This method also tracks down the selected countries via checking the status of the CheckBoxs and sets selectedCountries in TrustedListFacade's Query.
+     * This method also tracks down the selected countries via checking the status of the CheckBoxes and sets selectedCountries in TrustedListFacade's Query.
      * If no country was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
+    @FXML
     private void switchToSelectProviders() throws IOException {
     	ArrayList<String> selectedCountryCodes = new ArrayList<String>();
     	for(Node node : countriesPane.getChildren()) {
@@ -143,7 +142,7 @@ public class SelectCountriesController {
     		Alert a = new Alert(AlertType.WARNING, "User must select at least one country.");
     		a.setHeaderText("Invalid parameters selection");
 			a.setTitle("Warning");
-			((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    		
+			((Stage)a.getDialogPane().getScene().getWindow()).getIcons().add(new Image(getClass().getResourceAsStream("eu_icon.png")));    	
     		a.showAndWait();
     		return;
     	}

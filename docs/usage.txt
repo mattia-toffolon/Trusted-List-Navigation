@@ -1,1 +1,0 @@
-In the docs folder there are the html javadocs of all the classes in the model

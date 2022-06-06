@@ -17,23 +17,23 @@ public class TrustedListData {
 	private HashMap<String,Country> countries;
 	
 	/**
-	 * Contructor for TrustedListData. Initializes the countries 
+	 * Constructor for TrustedListData. Initializes the countries 
 	 */
 	public TrustedListData() {
 		countries = APIHandler.retrieveCountries();
 	}
 	
 	/**
-	 * return the Country object representing the country which the code specified as parameter
-	 * @param the code of the country to return upper or lower case
-	 * @return the Country object associated with the parameter code, or null if the code isn't found
+	 * return the Country object representing the country which code is specified as parameter
+	 * @param the code of the country to return, upper or lower case
+	 * @return the Country object associated with the parameter code, or null if the code hasn't been found
 	 * @throws IllegalArgumentException if the parameter is null
 	 */
 	public Country getCountry(String countryCode) {
 		if (countryCode == null)
 			throw new IllegalArgumentException("Argument must not be null");
 		countryCode = countryCode.toUpperCase();
-		// retrieve the country from the map
+		// retrieve the desired country from the map
 		Country ret = countries.get(countryCode);
 		// if no key is mapped with countryCode as key
 		if(ret == null)
@@ -46,11 +46,11 @@ public class TrustedListData {
 		}
 		return ret;
 	}
+	
 	/**
-	 * Returns a list of country objects with data retrieved representing the countries 
-	 * that have the code in the given parameter list
-	 * @param an ArrayList of country codes
-	 * @return an ArrayList of corresponding Countries objects with retrieved data
+	 * Returns a list of country objects filled with data which code is contained in the given parameter list
+	 * @param countryCodes an ArrayList of Strings that contains the country codes
+	 * @return an ArrayList of country objects filled with data which code is contained in the given parameter list
 	 * @throws IllegalArgumentException if the parameter is null or empty
 	 */
 	public ArrayList<Country> getCountries(ArrayList<String> countryCodes){
@@ -69,9 +69,11 @@ public class TrustedListData {
 		
 		return ret;
 	}
+	
 	/**
-	 * Returns a list containing all names and codes for every country. It would be a facility to print them
-	 * @return an ArrayList of pair, which pairs are "conutry code" and "country name" for each country
+	 * Returns a list containing names and codes of each country.
+	 * @return an ArrayList of Pair<String, String> composed by country code as first value and country name as second value.
+	 * 		   Each pair represents a country.
 	 */
 	public ArrayList<Pair<String,String>> printCountries(){
 		ArrayList<Pair<String,String>> ret = new ArrayList<Pair<String,String>>();

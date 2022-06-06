@@ -8,27 +8,24 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
 import proseccoCoding.TLN.App;
-import proseccoCoding.TLN.model.APIHandler;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
-
 /**
- * 
- * Controller of the "home" section
- *
+ * Controller of the home view.
+ * It has the duty to let user access all the features of the TrusteListNavigation program.
  */
 public class HomeController {
 	
-	@FXML
+	
 	/**
 	 * Method called when HomesController is loaded. 
-	 * This method initialize the JSONArrays in APIHandler if it hasn't been done yet.
-	 * In case of connection errors, this method displays an error dialog pane that informs the user and then closes the application.
+	 * This method initialize the JSONArrays in APIHandler if this hasn't been done yet.
+	 * In case of connection errors, this method displays an error dialog pane that informs the user and then proceeds to close the application.
 	 */
+	@FXML
 	private void initialize() {
 		try {
-			APIHandler.initCountriesData();
-	    	APIHandler.initCountriesName();
+			TrustedListFacade.getInstance().requestData();
 		} catch (Exception e) {
 			Alert a = new Alert(AlertType.ERROR, "Error: " +e+ "\n\nThe error is caused by either the user's or the server's internet connection.", ButtonType.CLOSE);
 			a.setHeaderText("Connection Error");
@@ -39,38 +36,38 @@ public class HomeController {
 		}
 	}
 
-    @FXML
     /**
      * Switches scene to the "listCountries" one
      * @throws IOException
      */
+	@FXML
     private void switchToListCountries() throws IOException {
         App.setRoot("listCountries");
     }
     
-    @FXML
     /**
      * Switches scene to the "listServices" one
      * @throws IOException
      */
+    @FXML
     private void switchToListServices() throws IOException {
         App.setRoot("listServices");
     }
     
-    @FXML
     /**
-     * Switches scene to the "selectCountries" one and initialize TrustedListFacade if it hasn't been done yet
+     * Switches scene to the "selectCountries" one
      * @throws IOException
      */
+    @FXML
     private void switchToSelectCountries() throws IOException {
         App.setRoot("selectCountries");
     }
     
-    @FXML
     /**
      * Switches scene to the "credits" one
      * @throws IOException
      */
+    @FXML
     private void switchToCredits() throws IOException {
         App.setRoot("credits");
     }

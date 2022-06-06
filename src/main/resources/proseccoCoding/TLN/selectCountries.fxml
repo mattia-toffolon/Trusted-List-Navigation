@@ -11,11 +11,11 @@
 <AnchorPane prefHeight="460.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proseccoCoding.TLN.control.SelectCountriesController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="460.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
-      <Button layoutX="35.0" layoutY="421.0" mnemonicParsing="false" onAction="#switchToHome" text="Home" />
-      <Button layoutX="319.0" layoutY="421.0" mnemonicParsing="false" onAction="#switchToSelectProviders" prefHeight="26.0" prefWidth="49.0" text="Next" />
-      <ScrollPane hbarPolicy="NEVER" layoutX="33.0" layoutY="53.0" prefHeight="355.0" prefWidth="335.0">
+      <Button layoutX="33.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="27.0" prefWidth="55.0" text="Home" />
+      <Button layoutX="313.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectProviders" prefHeight="27.0" prefWidth="55.0" text="Next" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="33.0" layoutY="53.0" prefHeight="355.0" prefWidth="335.0" >
          <content>
-            <VBox fx:id="countriesPane" prefHeight="360.0" prefWidth="340.0" />
+            <VBox fx:id="countriesPane" prefHeight="360.0" prefWidth="340.0" style="-fx-background-color: white;" />
          </content>
       </ScrollPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" layoutX="35.0" layoutY="19.0" stroke="TRANSPARENT" strokeType="INSIDE" width="330.0" />

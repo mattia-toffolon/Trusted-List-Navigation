@@ -3,7 +3,6 @@ package proseccoCoding.TLN.model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.DisplayName;

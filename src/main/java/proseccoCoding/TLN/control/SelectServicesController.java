@@ -21,16 +21,16 @@ import proseccoCoding.TLN.model.TrustedListFacade;
 import proseccoCoding.TLN.model.ServiceType;
 
 /**
- * 
- * Controller of the "selectServices" section
- *
+ * Controller of the selectServices view.
+ * It has the duty to let the user choose his service types of interest with a view to creating a query.
+ * It also has to let the user move forward to the service statuses selection and go back to the providers selection.
  */
 public class SelectServicesController {
 	
-	@FXML
 	/**
 	 * VBox object used to contain all the CheckBoxes used to let the user select his service types of interest
 	 */
+	@FXML
 	private VBox serviceTypesPane;
 	/**
 	 * CheckBox used to select/deselect all the service types CheckBoxes at the same time
@@ -55,19 +55,21 @@ public class SelectServicesController {
 	    }
 	};
 	
-	@FXML
 	/**
 	 * Method called when SelectServicesController is loaded.
 	 * This method adds to serviceTypesPane the selectAll CheckBox and a CheckBox for each service type 
-	 * which country and provider was previously selected, all with their ChangeListener.
+	 * that is associated with at least one service which country and provider was previously selected, all with their ChangeListener.
 	 */
+	@FXML
 	private void initialize() {
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
 		serviceTypesPane.setSpacing(5);
 		serviceTypesPane.setPadding(new Insets(5));
 		serviceTypesPane.getChildren().add(selectAll);
-		serviceTypesPane.getChildren().add(new Separator());		
+		Separator sep = new Separator();
+		sep.setMinWidth(315);
+		serviceTypesPane.getChildren().add(sep);		
 		
 		// a ChangeListener is added to the selectAll CheckBox properties 
 		selectAll.selectedProperty().addListener(selectAllListener);
@@ -89,7 +91,7 @@ public class SelectServicesController {
 
 	/**
 	 * This private method is used to change every CheckBox status to the selectAll one
-	 * @param value
+	 * @param value status of selectAll CheckBox
 	 */
 	private void selectAllChanged(Boolean value) {
     	if(selectAll.isIndeterminate())
@@ -105,20 +107,21 @@ public class SelectServicesController {
     
 	/**
 	 * This private method is used to manage the indeterminate status of the selectAll CheckBox
-	 * @param newValue
+	 * If a service type CheckBox is set to false and the selectAll one was previously set to true, selectAll becomes indeterminate.
+	 * @param newValue updated status of the selected CheckBox
 	 */
     private void checkBoxChanged(Boolean newValue) {
     	if(newValue == false && selectAll.isSelected())
     		selectAll.setIndeterminate(true);
     }
 
-    @FXML
     /**
      * Switches scene to the "selectStatus" one.
-     * This method also tracks down the selected service types via checking the status of the CheckBoxs and sets selectedServicesByType in TrustedListFacade's Query.
+     * This method also tracks down the selected service types via checking the status of the CheckBoxes and sets selectedServicesByType in TrustedListFacade's Query.
      * If no service type was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
+    @FXML
     private void switchToSelectStatus() throws IOException {
     	ArrayList<String> selectedServiceTypesCodes = new ArrayList<String>();
     	for(Node node : serviceTypesPane.getChildren()) {
@@ -148,11 +151,11 @@ public class SelectServicesController {
         App.setRoot("selectStatus");
     }
     
-    @FXML
     /**
      * Switches scene to the "selectProviders" one
      * @throws IOException
      */
+    @FXML
     private void switchToSelectProviders() throws IOException {
         App.setRoot("selectProviders");
     }

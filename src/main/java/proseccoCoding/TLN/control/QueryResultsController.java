@@ -11,26 +11,25 @@ import proseccoCoding.TLN.model.ServiceType;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
- * 
- * Controller of the "queryResults" section
- *
+ * Controller of the queryResults view.
+ * It has the duty to show the user the list of his query results. 
+ * It also has to let the user move to the hompage and go back to the service statuses selection.
  */
 public class QueryResultsController {
 
-	@FXML
 	/**
 	 * ListView object used to contain the list of the user's query results 
 	 */
+	@FXML
 	private ListView<String> queryResultsList;
 	
-	@FXML
 	/**
 	 * Method called when QueryResultsController is loaded. 
 	 * It adds the list of the services selected by the user with their information to the private ListView object.
 	 * These informations are retrieved as Strings through the use of TrustedListFacade's Query public methods.
 	 */
+	@FXML
 	private void initialize() {
-    	// add countries to the ListView
 		ArrayList<String> results = new ArrayList<String>();
 		for (Service s : TrustedListFacade.getInstance().getQuery().getResults()) {
 			String serviceTypes = new String();
@@ -49,22 +48,21 @@ public class QueryResultsController {
 			queryResultsList.getItems().add(s);
 	}
 	
-    @FXML
     /**
      * Switches scene to the "selectStatus" one
      * @throws IOException
      */
+	@FXML
     private void switchToSelectStatus() throws IOException {
         App.setRoot("selectStatus");
     }
     
-    @FXML
     /**
-     * Switches scene to the "home" one and ends the Query if it has been concluded
+     * Switches scene to the "home" one
      * @throws IOException
      */
+	@FXML
     private void switchToHome() throws IOException {
-    	TrustedListFacade.getInstance().endQuery();
         App.setRoot("home");
     }
 }

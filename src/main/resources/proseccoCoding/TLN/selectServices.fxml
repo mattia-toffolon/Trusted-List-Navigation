@@ -11,17 +11,17 @@
 <AnchorPane prefHeight="460.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proseccoCoding.TLN.control.SelectServicesController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e7effc" height="460.0" stroke="TRANSPARENT" strokeType="INSIDE" width="400.0" />
-      <Button layoutX="33.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectProviders" prefHeight="26.0" prefWidth="50.0" text="Back" />
-      <Button layoutX="319.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectStatus" prefHeight="26.0" prefWidth="49.0" text="Next" />
+      <Button layoutX="33.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectProviders" prefHeight="27.0" prefWidth="55.0" text="Back" />
+      <Button layoutX="313.0" layoutY="420.0" mnemonicParsing="false" onAction="#switchToSelectStatus" prefHeight="27.0" prefWidth="55.0" text="Next" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" layoutX="35.0" layoutY="19.0" stroke="TRANSPARENT" strokeType="INSIDE" width="330.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="14.0" prefHeight="35.0" prefWidth="328.0" text="Select your service types of interest" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <ScrollPane layoutX="33.0" layoutY="53.0" maxWidth="-Infinity" prefHeight="355.0" prefWidth="335.0">
+      <ScrollPane layoutX="33.0" layoutY="53.0" maxWidth="-Infinity" prefHeight="355.0" prefWidth="335.0" style="-fx-background-color: white;">
          <content>
-            <VBox fx:id="serviceTypesPane" fillWidth="false" maxWidth="-Infinity" />
+            <VBox fx:id="serviceTypesPane" fillWidth="false" maxWidth="-Infinity" minHeight="360.0" minWidth="340.0" style="-fx-background-color: white;" />
          </content>
       </ScrollPane>
    </children>

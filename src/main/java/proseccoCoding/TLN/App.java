@@ -21,12 +21,16 @@ public class App extends Application {
 
     @Override
     /**
-     * Starts the App by initializing the App scene and setting it as stage scene
-     * @param stage App stage
+     * Starts the App by initializing the App scene and setting it as stage's scene
+     * @param stage
      * @throws IOException
      */
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("home"));
+        scene.getStylesheets().add(getClass().getResource("checkbox.css").toExternalForm());  
+        scene.getStylesheets().add(getClass().getResource("button.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("scrollpane.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("listcell.css").toExternalForm());        
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Trusted List Navigation");
@@ -44,7 +48,7 @@ public class App extends Application {
     }
 
     /**
-     * Uses the given string to determine and locate the corresponding .fxml file
+     * Uses the given string to determine and locate the corresponding .fxml file in the resource folder
      * @param fxml
      * @return Parent object used to load the wanted .fxml file
      * @throws IOException
@@ -57,9 +61,11 @@ public class App extends Application {
     /**
      * Starts the App by calling the launch method
      * @param args
+     * @throws InterruptedException 
      */
     public static void main(String[] args) {
-        launch();
+    	System.out.println("\nLaunching Trusted List Navigation application...");
+    	launch();
     }
 
 }

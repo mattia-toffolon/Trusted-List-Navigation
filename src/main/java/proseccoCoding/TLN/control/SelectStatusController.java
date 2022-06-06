@@ -20,17 +20,17 @@ import proseccoCoding.TLN.App;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
- * 
- * Controller of the "selectStatus" section
- *
+ * Controller of the selectStatus view
+ * It has the duty to let the user choose his service statuses of interest with a view to creating a query.
+ * It also has to let the user move forward to the queryResults view and go back to the service types selection.
  */
 public class SelectStatusController {
 
 
-	@FXML
 	/**
 	 * VBox object used to contain all the CheckBoxes used to let the user select his service statuses of interest
 	 */
+	@FXML
 	private VBox serviceStatusesPane;
 	/**
 	 * CheckBox used to select/deselect all the service status CheckBoxes at the same time
@@ -55,12 +55,12 @@ public class SelectStatusController {
 	    }
 	};
 	
-	@FXML
 	/**
 	 * Method called when SelectServiceStatusController is loaded.
 	 * This method adds to serviceStatusesPane the selectAll CheckBox and a CheckBox for each service status 
-	 * which service type, country and provider was previously selected, all with their ChangeListener.
+	 * that is associated with at least one service which service type, country and provider was previously selected, all with their ChangeListener.
 	 */
+	@FXML
 	private void initialize() {
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
@@ -86,7 +86,7 @@ public class SelectStatusController {
 
 	/**
 	 * This private method is used to change every CheckBox status to the selectAll one
-	 * @param value
+	 * @param value status of selectAll CheckBox
 	 */
 	private void selectAllChanged(Boolean value) {
     	if(selectAll.isIndeterminate())
@@ -102,29 +102,30 @@ public class SelectStatusController {
     
 	/**
 	 * This private method is used to manage the indeterminate status of the selectAll CheckBox
-	 * @param newValue
+	 * If a service status CheckBox is set to false and the selectAll one was previously set to true, selectAll becomes indeterminate.
+	 * @param newValue updated status of the selected CheckBox
 	 */
     private void checkBoxChanged(Boolean newValue) {
     	if(newValue == false && selectAll.isSelected())
     		selectAll.setIndeterminate(true);
     }
 	
-    @FXML
     /**
      * Switches scene to the "selectServices" one
      * @throws IOException
      */
+    @FXML
     private void switchToSelectServices() throws IOException {
         App.setRoot("selectServices");
     }
     
-    @FXML
     /**
      * Switches scene to the "queryResults" one.
-     * This method also tracks down the selected service statuses via checking the status of the CheckBoxs and sets selectedServiceStatus in TrustedListFacade's Query.
+     * This method also tracks down the selected service statuses via checking the status of the CheckBoxes and sets selectedServiceStatus in TrustedListFacade's Query.
      * If no service status was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
+    @FXML
     private void switchToQueryResults() throws IOException {
     	ArrayList<String> selectedStatuses = new ArrayList<String>();
     	for(Node node : serviceStatusesPane.getChildren()) {
