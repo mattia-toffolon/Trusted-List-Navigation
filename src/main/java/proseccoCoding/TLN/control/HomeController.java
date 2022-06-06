@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
 import proseccoCoding.TLN.App;
-import proseccoCoding.TLN.model.APIHandler;
 import proseccoCoding.TLN.model.TrustedListFacade;
 
 /**
