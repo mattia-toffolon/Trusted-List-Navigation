@@ -1,162 +1,44 @@
-<!DOCTYPE html>
-<html>
-    <style>
-        body {
-          font-family: helvetica;
-          font-size: 100%;
-          margin: 25px;
-        }
-    </style>
-    <body>
-        <h1 id="trustedlistnavigation">Trusted-List-Navigation</h1>
-
-        <p>Group: ProseccoCoding<br>
-        Members:
-
-        <ul>
-        <li>Mattia Toffolon   <br /></li>
-
-        <li>Francesco Stella  <br /></li>
-
-        <li>Filippo D'Emilio  <br /></li>
-
-        <li>Alberto Guerrini  <br /></li>
-        </ul></p>
-    
-        <h2 id="linkstosomedeliverablefiles">Links to some deliverable files</h2>
-
-        <ul>
-        <li>Complete Javadoc documentation can be found <a href="https://mattia-toffolon.github.io/Trusted-List-Navigation/javadoc/index.html">here</a>.</li>
-
-        <li>System Design document can be found <a href="https://mattia-toffolon.github.io/Trusted-List-Navigation/docs/ProgettoTLN-SystemDesign.pdf">here</a>.</li>
-
-        <li>Complete Testing report document can be found <a href="https://mattia-toffolon.github.io/Trusted-List-Navigation/docs/ProgettoTLN-TestReport.pdf">here</a>.</li>
-
-        <li>JUnit test report can be found <a href="https://mattia-toffolon.github.io/Trusted-List-Navigation/surfire/surefire-report.html">here</a>.</li>
-        </ul>
-
-        <h2 id="howtoruntrustedlistnavigationapplication">How to run Trusted List Navigation application</h2>
-
-        <p>Here it is described in few steps how to run this application and how to properly use it.</p>
-
-        <h3 id="prerequisites">Prerequisites</h3>
-
-        <ol>
-        <li>Your environment must have a <strong>Java VM</strong> installed, if it haven't it you can download it from <a href="https://www.oracle.com/java/technologies/downloads/">here</a>.</li>
-
-        <li>Your system must have an internet connection (&#x1F4D3; <strong>Note:</strong> be aware that the response time of this application depends by the connection data-rate) </li>
-
-        <li>You must have this repository on your local sistem. There are two ways to achieve that:
-
-
-        <ul>
-        <li>Clone it on your system moving in your preferred local folder and entering in your terminal <code>$ git clone https://github.com/mattia-toffolon/Trusted-List-Navigation.git</code> (you must have git installed).</li>
-
-        <li>Or download it as zip from the green button on the top right of this page, unzip and open the unzipped folder (no additional software required).
-        <br /></li></ul>
-        </li>
-        </ol>
-
-        <h3 id="launchingtheapplication">Launching the application</h3>
-        <p>Note that the .jar file is cross-platform compiled, so it would run in all common platforms (Windows, Linux, MacOS). </p>
-        <ol>
-        <li>Firstly you have to move in the base directory (where is located the <code>.jar</code> file) and open a terminal on it.</li>
-
-        <li>Then you have to type <code>$ java -jar Trusted-List-Navigation.jar</code> to launch the Java application. 
-        <br /> :memo: <strong>Note:</strong> In case of not working internet connection or EU trusted data's server fault can be displayed an error before the application launch. In this case you should try again from point 2.</li>
-
-        <li>Finally, if no error occurs the application should display home view. <br /><br>
-        <img src="https://user-images.githubusercontent.com/96696061/172061538-b92ebc08-e02b-41c7-9e96-1c323d21055e.png"  height="300" /> <br /></li>
-        </ol>
-
-        <h3 id="viewcountriesandservicetypeslists">View countries and service types lists</h3>
-
-        <p><strong>1. View EU country list</strong> <br />
-            - In the home view you can find the button <ins><em>See the list of the EU Countries</em></ins> and press it. <br />
-            - The application should display the complete list of EU countries and a button to return to the homepage. <br /><br />
-        <strong>2. View service types list</strong> <br />
-            - As for countries, in the home view you can find the button <ins><em>See the list of the Trust-Service types</em></ins> and press it. <br />
-            - The application should display the complete list of EU service types and a button to return to the homepage. <br /> <br />
-         <br /></p>
-
-        <h3 id="searchfortrustedservices">Search for trusted-services</h3>
-
-        <ol>
-        <li><p>In the home view you can find the button <ins><em>Start a new query</em></ins> and press it. <br /></p></li>
-
-        <li><p>The application should display the first selection page: <strong>Country selection</strong>: <br><br>
-        <img src="https://user-images.githubusercontent.com/96696061/172064000-3c9ae6d4-28f7-4c86-9d8d-b5b0f7895f78.png"  height="300" /> <br><br>
-        Here you can select all your preferred countries or all countries using <em>Select all</em> checkbox and press <ins><em>Next</em></ins> to go on trough the query. <br>
-        (&#x26a0 <strong>Warning:</strong> you must select at least one country).</p></li>
-
-        <li><p>The application should display the first selection page: <strong>Provider selection</strong>: <br /><br>
-        <img src="https://user-images.githubusercontent.com/96696061/172064033-8c3758e9-4028-4b38-a623-d23e593e749b.png"  height="300" /> <br><br>
-        Here you can select all your preferred providers or all providers using <em>Select all</em> checkbox and press <ins><em>Next</em></ins> to go on trough the query. <br />
-        If you want to change the previous selection you can press the <ins><em>Back</em></ins> button. <br />
-        (&#x26a0 <strong>Warning:</strong> you must select at least one provider).</p></li>
-
-        <li><p>The application should display the second selection page: <strong>Service type selection</strong>: <br /><br>
-        <img src="https://user-images.githubusercontent.com/96696061/172064064-d947cecf-de89-4c6b-9537-61492b5db941.png"  height="300" /> <br /> <br>
-        Here you can select all your preferred service types or all types using <em>Select all</em> checkbox and press <ins><em>Next</em></ins> to go on trough the query. <br />
-        If you want to change the previous selection you can press the <ins><em>Back</em></ins> button. <br />
-        (&#x26a0 <strong>Warning:</strong> you must select at least one service type).</p></li>
-
-        <li><p>The application should display the third selection page: <strong>Service status selection</strong>: <br /><br>
-        <img src="https://user-images.githubusercontent.com/96696061/172064169-1b342464-666b-4e66-906e-71eed9f7e5e8.png"  height="300" /> <br /><br>
-        Here you can select all your preferred service status or all status using <em>Select all</em> checkbox and press <ins><em>Start</em></ins> to display the results. <br />
-        If you want to change the previous selection you can press the <ins><em>Back</em></ins> button. <br />
-        (&#x26a0 <strong>Warning:</strong> you must select at least one service status).</p></li>
-
-        <li><p>Finally the application should display the <strong>result page</strong>: <br /><br>
-        <img src="https://user-images.githubusercontent.com/96696061/172064312-bf8997b9-e055-4470-97b7-7b2d8d295c1c.png"  height="300" /> <br /><br>
-        Here are listed all the services that meet all the selections that you made. <br />
-        Now you can go back to one of the selection page with the <ins><em>Back</em></ins> button or end the query and display the homepage pressing the <ins><em>Home</em></ins> button.
-        <br /> </p></li>
-
-        <li><p>&#x26a0 <strong>Warning:</strong> In some cases, like when you try to go to the next selection page without having no checkboxes selected, an error message like this is
-        displayed: <br />
-        <img src="https://user-images.githubusercontent.com/48312863/171997619-98eaa0a7-3c6a-4f78-b91f-15dce627cde5.png"  height="100" /> <br />
-        To continue the query parameter selection <strong>you must close</strong> this <strong>alert window</strong>, otherwise it is not possible to interact with the main window. <br />
-        <br /> <br /></p></li>
-        </ol>
-
-        <h1 id="someconceptsabouttheimplementationoftlnapplication">Some concepts about the implementation of TLN application</h1>
-
-        <p style="margin:30px">This application interacts with the <a href="https://esignature.ec.europa.eu/efda/swagger-ui.html">EU Trusted List API</a>
-        to retrieve <a href="https://esignature.ec.europa.eu/efda/home/#/screen/home">EU Trust Services</a>
-        data and provide useful search and display functions to <strong>analize EU trusted services data</strong>.<br />
-        The API interaction is done over <strong>http protocol</strong> at application launching time. One call is made for
-        <strong>retrieving country code and name</strong> (using <em>/tl-browser/api/v1/search/countries_list</em> service), 
-        and the other is made for retrieving all the providers and services for every country (using
-        <em>/tl-browser/api/v1/search/tsp_list</em> service).<br />
-        The calls to API services retrieve data in <strong>json format</strong>, and this data is <strong>stored as JSONObject</strong>
-        and parsed in Country, Provider, Service, Type objects only if it is needed. In this way only two http calls are done so
-        their time overhead is reduced at a minimum point.  <br/>
-        Moreover <strong>only needed countries are parsed</strong> in specific object so the time and space complexity is reduced
-        at the lowest level. It is important to note that a county with its complete data is <strong>parsed</strong> 
-        to specific objects <strong>only the first time</strong>, then is kept in case of future use.<br />
-        Country complete data is parsed in a <em>Country object</em> that contains a <strong>collection of Providers objects</strong> 
-        and every Provider contains its <strong>Service objects</strong> in a <strong>multimap</strong> using as <strong>key</strong>
-        the <strong>ServiceType</strong>. In this way we can obtain a minimal time complexity to retrieve services by type.<br />
-        Every Service object contains attributes for type, status and others minor informations.<br />
-        When the user starts a new search a <strong>Query object</strong> is created. This Query object <strong>contains all the selected countries objects</strong> 
-        (with all their data), and <strong>for each selection</strong> the user make, it <strong>compute and store a subset of informations</strong> 
-        from the initial set of countries that mach the user selection. At the end of the selections only the services that meet the selections will
-        remain, and they can be shown.<br /></p>
-
-        <h1 id="externallibrariesandfunctionalityusedintnlapplication">External libraries and functionality used in TNL application</h1>
-
-        <ul>
-        <li><strong>org.openjfx</strong> libraries to build the graphical user interface</li>
-
-        <li><strong>org.json</strong> library to handle json data retrieved from the API services</li>
-
-        <li><strong>com.google.guava</strong> libraries used only for the MultiMap implementation for storing services in provider class</li>
-
-        <li><strong>org.junit</strong> library used for unit class testing</li>
-            
-        <li>For the dependencies management, running configuration and software lifecycle management this project uses <a href="https://maven.apache.org/">maven</a>.</li>
-        <li>For the unique cross-platform .jar building it has been used <a href="https://maven.apache.org/plugins/maven-shade-plugin/">maven shade plugin</a>.</li>
-        </ul>
-    </body>
-</html>
+<!-- IF YOU SEE THIS LINE PLEASE OPEN README.html INSTEAD OF THIS FILE -->
+<h1 id="trusted-list-navigation">Trusted-List-Navigation</h1>
+<p>Group: ProseccoCoding Members: - Alberto Guerrini <br /> - Mattia Toffolon <br /> - Francesco Stella <br /> - Filippo D’Emilio <br /></p>
+<h2 id="links-to-some-deliverable-files">Links to some deliverable files</h2>
+<ul>
+<li>Complete <strong>Javadoc documentation</strong> can be found <a href="https://mattia-toffolon.github.io/Trusted-List-Navigation/javadoc/index.html">here</a>.</li>
+<li><strong>System Design document</strong> can be found <a href="https://mattia-toffolon.github.io/Trusted-List-Navigation/docs/ProgettoTLN-SystemDesign.pdf">here</a>.</li>
+<li>Complete <strong>Testing report document</strong> can be found <a href="https://mattia-toffolon.github.io/Trusted-List-Navigation/docs/ProgettoTLN-TestReport.pdf">here</a>.</li>
+<li><strong>JUnit test report</strong> can be found <a href="https://mattia-toffolon.github.io/Trusted-List-Navigation/surfire/surefire-report.html">here</a>.</li>
+</ul>
+<h2 id="how-to-run-trusted-list-navigation-application">How to run Trusted List Navigation application</h2>
+<p>Here it is described in few steps how to run this application and how to properly use it. ### Prerequisites 1. Your environment must have a <strong>Java VM</strong> installed, if it haven’t it you can download it from <a href="https://www.oracle.com/java/technologies/downloads/">here</a>. 2. Your system must have an internet connection (:memo: <strong>Note:</strong> be aware that the response time of this application depends by the connection data-rate) 3. You must have this repository on your local sistem. There are two ways to achieve that: - Clone it on your system moving in your preferred local folder and entering in your terminal <code>$ git clone https://github.com/mattia-toffolon/Trusted-List-Navigation.git</code> (you must have git installed). - Or download it as zip from the green button on the top right of this page, unzip and open the unzipped folder (no additional software required). <br /></p>
+<h3 id="launching-the-application">Launching the application</h3>
+<p>Note that the .jar file is cross-platform compiled, so it would run in all common platforms (Windows, Linux, MacOS). 1. Firstly you have to move in the base directory (where is located the <code>.jar</code> file) and open a terminal on it. 2. Then you have to type <code>$ java -jar Trusted-List-Navigation.jar</code> to launch the Java application. <br /> :memo: <strong>Note:</strong> In case of not working internet connection or EU trusted data’s server fault can be displayed an error before the application launch. In this case you should try again from point 2. 4. Finally, if no error occurs the application should display home view. <br /> <img src="https://user-images.githubusercontent.com/96696061/172061538-b92ebc08-e02b-41c7-9e96-1c323d21055e.png"  height="300" /> <br /> <br /></p>
+<h3 id="view-countries-and-service-types-lists">View countries and service types lists</h3>
+<p><strong>1. View EU country list</strong> <br /> - In the home view you can find the button <ins><em>See the list of the EU Countries</em></ins> and press it. <br /> - The application should display the complete list of EU countries and a button to return to the homepage. <br /><br /> <strong>2. View service types list</strong> <br /> - As for countries, in the home view you can find the button <ins><em>See the list of the Trust-Service types</em></ins> and press it. <br /> - The application should display the complete list of EU service types and a button to return to the homepage. <br /> <br /></p>
+<h3 id="search-for-trusted-services">Search for trusted-services</h3>
+<ol type="1">
+<li><p>In the home view you can find the button <ins><em>Start a new query</em></ins> and press it. <br /></p></li>
+<li><p>The application should display the first selection page: <strong>Country selection</strong>: <br /> <img src="https://user-images.githubusercontent.com/96696061/172064000-3c9ae6d4-28f7-4c86-9d8d-b5b0f7895f78.png"  height="300" /> <br /> Here you can select all your preferred countries or all countries using <em>Select all</em> checkbox and press <ins><em>Next</em></ins> to go on trough the query. <br /> (:warning: <strong>Warning:</strong> you must select at least one country).</p></li>
+<li><p>The application should display the first selection page: <strong>Provider selection</strong>: <br /> <img src="https://user-images.githubusercontent.com/96696061/172064033-8c3758e9-4028-4b38-a623-d23e593e749b.png"  height="300" /> <br /> Here you can select all your preferred providers or all providers using <em>Select all</em> checkbox and press <ins><em>Next</em></ins> to go on trough the query. <br /> If you want to change the previous selection you can press the <ins><em>Back</em></ins> button. <br /> (:warning: <strong>Warning:</strong> you must select at least one provider).</p></li>
+<li><p>The application should display the second selection page: <strong>Service type selection</strong>: <br /> <img src="https://user-images.githubusercontent.com/96696061/172064064-d947cecf-de89-4c6b-9537-61492b5db941.png"  height="300" /> <br /> Here you can select all your preferred service types or all types using <em>Select all</em> checkbox and press <ins><em>Next</em></ins> to go on trough the query. <br /> If you want to change the previous selection you can press the <ins><em>Back</em></ins> button. <br /> (:warning: <strong>Warning:</strong> you must select at least one service type).</p></li>
+<li><p>The application should display the third selection page: <strong>Service status selection</strong>: <br /> <img src="https://user-images.githubusercontent.com/96696061/172064169-1b342464-666b-4e66-906e-71eed9f7e5e8.png"  height="300" /> <br /> Here you can select all your preferred service status or all status using <em>Select all</em> checkbox and press <ins><em>Start</em></ins> to display the results. <br /> If you want to change the previous selection you can press the <ins><em>Back</em></ins> button. <br /> (:warning: <strong>Warning:</strong> you must select at least one service status).</p></li>
+<li><p>Finally the application should display the <strong>result page</strong>: <br /> <img src="https://user-images.githubusercontent.com/96696061/172064312-bf8997b9-e055-4470-97b7-7b2d8d295c1c.png"  height="300" /> <br /> Here are listed all the services that meet all the selections that you made. <br /> Now you can go back to one of the selection page with the <ins><em>Back</em></ins> button or end the query and display the homepage pressing the <ins><em>Home</em></ins> button. <br /></p></li>
+<li><p>:warning: <strong>Warning:</strong> In some cases, like when you try to go to the next selection page without having no checkboxes selected, an error message like this is displayed: <br /> <img src="https://user-images.githubusercontent.com/96696061/172215665-a756bde7-f501-4d7f-b7ee-73a9dbc0648f.png"  height="125" /> <br /></p>
+<p>To continue the query parameter selection <strong>you must close</strong> this <strong>alert window</strong>, otherwise it is not possible to interact with the main window. <br /></p></li>
+<li><p>:x: <strong>Error:</strong> In case of connection errors, the user comes across an <strong>alert window</strong> like this one below <br /> <img src="https://user-images.githubusercontent.com/96696061/172214714-4b4ad798-a802-4db7-ac63-e86f906d00ef.png" height="150" /> <br /> To use correctly the application the User is required to close this window, check his internet connection and restart the application. If the error continues to come up, the API services may be unvailable and so the user has to try again later.</p></li>
+</ol>
+<p><br /></p>
+<h1 id="some-concepts-about-the-implementation-of-tln-application">Some concepts about the implementation of TLN application</h1>
+<p>This application interacts with the <a href="https://esignature.ec.europa.eu/efda/swagger-ui.html">EU Trusted List API</a> to retrieve <a href="https://esignature.ec.europa.eu/efda/home/#/screen/home">EU Trust Services</a> data and provide useful search and display functions to <strong>analize EU Trusted Services data</strong>.<br /></p>
+<p>The API interaction is done over <strong>http protocols</strong> at application launch time. One call is made to <strong>retrieve countries codes and names</strong> (using <em>/tl-browser/api/v1/search/countries_list</em> service), and the other is made to <strong>retrieve all the providers and services for each european country</strong> (using <em>/tl-browser/api/v1/search/tsp_list</em> service).<br /></p>
+<p>The calls to the API services return data that can be saved in <strong>json format</strong>. This data is stored as <em>JSONObject</em> and parsed into <em>Country</em>, <em>Provider</em>, <em>Service</em>, <em>ServiceType</em> objects only if it’s needed. In this way only two <em>http calls</em> are made so that their time overhead is reduced at the minimum. <br/> Moreover <strong>only needed countries are parsed</strong> in specific objects so that the time and space complexity is reduced at the lowest level. It is important to note that a country with its complete data is parsed into specific objects <strong>only one time</strong> because after that it’s kept in case of future usege.<br /> In specific, a country complete data (in json format) is parsed in a <em>Country</em> object that contains a collection of <em>Provider</em> objects and every provider contains its <em>Service</em> objects as values in a multimap using as keys their <em>ServiceType</em>. By doing that we can obtain a minimal time complexity to retrieve services by type.<br /> Every <em>Service</em> object contains attributes for country, provider, type and status.<br /></p>
+<p>The query management has been implemented so that when the user starts a new search a <em>Query</em> object is created. This query contains <strong>all the selected <em>Country</em> objects</strong> (with all their data), and for each selection the user makes, it computes and stores a <strong>subset of informations</strong> from the initial set of countries that matches the user selection. At the end of all the selections, the list of services that meets the user requests can be calculated and shown through the interface.<br /></p>
+<p>The countries and service types names visualization instead, has been implementated so that no objects are need to be created. What is needed is only a call to a specific method that parses the <em>JSONObject</em>s, that were previously retrieved, and returns an <em>ArrayList</em> containg the requested data saved as <em>String</em> objects. <br /> <br /></p>
+<h1 id="external-libraries-and-functionality-used-in-tnl-application">External libraries and functionality used in TNL application</h1>
+<ul>
+<li><strong>org.openjfx</strong> libraries to build the graphical user interface</li>
+<li><strong>org.json</strong> library to handle json data retrieved from the API services</li>
+<li><strong>com.google.guava</strong> libraries used only for the MultiMap implementation for storing services in provider class</li>
+<li><strong>org.junit</strong> library used for unit class testing</li>
+<li>For the dependencies management, running configuration and software lifecycle management this project uses <a href="https://maven.apache.org/">maven</a>.</li>
+<li>For the unique cross-platform .jar building it has been used <a href="https://maven.apache.org/plugins/maven-shade-plugin/">maven shade plugin</a>.</li>
+</ul>
