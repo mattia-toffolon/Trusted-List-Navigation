@@ -64,7 +64,7 @@ public class App extends Application {
      * @throws InterruptedException 
      */
     public static void main(String[] args) {
-    	System.out.print("\nLaunching Trusted List Navigation application...");
+    	System.out.println("\nLaunching Trusted List Navigation application...");
     	launch();
     }
 

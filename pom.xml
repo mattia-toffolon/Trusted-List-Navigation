@@ -79,7 +79,7 @@
 						<!--  Usage: mvn clean javafx:run  -->
 						<id>default-cli</id>
 						<configuration>
-							<mainClass>proseccoCoding.TLN.App</mainClass>
+							<mainClass>proseccoCoding.TLN.Launcher</mainClass>
 						</configuration>
 					</execution>
 				</executions>
@@ -108,12 +108,23 @@
 						<configuration>
 							<shadedArtifactAttached>true</shadedArtifactAttached>
 							<shadedClassifierName>project-classifier</shadedClassifierName>
-							<outputFile>shade\${project.artifactId}.jar</outputFile>
+							<outputFile>${project.artifactId}.jar</outputFile>
 							<transformers>
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 									<mainClass>proseccoCoding.TLN.Launcher</mainClass>
 								</transformer>
 							</transformers>
+							<filters>
+								<filter>
+									<artifact>*:*</artifact>
+									<excludes>
+										<exclude>module-info.class</exclude>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.DSA</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+									</excludes>
+								</filter>
+							</filters>
 						</configuration>
 					</execution>
 				</executions>
