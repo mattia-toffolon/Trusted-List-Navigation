@@ -71,8 +71,13 @@ Note that the .jar file is cross-platform compiled, so it would run in all commo
     <br /> 
 7. :warning: **Warning:** In some cases, like when you try to go to the next selection page without having no checkboxes selected, an error message like this is
     displayed: <br />
-    <img src="https://user-images.githubusercontent.com/48312863/171997619-98eaa0a7-3c6a-4f78-b91f-15dce627cde5.png"  height="100" /> <br />
+    <img src="https://user-images.githubusercontent.com/96696061/172215665-a756bde7-f501-4d7f-b7ee-73a9dbc0648f.png"  height="125" /> <br />
+
     To continue the query parameter selection **you must close** this **alert window**, otherwise it is not possible to interact with the main window. <br />
+8. :x: **Error:** In case of connection errors, the user comes across an **alert window** like this one below <br />
+    <img src="https://user-images.githubusercontent.com/96696061/172214714-4b4ad798-a802-4db7-ac63-e86f906d00ef.png" height="150" /> <br />
+    To use correctly the application the User is required to check his internet connection and restart the application. If the error continues to come up, the API         services may be unvailable and so the user has to try again later.
+
  <br />
 
 # Some concepts about the implementation of TLN application
