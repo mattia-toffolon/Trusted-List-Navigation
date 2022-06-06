@@ -29,8 +29,7 @@ Note that the .jar file is cross-platform compiled, so it would run in all commo
 2. Then you have to type `$ java -jar Trusted-List-Navigation.jar` to launch the Java application. 
 <br /> :memo: **Note:** In case of not working internet connection or EU trusted data's server fault can be displayed an error before the application launch. In this case you should try again from point 2.
 4. Finally, if no error occurs the application should display home view. <br />
-    <img src="https://user-images.githubusercontent.com/96696061/172061538-b92ebc08-e02b-41c7-9e96-1c323d21055e.png"  height="300" /> <br />
-
+    <img src="https://user-images.githubusercontent.com/96696061/172061538-b92ebc08-e02b-41c7-9e96-1c323d21055e.png"  height="300" /> <br /> <br />
 
 ### View countries and service types lists
 **1. View EU country list** <br />
@@ -39,7 +38,6 @@ Note that the .jar file is cross-platform compiled, so it would run in all commo
 **2. View service types list** <br />
     - As for countries, in the home view you can find the button <ins>*See the list of the Trust-Service types*</ins> and press it. <br />
     - The application should display the complete list of EU service types and a button to return to the homepage. <br /> <br />
- <br />
 
 ### Search for trusted-services
 1. In the home view you can find the button <ins>*Start a new query*</ins> and press it. <br />
@@ -75,7 +73,7 @@ Note that the .jar file is cross-platform compiled, so it would run in all commo
     displayed: <br />
     <img src="https://user-images.githubusercontent.com/48312863/171997619-98eaa0a7-3c6a-4f78-b91f-15dce627cde5.png"  height="100" /> <br />
     To continue the query parameter selection **you must close** this **alert window**, otherwise it is not possible to interact with the main window. <br />
- <br /> <br />
+ <br />
 
 # Some concepts about the implementation of TLN application
 This application interacts with the [EU Trusted List API](https://esignature.ec.europa.eu/efda/swagger-ui.html) to retrieve [EU Trust Services](https://esignature.ec.europa.eu/efda/home/#/screen/home) data and provide useful search and display functions to **analize EU Trusted Services data**.<br />
@@ -91,6 +89,7 @@ Every *Service* object contains attributes for country, provider, type and statu
 The query management has been implemented so that when the user starts a new search a *Query* object is created. This query contains **all the selected *Country* objects** (with all their data), and for each selection the user makes, it computes and stores a **subset of informations** from the initial set of countries that matches the user selection. At the end of all the selections, the list of services that meets the user requests can be calculated and shown through the interface.<br />
 
 The countries and service types names visualization instead, has been implementated so that no objects are need to be created. What is needed is only a call to a specific method that parses the *JSONObject*s, that were previously retrieved, and returns an *ArrayList* containg the requested data saved as *String* objects.
+<br /> <br />
 
 # External libraries and functionality used in TNL application
 - **org.openjfx** libraries to build the graphical user interface
