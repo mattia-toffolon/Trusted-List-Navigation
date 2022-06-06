@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"proseccoCoding.TLN.control"}]
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"proseccoCoding.TLN.control"}];updateSearchResults();
