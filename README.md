@@ -78,14 +78,19 @@ Note that the .jar file is cross-platform compiled, so it would run in all commo
  <br /> <br />
 
 # Some concepts about the implementation of TLN application
-This application interacts with the [EU Trusted List API](https://esignature.ec.europa.eu/efda/swagger-ui.html) to retrieve [EU Trust Services](https://esignature.ec.europa.eu/efda/home/#/screen/home) data and provide useful search and display functions to **analize EU trusted services data**.<br />
-The API interaction is done over **http protocol** at application launch time. One call is made to **retrieve country code and name** (using */tl-browser/api/v1/search/countries_list* service), and the other is made to retrieve all the providers and services for every country (using
+This application interacts with the [EU Trusted List API](https://esignature.ec.europa.eu/efda/swagger-ui.html) to retrieve [EU Trust Services](https://esignature.ec.europa.eu/efda/home/#/screen/home) data and provide useful search and display functions to **analize EU Trusted Services data**.<br />
+
+The API interaction is done over **http protocols** at application launch time. One call is made to **retrieve countries codes and names** (using */tl-browser/api/v1/search/countries_list* service), and the other is made to **retrieve all the providers and services for each european country** (using
 */tl-browser/api/v1/search/tsp_list* service).<br />
-The calls to API services retrieve data in **json format**, and this data is **stored as JSONObject** and parsed in Country, Provider, Service, ServiceType objects. only if it is needed. In this way only two http calls are done so their time overhead is reduced at a minimum point.  <br/>
-Moreover **only needed countries are parsed** in specific objects so the time and space complexity is reduced at the lowest level. It is important to note that a country with its complete data is **parsed** to specific objects **only the first time**, then it's kept in case of future use.<br />
-Country complete data is parsed in a *Country object* that contains a **collection of Providers objects** and every Provider contains its **Service objects** in a **multimap** using as **key** the **ServiceType**. By doing that we can obtain a minimal time complexity to retrieve services by type.<br />
-Every Service object contains attributes for type, status and other minor informations.<br />
-When the user starts a new search a **Query object** is created. This Query object **contains all the selected countries objects** (with all their data), and **for each selection** the user makes, it **computes and stores a subset of informations** from the initial set of countries that match the user selection. At the end of all the selections only the services that meet the user choices will remain, and they can be shown.<br /><br />
+
+The calls to the API services return data that can be saved in **json format**. This data is stored as *JSONObject* and parsed into *Country*, *Provider*, *Service*, *ServiceType* objects only if it's needed. In this way only two *http calls* are made so that their time overhead is reduced at the minimum.  <br/>
+Moreover **only needed countries are parsed** in specific objects so that the time and space complexity is reduced at the lowest level. It is important to note that a country with its complete data is parsed into specific objects **only one time** because after that it's kept in case of future usege.<br />
+In specific, a country complete data (in json format) is parsed in a *Country* object that contains a collection of *Provider* objects and every provider contains its *Service* objects as values in a multimap using as keys their *ServiceType*. By doing that we can obtain a minimal time complexity to retrieve services by type.<br />
+Every *Service* object contains attributes for country, provider, type and status.<br />
+
+The query management has been implemented so that when the user starts a new search a *Query* object is created. This query contains **all the selected *Country* objects** (with all their data), and for each selection the user makes, it computes and stores a **subset of informations** from the initial set of countries that matches the user selection. At the end of all the selections, the list of services that meets the user requests can be calculated and shown through the interface.<br />
+
+The countries and service types names visualization instead, has been implementated so that no objects are need to be created. What is needed is only a call to a specific method that parses the *JSONObject*s, that were previously retrieved, and returns an *ArrayList* containg the requested data saved as *String* objects.
 
 # External libraries and functionality used in TNL application
 - **org.openjfx** libraries to build the graphical user interface
