@@ -17,18 +17,18 @@ import proseccoCoding.TLN.model.TrustedListFacade;
  */
 public class QueryResultsController {
 
-	@FXML
 	/**
 	 * ListView object used to contain the list of the user's query results 
 	 */
+	@FXML
 	private ListView<String> queryResultsList;
 	
-	@FXML
 	/**
 	 * Method called when QueryResultsController is loaded. 
 	 * It adds the list of the services selected by the user with their information to the private ListView object.
 	 * These informations are retrieved as Strings through the use of TrustedListFacade's Query public methods.
 	 */
+	@FXML
 	private void initialize() {
 		ArrayList<String> results = new ArrayList<String>();
 		for (Service s : TrustedListFacade.getInstance().getQuery().getResults()) {
@@ -48,20 +48,20 @@ public class QueryResultsController {
 			queryResultsList.getItems().add(s);
 	}
 	
-    @FXML
     /**
      * Switches scene to the "selectStatus" one
      * @throws IOException
      */
+	@FXML
     private void switchToSelectStatus() throws IOException {
         App.setRoot("selectStatus");
     }
     
-    @FXML
     /**
      * Switches scene to the "home" one
      * @throws IOException
      */
+	@FXML
     private void switchToHome() throws IOException {
         App.setRoot("home");
     }

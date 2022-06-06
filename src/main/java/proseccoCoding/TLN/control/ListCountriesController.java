@@ -13,28 +13,29 @@ import proseccoCoding.TLN.model.TrustedListFacade;
  */
 public class ListCountriesController {
 
-	@FXML
+	
 	/**
 	 * ListView object used to contain the list of the countries' names 
 	 */
+	@FXML
 	private ListView<String> countriesList;
 	
-	@FXML
 	/**
 	 * Method called when ListCountriesController is loaded. 
 	 * It adds the list of the countries' names to the private ListView object.
 	 * The countries names are retrieved as Strings through the use of an APIHandler method.
 	 */
+	@FXML
 	private void initialize() {
 		for (String s : TrustedListFacade.getInstance().retrieveCountriesNames())
 			countriesList.getItems().add(s);
 	}
 	
-    @FXML
     /**
      * Switches scene to the "home" one
      * @throws IOException
      */
+	@FXML
     private void switchToHome() throws IOException {
         App.setRoot("home");
     }

@@ -27,10 +27,10 @@ import proseccoCoding.TLN.model.Provider;
  */
 public class SelectProvidersController {
 
-	@FXML
 	/**
 	 * VBox object used to contain all the CheckBoxes used to let the user select his providers of interest
 	 */
+	@FXML
 	private VBox providersPane;
 	/**
 	 * CheckBox used to select/deselect all the providers CheckBoxes at the same time
@@ -55,12 +55,12 @@ public class SelectProvidersController {
 	    }
 	};
 	
-	@FXML
 	/**
 	 * Method called when SelectProvidersController is loaded. 
 	 * This method adds to providersPane the selectAll CheckBox and a CheckBox for each provider 
 	 * which country was previously selected, all with their ChangeListener.
 	 */
+	@FXML
 	private void initialize() {
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
@@ -115,22 +115,22 @@ public class SelectProvidersController {
     		selectAll.setIndeterminate(true);
     }
 	
-    @FXML
     /**
      * Switches scene to the "selectCountries" one
      * @throws IOException
      */
+    @FXML
     private void switchToSelectCountries() throws IOException {
         App.setRoot("selectCountries");
     }
     
-    @FXML
     /**
      * Switches scene to the "selectServices".
      * This method also tracks down the selected providers via checking the status of the CheckBoxes and sets selectedProviders in TrustedListFacade's Query.
      * If no provider was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
+    @FXML
     private void switchToSelectServices() throws IOException {
     	ArrayList<String> selectedProvidersCodes = new ArrayList<String>();
     	for(Node node : providersPane.getChildren()) {

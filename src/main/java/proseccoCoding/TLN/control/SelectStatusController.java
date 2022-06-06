@@ -27,10 +27,10 @@ import proseccoCoding.TLN.model.TrustedListFacade;
 public class SelectStatusController {
 
 
-	@FXML
 	/**
 	 * VBox object used to contain all the CheckBoxes used to let the user select his service statuses of interest
 	 */
+	@FXML
 	private VBox serviceStatusesPane;
 	/**
 	 * CheckBox used to select/deselect all the service status CheckBoxes at the same time
@@ -55,12 +55,12 @@ public class SelectStatusController {
 	    }
 	};
 	
-	@FXML
 	/**
 	 * Method called when SelectServiceStatusController is loaded.
 	 * This method adds to serviceStatusesPane the selectAll CheckBox and a CheckBox for each service status 
 	 * that is associated with at least one service which service type, country and provider was previously selected, all with their ChangeListener.
 	 */
+	@FXML
 	private void initialize() {
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
@@ -110,22 +110,22 @@ public class SelectStatusController {
     		selectAll.setIndeterminate(true);
     }
 	
-    @FXML
     /**
      * Switches scene to the "selectServices" one
      * @throws IOException
      */
+    @FXML
     private void switchToSelectServices() throws IOException {
         App.setRoot("selectServices");
     }
     
-    @FXML
     /**
      * Switches scene to the "queryResults" one.
      * This method also tracks down the selected service statuses via checking the status of the CheckBoxes and sets selectedServiceStatus in TrustedListFacade's Query.
      * If no service status was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
+    @FXML
     private void switchToQueryResults() throws IOException {
     	ArrayList<String> selectedStatuses = new ArrayList<String>();
     	for(Node node : serviceStatusesPane.getChildren()) {

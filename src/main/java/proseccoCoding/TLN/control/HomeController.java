@@ -36,11 +36,11 @@ public class HomeController {
 		}
 	}
 
-    @FXML
     /**
      * Switches scene to the "listCountries" one
      * @throws IOException
      */
+	@FXML
     private void switchToListCountries() throws IOException {
         App.setRoot("listCountries");
     }

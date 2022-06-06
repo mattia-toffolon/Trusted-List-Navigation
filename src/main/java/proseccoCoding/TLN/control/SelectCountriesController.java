@@ -28,10 +28,10 @@ import proseccoCoding.TLN.model.TrustedListFacade;
  */
 public class SelectCountriesController {
 	
-	@FXML
 	/**
 	 * VBox object used to contain all the CheckBoxes used to let the user select his countries of interest
 	 */
+	@FXML
 	private VBox countriesPane;
 	/**
 	 * CheckBox used to select/deselect all the countries CheckBoxes at the same time
@@ -56,11 +56,11 @@ public class SelectCountriesController {
 	    }
 	};
 	
-	@FXML
 	/**
 	 * Method called when SelectCountriesController is loaded. 
 	 * This method adds to countriesPane the selectAll CheckBox and a CheckBox for each country, all with their ChangeListener.
 	 */
+	@FXML
 	private void initialize() {    
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
@@ -113,22 +113,22 @@ public class SelectCountriesController {
     		selectAll.setIndeterminate(true);
     }
 
-    @FXML
     /**
      * Switches scene to the "home" one
      * @throws IOException
      */
+    @FXML
     private void switchToHome() throws IOException {
         App.setRoot("home");
     }
     
-    @FXML
     /**
      * Switches scene to the "selectProviders" one.
      * This method also tracks down the selected countries via checking the status of the CheckBoxes and sets selectedCountries in TrustedListFacade's Query.
      * If no country was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
+    @FXML
     private void switchToSelectProviders() throws IOException {
     	ArrayList<String> selectedCountryCodes = new ArrayList<String>();
     	for(Node node : countriesPane.getChildren()) {

@@ -27,10 +27,10 @@ import proseccoCoding.TLN.model.ServiceType;
  */
 public class SelectServicesController {
 	
-	@FXML
 	/**
 	 * VBox object used to contain all the CheckBoxes used to let the user select his service types of interest
 	 */
+	@FXML
 	private VBox serviceTypesPane;
 	/**
 	 * CheckBox used to select/deselect all the service types CheckBoxes at the same time
@@ -55,12 +55,12 @@ public class SelectServicesController {
 	    }
 	};
 	
-	@FXML
 	/**
 	 * Method called when SelectServicesController is loaded.
 	 * This method adds to serviceTypesPane the selectAll CheckBox and a CheckBox for each service type 
 	 * that is associated with at least one service which country and provider was previously selected, all with their ChangeListener.
 	 */
+	@FXML
 	private void initialize() {
 		// selectAll CheckBox is created 
 		selectAll = new CheckBox("Select All");
@@ -115,13 +115,13 @@ public class SelectServicesController {
     		selectAll.setIndeterminate(true);
     }
 
-    @FXML
     /**
      * Switches scene to the "selectStatus" one.
      * This method also tracks down the selected service types via checking the status of the CheckBoxes and sets selectedServicesByType in TrustedListFacade's Query.
      * If no service type was selected, a warning alert is set to inform the user of his mistake.
      * @throws IOException
      */
+    @FXML
     private void switchToSelectStatus() throws IOException {
     	ArrayList<String> selectedServiceTypesCodes = new ArrayList<String>();
     	for(Node node : serviceTypesPane.getChildren()) {
@@ -151,11 +151,11 @@ public class SelectServicesController {
         App.setRoot("selectStatus");
     }
     
-    @FXML
     /**
      * Switches scene to the "selectProviders" one
      * @throws IOException
      */
+    @FXML
     private void switchToSelectProviders() throws IOException {
         App.setRoot("selectProviders");
     }

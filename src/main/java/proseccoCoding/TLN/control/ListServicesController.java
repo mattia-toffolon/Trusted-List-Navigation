@@ -14,28 +14,28 @@ import proseccoCoding.TLN.model.TrustedListFacade;
  */
 public class ListServicesController {
 
-	@FXML
 	/**
 	 * ListView object used to contain the list of the service types' codes and names 
 	 */
+	@FXML
 	private ListView<String> servicesList;
 	
-	@FXML
 	/**
 	 * Method called when ListServicesController is loaded. 
 	 * It adds the list of the service types codes and full names to the private ListView object. 
 	 * The service types' informations are retrieved as Strings through the use of an APIHandler method.
 	 */
+	@FXML
 	private void initialize() {
 		for (Pair<String, String> s : TrustedListFacade.getInstance().retriveServiceTypes())
 			servicesList.getItems().add(s.getKey()+"\n﹂ "+s.getValue());
 	}
 	
-    @FXML
     /**
      * Switches scene to the "home" one
      * @throws IOException
      */
+	@FXML
     private void switchToHome() throws IOException {
         App.setRoot("home");
     }

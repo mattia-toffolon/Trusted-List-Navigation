@@ -10,11 +10,11 @@ import proseccoCoding.TLN.App;
  */
 public class CreditsController {
 
-    @FXML
     /**
      * Switches scene to the "home" one
      * @throws IOException
      */
+	@FXML
     private void switchToHome() throws IOException {
         App.setRoot("home");
     }
