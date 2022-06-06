@@ -31,6 +31,10 @@ public class TrustedListFacade {
 		trustedListData = new TrustedListData();
 	}
 	
+	/**
+	 * Method to get the unique instance of singleton class TrustedListFacade
+	 * @return the unique TrustedListFacade object
+	 */
 	public static TrustedListFacade getInstance() {
 		if(instance == null)
 			instance = new TrustedListFacade();
