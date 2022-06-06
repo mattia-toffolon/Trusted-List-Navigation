@@ -8,6 +8,8 @@ Members:
 
 ## Links to some deliverable files
 - Complete Javadoc documentation can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/javadoc/index.html).
+- System Design document can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/docs/ProgettoTLN-SystemDesign.pdf).
+- Complete Testing report document can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/docs/ProgettoTLN-TestReport.pdf).
 - JUnit test report can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/surfire/surefire-report.html).
 
 ## How to run Trusted List Navigation application
@@ -74,13 +76,14 @@ Here it is described in few steps how to run this application and how to properl
  <br/> 
     
 # Some concepts about the implementation of TLN application
-This application interacts with the EU Trusted List API to retrieve data at [EU Trust Services](https://esignature.ec.europa.eu/efda/home/#/screen/home) and provide useful search and display functions to **analize EU trusted services data**.<br />
-The API interaction is done over http protocol at the time of application launch. One call is made for retrieving country code and name, and the other is made for retrieving all the providers and services for every country.<br />
-The calls to API services retrieve data in json format, and this data is stored as JSONObject and converted in Country, Provider, Service, Type objects only if it is needed. In this way only two http calls are done so their time overhead is reduced at a minimum point.  <br/>
-Moreover only needed countries are parsed in specific object so the time and space complexity is reduced. It is important to note that a county with its data is parsed to specific objects only one time, then is kept in case of future use.<br />
-When a country data is needed it is parsed in a Country object that contains a collection of Providers objects and every Provider contains its services in a multimap using as key the service type. Doing like that we can obtain a minimal time complexity to retrieve services by type.<br />
+This application interacts with the [EU Trusted List API](https://esignature.ec.europa.eu/efda/swagger-ui.html) to retrieve [EU Trust Services](https://esignature.ec.europa.eu/efda/home/#/screen/home) data and provide useful search and display functions to **analize EU trusted services data**.<br />
+The API interaction is done over **http protocol** at application launching time. One call is made for **retrieving country code and name** (using */tl-browser/api/v1/search/countries_list* service), and the other is made for retrieving all the providers and services for every country (using
+*/tl-browser/api/v1/search/tsp_list* service).<br />
+The calls to API services retrieve data in **json format**, and this data is **stored as JSONObject** and parsed in Country, Provider, Service, Type objects only if it is needed. In this way only two http calls are done so their time overhead is reduced at a minimum point.  <br/>
+Moreover **only needed countries are parsed** in specific object so the time and space complexity is reduced at the lowest level. It is important to note that a county with its complete data is **parsed** to specific objects **only the first time**, then is kept in case of future use.<br />
+Country complete data is parsed in a *Country object* that contains a **collection of Providers objects** and every Provider contains its **Service objects** in a **multimap** using as **key** the **ServiceType**. Doing like that we can obtain a minimal time complexity to retrieve services by type.<br />
 Every Service object contains attributes for type, status and others minor informations.<br />
-When the user starts a new search a Query object is created. This Query object contains all the selected countries objects (with all their data), and for each selection the user make, it compute a subset of informations from the initial set of countries that mach the user selection. At the end of the selections only the services that meet them will remains, and they can be shown.<br />
+When the user starts a new search a **Query object** is created. This Query object **contains all the selected countries objects** (with all their data), and **for each selection** the user make, it **compute and store a subset of informations** from the initial set of countries that mach the user selection. At the end of the selections only the services that meet the selections will remains, and they can be shown.<br />
 
 # External libraries and functionality used in TNL application
 - **org.openjfx** libraries to build the graphical user interface
