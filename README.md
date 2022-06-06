@@ -1,3 +1,4 @@
+<!-- IF YOU SEE THIS LINE PLEASE OPEN README.html INSTEAD OF THIS FILE -->
 # Trusted-List-Navigation
 Group: ProseccoCoding
 Members:
