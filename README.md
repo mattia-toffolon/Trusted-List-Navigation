@@ -8,10 +8,10 @@ Members:
 - Alberto Guerrini  <br />
 
 ## Links to some deliverable files
-- Complete Javadoc documentation can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/javadoc/index.html).
-- System Design document can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/docs/ProgettoTLN-SystemDesign.pdf).
-- Complete Testing report document can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/docs/ProgettoTLN-TestReport.pdf).
-- JUnit test report can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/surfire/surefire-report.html).
+- Complete **Javadoc documentation** can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/javadoc/index.html).
+- **System Design document** can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/docs/ProgettoTLN-SystemDesign.pdf).
+- Complete **Testing report document** can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/docs/ProgettoTLN-TestReport.pdf).
+- **JUnit test report** can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/surfire/surefire-report.html).
 
 ## How to run Trusted List Navigation application
 Here it is described in few steps how to run this application and how to properly use it.
