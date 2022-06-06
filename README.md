@@ -92,6 +92,5 @@ When the user starts a new search a **Query object** is created. This Query obje
 - **org.json** library to handle json data retrieved from the API services
 -  **com.google.guava** libraries used only for the MultiMap implementation for storing services in provider class
 -  **org.junit** library used for unit class testing
-<br />
-- For the dependencies management, running configuration and software lifecycle management **this project uses maven**. <br />
-- For the unique cross-platform .jar building it has been used [maven shade plugin](https://maven.apache.org/plugins/maven-shade-plugin/).
+-  For the dependencies management, running configuration and software lifecycle management **this project uses maven**.
+-  For the unique cross-platform .jar building it has been used [maven shade plugin](https://maven.apache.org/plugins/maven-shade-plugin/).
