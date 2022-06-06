@@ -2,10 +2,10 @@
 # Trusted-List-Navigation
 Group: ProseccoCoding
 Members:
+- Alberto Guerrini  <br />
 - Mattia Toffolon   <br />
 - Francesco Stella  <br />
 - Filippo D'Emilio  <br />
-- Alberto Guerrini  <br />
 
 ## Links to some deliverable files
 - Complete **Javadoc documentation** can be found [here](https://mattia-toffolon.github.io/Trusted-List-Navigation/javadoc/index.html).
