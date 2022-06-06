@@ -24,6 +24,7 @@ Here it is described in few steps how to run this application and how to properl
  <br />
 
 ### Launching the application
+Note that the .jar file is cross-platform compiled, so it would run in all common platforms (Windows, Linux, MacOS).
 1. Firstly you have to move in the base directory (where is located the `.jar` file) and open a terminal on it.
 2. Then you have to type `$ java -jar Trusted-List-Navigation.jar` to launch the Java application. 
 <br /> :memo: **Note:** In case of not working internet connection or EU trusted data's server fault can be displayed an error before the application launch. In this case you should try again from point 2.
