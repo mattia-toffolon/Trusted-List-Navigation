@@ -76,7 +76,7 @@ Note that the .jar file is cross-platform compiled, so it would run in all commo
     To continue the query parameter selection **you must close** this **alert window**, otherwise it is not possible to interact with the main window. <br />
 8. :x: **Error:** In case of connection errors, the user comes across an **alert window** like this one below <br />
     <img src="https://user-images.githubusercontent.com/96696061/172214714-4b4ad798-a802-4db7-ac63-e86f906d00ef.png" height="150" /> <br />
-    To use correctly the application the User is required to check his internet connection and restart the application. If the error continues to come up, the API         services may be unvailable and so the user has to try again later.
+    To use correctly the application the User is required to close this window, check his internet connection and restart the application. If the error continues to come up, the API         services may be unvailable and so the user has to try again later.
 
  <br />
 
