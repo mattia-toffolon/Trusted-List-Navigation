@@ -85,10 +85,13 @@ The calls to API services retrieve data in **json format**, and this data is **s
 Moreover **only needed countries are parsed** in specific object so the time and space complexity is reduced at the lowest level. It is important to note that a county with its complete data is **parsed** to specific objects **only the first time**, then is kept in case of future use.<br />
 Country complete data is parsed in a *Country object* that contains a **collection of Providers objects** and every Provider contains its **Service objects** in a **multimap** using as **key** the **ServiceType**. Doing like that we can obtain a minimal time complexity to retrieve services by type.<br />
 Every Service object contains attributes for type, status and others minor informations.<br />
-When the user starts a new search a **Query object** is created. This Query object **contains all the selected countries objects** (with all their data), and **for each selection** the user make, it **compute and store a subset of informations** from the initial set of countries that mach the user selection. At the end of the selections only the services that meet the selections will remains, and they can be shown.<br />
+When the user starts a new search a **Query object** is created. This Query object **contains all the selected countries objects** (with all their data), and **for each selection** the user make, it **compute and store a subset of informations** from the initial set of countries that mach the user selection. At the end of the selections only the services that meet the selections will remains, and they can be shown.<br /><br />
 
 # External libraries and functionality used in TNL application
 - **org.openjfx** libraries to build the graphical user interface
 - **org.json** library to handle json data retrieved from the API services
 -  **com.google.guava** libraries used only for the MultiMap implementation for storing services in provider class
 -  **org.junit** library used for unit class testing
+<br />
+- For the dependencies management, running configuration and software lifecycle management **this project uses maven**. <br />
+- For the unique cross-platform .jar building it has been used [maven shade plugin](https://maven.apache.org/plugins/maven-shade-plugin/).
