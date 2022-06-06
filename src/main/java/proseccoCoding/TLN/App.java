@@ -61,9 +61,11 @@ public class App extends Application {
     /**
      * Starts the App by calling the launch method
      * @param args
+     * @throws InterruptedException 
      */
     public static void main(String[] args) {
-        launch();
+    	System.out.print("\nLaunching Trusted List Navigation application...");
+    	launch();
     }
 
 }
