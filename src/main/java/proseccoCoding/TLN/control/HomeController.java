@@ -17,12 +17,13 @@ import proseccoCoding.TLN.model.TrustedListFacade;
  */
 public class HomeController {
 	
-	@FXML
+	
 	/**
 	 * Method called when HomesController is loaded. 
 	 * This method initialize the JSONArrays in APIHandler if this hasn't been done yet.
 	 * In case of connection errors, this method displays an error dialog pane that informs the user and then proceeds to close the application.
 	 */
+	@FXML
 	private void initialize() {
 		try {
 			TrustedListFacade.getInstance().requestData();
@@ -45,29 +46,29 @@ public class HomeController {
         App.setRoot("listCountries");
     }
     
-    @FXML
     /**
      * Switches scene to the "listServices" one
      * @throws IOException
      */
+    @FXML
     private void switchToListServices() throws IOException {
         App.setRoot("listServices");
     }
     
-    @FXML
     /**
      * Switches scene to the "selectCountries" one
      * @throws IOException
      */
+    @FXML
     private void switchToSelectCountries() throws IOException {
         App.setRoot("selectCountries");
     }
     
-    @FXML
     /**
      * Switches scene to the "credits" one
      * @throws IOException
      */
+    @FXML
     private void switchToCredits() throws IOException {
         App.setRoot("credits");
     }
