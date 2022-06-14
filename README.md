@@ -17,7 +17,7 @@ Members:
 Here it is described in few steps how to run this application and how to properly use it.
 ### Prerequisites
 1. Your environment must have a **Java VM** installed, if it haven't it you can download it from [here](https://www.oracle.com/java/technologies/downloads/).
-2. Your system must have an internet connection (:memo: **Note:** be aware that the response time of this application depends by the connection data-rate) 
+2. Your system must have an internet connection (:memo: **Note:** be aware that the response time of this application depends on the connection data-rate) 
 3. You must have this repository on your local sistem. There are two ways to achieve that:
     - Clone it on your system moving in your preferred local folder and entering in your terminal `$ git clone https://github.com/mattia-toffolon/Trusted-List-Navigation.git` (you must have git installed).
     - Or download it as zip from the green button on the top right of this page, unzip and open the unzipped folder (no additional software required).
@@ -87,11 +87,11 @@ The API interaction is done over **http protocols** at application launch time. 
 */tl-browser/api/v1/search/tsp_list* service).<br />
 
 The calls to the API services return data that can be saved in **json format**. This data is stored as *JSONObject* and parsed into *Country*, *Provider*, *Service*, *ServiceType* objects only if it's needed. In this way only two *http calls* are made so that their time overhead is reduced at the minimum.  <br/>
-Moreover **only needed countries are parsed** in specific objects so that the time and space complexity is reduced at the lowest level. It is important to note that a country with its complete data is parsed into specific objects **only one time** because after that it's kept in case of future usege.<br />
+Moreover **only needed countries are parsed** in specific objects so that the time and space complexity is reduced at the lowest level. It is important to note that a country with its complete data is parsed into specific objects **only one time** because after that it's kept in case of future usage.<br />
 In specific, a country complete data (in json format) is parsed in a *Country* object that contains a collection of *Provider* objects and every provider contains its *Service* objects as values in a multimap using as keys their *ServiceType*. By doing that we can obtain a minimal time complexity to retrieve services by type.<br />
 Every *Service* object contains attributes for country, provider, type and status.<br />
 
-The query management has been implemented so that when the user starts a new search a *Query* object is created. This query contains **all the selected *Country* objects** (with all their data), and for each selection the user makes, it computes and stores a **subset of informations** from the initial set of countries that matches the user selection. At the end of all the selections, the list of services that meets the user requests can be calculated and shown through the interface.<br />
+The query management has been implemented so that when the user starts a new search a *Query* object is created. This query contains **all the selected *Country* objects** (with all their data), and for each selection the user makes, it computes and stores a **subset of informations** from the initial set of countries trusted data that matches the user selection. At the end of all the selections, the list of services that meets the user requests can be calculated and shown to the user.<br />
 
 The countries and service types names visualization instead, has been implementated so that no objects are need to be created. What is needed is only a call to a specific method that parses the *JSONObject*s, that were previously retrieved, and returns an *ArrayList* containg the requested data saved as *String* objects.
 <br /> <br />
